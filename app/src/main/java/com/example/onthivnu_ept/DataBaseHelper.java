@@ -40,7 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + COLUMN_TYPE + " TEXT, "
                 + COLUMN_ID_INFOR + " INTEGER, "
                 + COLUMN_PART + " INTEGER, "
-                + "FOREIGN KEY (" + COLUMN_ID_INFOR + ") REFERENCES INFOR (" + COLUMN_ID + ")"
+                + "FOREIGN KEY (" + COLUMN_ID_INFOR + ") REFERENCES " + TABLE_INFORMATION + " (" + COLUMN_ID + ")"
                 +")";
         String createTableInfor = "CREATE TABLE " + TABLE_INFORMATION + " ("
                 + COLUMN_ID + " INTEGER, "
@@ -77,4 +77,5 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
 }

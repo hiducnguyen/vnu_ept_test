@@ -27,15 +27,7 @@ public class MainActivity extends Activity implements View.OnClickListener
         setContentView(R.layout.activity_main);
         context = this;
         setView();
-        dataBaseHelper = new DataBaseHelper(MainActivity.this);
-        QuestionModel q = new QuestionModel("he", "He", "he", "he",
-                "he",
-                "he",
-                "he",
-                2,
-                2);
-        dataBaseHelper.addQuestion(q);
-
+        initDatabse();
     }
     public void setView()
     {
@@ -83,5 +75,68 @@ public class MainActivity extends Activity implements View.OnClickListener
                 //startActivities(new Intent[]{myIntent});
                 break;
         }
+    }
+    private void initDatabse(){
+        dataBaseHelper = new DataBaseHelper(MainActivity.this);
+        QuestionModel q1 = new QuestionModel("The topic of the radio program probably is _____.",
+                "Never think about past mistakes",
+                "How to be optimistic",
+                "Be positive in failures",
+                "Always use positive language",
+                "B",
+                "Listening",
+                1,
+                2);
+        QuestionModel q2 = new QuestionModel("For Andy, _____ is very important",
+                "living for today",
+                "keeping past memories",
+                "arranging for the future",
+                "avoiding mistakes",
+                "A",
+                "Listening",
+                1,
+                2);
+        QuestionModel q3 = new QuestionModel("Julie says people have negative thoughts _____. ",
+                " if they fail in love",
+                "every time they fail ",
+                "now and then",
+                "when they stop working",
+                "C",
+                "Listening",
+                1,
+                2);
+        QuestionModel q4 = new QuestionModel("Julie probably tells herself “_____” if she learns to ride a bicycle.",
+                "It will take me too much time.",
+                "I’ll fail again.",
+                "I’ll never try again if I fail now.",
+                "I can ride it soon.",
+                "D",
+                "Listening",
+                1,
+                2);
+        QuestionModel q5 = new QuestionModel("Miriam says that we should _____ to improve our bad feelings.  ",
+                "do good things to other people",
+                " list all the things for a good future",
+                "keep a list of good memories at hand ",
+                "try to have a good time every week",
+                "C",
+                "Listening",
+                1,
+                2);
+        QuestionModel q6 = new QuestionModel("Michael doesn’t want to say “I’m sorry” because he thinks _____. ",
+                "it’s not good to admit a mistake",
+                "action is more important than words",
+                "it’s better to say “I know my mistake” ",
+                "positive language can encourage people better",
+                "D",
+                "Listening",
+                1,
+                2);
+        dataBaseHelper.addQuestion(q1);
+        dataBaseHelper.addQuestion(q2);
+        dataBaseHelper.addQuestion(q3);
+        dataBaseHelper.addQuestion(q4);
+        dataBaseHelper.addQuestion(q5);
+        dataBaseHelper.addQuestion(q6);
     }
 }
