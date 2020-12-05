@@ -2,28 +2,17 @@ package com.example.onthivnu_ept;
 
 public class InforModel {
     private int id;
-    private String infor, type;
+    private int imgInfor, listeningInfor;
+    private String readingInfor;
 
-    @Override
-    public String toString() {
-        return "InforModel{" +
-                "id=" + id +
-                ", infor='" + infor + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+    public InforModel() {
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public InforModel(int id, String infor) {
+    public InforModel(int id, int imgInfor, int listeningInfor, String readingInfor) {
         this.id = id;
-        this.infor = infor;
+        this.imgInfor = imgInfor;
+        this.listeningInfor = listeningInfor;
+        this.readingInfor = readingInfor;
     }
 
     public int getId() {
@@ -34,12 +23,37 @@ public class InforModel {
         this.id = id;
     }
 
-    public String getInfor() {
-        return infor;
+    public int getImgInfor() {
+        return imgInfor;
     }
 
-    public void setInfor(String infor) {
-        this.infor = infor;
+    public void setImgInfor(int imgInfor) {
+        this.imgInfor = imgInfor;
     }
 
+    public int getListeningInfor() {
+        return listeningInfor;
+    }
+
+    public void setListeningInfor(int listeningInfor) {
+        this.listeningInfor = listeningInfor;
+    }
+
+    public String getReadingInfor() {
+        return readingInfor;
+    }
+
+    public void setReadingInfor(String readingInfor) {
+        this.readingInfor = readingInfor;
+    }
+
+    @Override
+    public String toString() {
+        return "InforModel{" +
+                "id=" + id +
+                ", imgInfor=" + imgInfor +
+                ", listeningInfor=" + listeningInfor +
+                ", readingInfor='" + readingInfor + '\'' +
+                '}';
+    }
 }
