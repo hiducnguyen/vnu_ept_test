@@ -101,4 +101,11 @@
     <string name="about_us">About Us</string>
     <string name="exit">EXIT</string>
     <string name="n_p_b_i">Nộp bài</string>
+    <string name="nghe_t_ng_h_i_tho_i_v_tr_l_i_t_ng_c_u_h_i">Nghe từng hội thoại và trả lời từng câu hỏi</string>
+    <string name="nghe_h_i_tho_i_v_tr_l_i_t_t_c_c_c_c_u">Nghe hội thoại và trả lời tất cả các câu</string>
+    <string name="nghe_b_i_n_i_v_tr_l_i_t_t_c_c_c_c_u">Nghe bài nói và trả lời tất cả các câu</string>
+    <string name="nghe_v_i_n_v_o_o_n_v_n">Nghe và điền vào đoạn văn</string>
+    <string name="c_v_ki_m_tra_t_v_ng_ng_ph_p">Đọc và kiểm tra từ vựng, ngữ pháp</string>
+    <string name="c_v_ki_m_tra_c_hi_u">Đọc và kiểm tra đọc hiểu</string>
+    <string name="ki_m_tra">KIỂM TRA</string>
 </resources>

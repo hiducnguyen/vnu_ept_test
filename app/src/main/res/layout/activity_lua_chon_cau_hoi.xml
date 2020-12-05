@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="@drawable/background2"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/custom_textview"
+        android:layout_marginTop="20dp"
+        android:text="LỰA CHỌN CÂU HỎI"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#000000"></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="70dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvPart1"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#000000"
+
+                android:background="@drawable/custom_textview"
+                android:text="@string/nghe_t_ng_h_i_tho_i_v_tr_l_i_t_ng_c_u_h_i">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/edtPart1"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/custom_textview"
+                android:numeric="decimal"
+                android:text="0"
+                >
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/tvPart2"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#000000"
+
+                android:background="@drawable/custom_textview"
+                android:text="@string/nghe_h_i_tho_i_v_tr_l_i_t_t_c_c_c_c_u">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/edtPart2"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/custom_textview"
+                android:numeric="decimal"
+                android:text="0"
+                >
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/tvPart3"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#000000"
+
+                android:background="@drawable/custom_textview"
+                android:text="@string/nghe_b_i_n_i_v_tr_l_i_t_t_c_c_c_c_u">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/edtPart3"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/custom_textview"
+                android:numeric="decimal"
+                android:text="0"
+                >
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/tvPart4"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#000000"
+
+                android:background="@drawable/custom_textview"
+                android:text="@string/nghe_v_i_n_v_o_o_n_v_n">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/edtPart4"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/custom_textview"
+                android:numeric="decimal"
+                android:text="0"
+                >
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/tvPart5"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#000000"
+
+                android:background="@drawable/custom_textview"
+                android:text="@string/c_v_ki_m_tra_t_v_ng_ng_ph_p">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/edtPart5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/custom_textview"
+                android:numeric="decimal"
+                android:text="0"
+                >
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/tvPart6"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#000000"
+
+                android:background="@drawable/custom_textview"
+                android:text="@string/c_v_ki_m_tra_c_hi_u">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/edtPart6"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/custom_textview"
+                android:numeric="decimal"
+                android:text="0"
+
+                >
+
+            </EditText>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnTT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_textview"
+
+        android:text="TIẾP TỤC"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="bold"></Button>
+
+</LinearLayout>

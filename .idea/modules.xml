@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/18_31_Nhom21.OnThiVNU-EPT.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/18_31_Nhom21.OnThiVNU-EPT.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/OnThiVNU-EPT.iml" filepath="$PROJECT_DIR$/.idea/modules/OnThiVNU-EPT.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/OnThiVNU-EPT.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/OnThiVNU-EPT.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/vnu_ept_test.OnThiVNU-EPT.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/vnu_ept_test.OnThiVNU-EPT.app.iml" />
     </modules>
   </component>
 </project>

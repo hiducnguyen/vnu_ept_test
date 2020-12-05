@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OnTheoPhanActivity"></activity>
+        <activity android:name=".LuaChonCauHoi"></activity>
+        <activity android:name=".OnNgauNhien" />
+        <activity android:name=".OnTheoPhanActivity" />
         <activity android:name=".AboutUs_activity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -67,8 +67,8 @@ public class MainActivity extends Activity implements View.OnClickListener
                 startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnOnThiNgauNhien:
-                //myIntent = new Intent(this,AboutUs_activity.class);
-                //startActivities(new Intent[]{myIntent});
+                myIntent = new Intent(this,LuaChonCauHoi.class);
+                startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnThiThu:
                 //myIntent = new Intent(this,AboutUs_activity.class);
