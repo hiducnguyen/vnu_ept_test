@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".AboutUs_activity"
+    android:background="@drawable/background2"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_n_thi_vnu_ept"
+        android:gravity="center_horizontal"
+
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite">
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:text="@string/nh_m_ph_t_tri_n_dd_n_phi_n_b_n_hi_n_t_i_1_0_beta">
+
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:text="Nguồn: ">
+
+    </TextView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:id="@+id/btnOK"
+        android:background="@drawable/custom_button1"
+        android:layout_gravity="center_horizontal">
+
+    </Button>
+  </LinearLayout>
