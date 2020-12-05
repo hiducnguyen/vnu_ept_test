@@ -20,9 +20,7 @@ public class QuestionModel {
         return question;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
+    public void setQuestion(String question) { this.question = question; }
 
     public String getAnswerA() {
         return answerA;
@@ -88,18 +86,4 @@ public class QuestionModel {
         this.part = part;
     }
 
-    @Override
-    public String toString() {
-        return "QuestionModel{" +
-                "question='" + question + '\'' +
-                ", answerA='" + answerA + '\'' +
-                ", answerB='" + answerB + '\'' +
-                ", answerC='" + answerC + '\'' +
-                ", answerD='" + answerD + '\'' +
-                ", rightAnswer='" + rightAnswer + '\'' +
-                ", type='" + type + '\'' +
-                ", idInfor=" + idInfor +
-                ", part=" + part +
-                '}';
-    }
 }

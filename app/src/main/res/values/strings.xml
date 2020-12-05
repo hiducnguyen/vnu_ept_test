@@ -101,4 +101,7 @@
     <string name="about_us">About Us</string>
     <string name="exit">EXIT</string>
     <string name="n_p_b_i">Nộp bài</string>
+    <string name="in_part_2_you_will_hear_a_conversation_after_the_second_listening_there_are_six_incomplete_sentences_and_four_possible_options_provided_for_each_gap_select_the_best_option_to_complete_the_sentence">In Part 2 you will hear a conversation. After the second listening, there are six incomplete sentences and four possible options provided for each gap. Select the best option to complete the sentence.</string>
+    <string name="in_part_1_you_will_hear_ten_conversations_between_two_people_after_the_second_listening_of_each_conversation_you_will_hear_a_question_and_there_are_four_possible_answers_provided_select_the_best_answer_to_each_question">In Part 1 you will hear ten conversations between two people. After the second listening of each conversation, you will hear a question and there are four possible answers provided. Select the best answer to each question.</string>
+    <string name="in_part_4_you_will_hear_part_of_a_lecture_after_the_second_listening_there_is_a_summary_of_the_lecture_with_eight_gaps_select_the_best_option_for_each_gap_to_complete_the_summary">In Part 4 you will hear part of a lecture. After the second listening, there is a summary of the lecture with eight gaps. Select the best option for each gap to complete the summary.</string>
 </resources>
