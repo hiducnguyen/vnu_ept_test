@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="@string/n_p_b_i"
-        android:background="@drawable/custom_button1">
+        android:background="@drawable/custom_button1"
+        android:id="@+id/btnNopBai">
 
     </Button>
 </LinearLayout>
