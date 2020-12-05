@@ -14,11 +14,9 @@ public class MainActivity extends Activity implements View.OnClickListener
     private Button btnExit,btnThiThu,btnThiNhanh,
             btnAboutUs,btnOnNgauNhien,btnOnTheoPhan;
     private Context context;
-    private Bundle myBundle;
     private Intent myIntent;
     private DataBaseHelper dataBaseHelper;
-    private List<QuestionModel> listQuestion;
-    private List<InforModel> listReadingInfor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -76,6 +74,7 @@ public class MainActivity extends Activity implements View.OnClickListener
                 break;
         }
     }
+
     private void initDatabse(){
         dataBaseHelper = new DataBaseHelper(MainActivity.this);
         QuestionModel q1 = new QuestionModel("The topic of the radio program probably is _____.",

@@ -17,12 +17,13 @@ public class OnTheoPhanActivity extends Activity
 {
     ListView myListView, myListQuestion;
     ArrayAdapter<String> myListAdapter;
-    QuestionListenAdapter myQuestionAdapter;
+    QuestionListenAdapterP1 myQuestionAdapter;
     Boolean is_done = true;
     Integer n_right_answer = 0;
     Integer n_question = 0;
     Button btnNopBai;
-    List<QuestionModel> qm;
+    List<QuestionModel> questionModels;
+    List<InforModel> inforModels;
     Context context;
     String[] myList={"Phần nghe Part 1",
             "Phần nghe Part 2",
@@ -40,8 +41,11 @@ public class OnTheoPhanActivity extends Activity
         setContentView(R.layout.activity_on_theo_phan);
         context = getApplicationContext();
         myListView=(ListView) findViewById(R.id.list_item_otp);
+        myListAdapter = new ArrayAdapter(this,R.layout.my_simple_list_item_1,myList);
+        myListView.setAdapter(myListAdapter);
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
@@ -57,17 +61,22 @@ public class OnTheoPhanActivity extends Activity
                         n_question = 6;
                         for(int i = 0; i< n_question; i++)
                         {
-                            qm.get(i).setAnswerA("A");
-                            qm.get(i).setAnswerB("B");
-                            qm.get(i).setAnswerC("C");
-                            qm.get(i).setAnswerD("D");
-                            qm.get(i).setRightAnswer("A");
+                            questionModels.get(i).setAnswerA("A");
+                            questionModels.get(i).setAnswerB("B");
+                            questionModels.get(i).setAnswerC("C");
+                            questionModels.get(i).setAnswerD("D");
+                            questionModels.get(i).setRightAnswer("A");
+                            inforModels.get(i).setInfor(Integer.toString(R.raw.p1_1));
                         }
+
                         context = getApplicationContext();
                         setContentView(R.layout.on_theo_phan_layout_listenning_p23);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart1);
-                        btnNopBai=(Button)findViewById(R.id.btnNopBai2);
+
+
+                        btnNopBai = (Button) findViewById(R.id.btnNopBai2);
                         btnNopBai.setEnabled(false);
+
                         ImageView img = (ImageView) findViewById(R.id.image23);
                         img.setOnClickListener(new View.OnClickListener()
                         {
@@ -77,8 +86,8 @@ public class OnTheoPhanActivity extends Activity
                                 //Play
                             }
                         });
-                        
-                        myQuestionAdapter = new QuestionListenAdapter(context,R.layout.question_form_02,qm);
+
+                        myQuestionAdapter = new QuestionListenAdapterP1(context,R.layout.question_form_02,questionModels,inforModels);
                         myListQuestion.setAdapter(myQuestionAdapter);
                         break;
                     }
@@ -138,8 +147,7 @@ public class OnTheoPhanActivity extends Activity
             }
         });
 
-        myListAdapter = new ArrayAdapter(this,R.layout.my_simple_list_item_1,myList);
-        myListView.setAdapter(myListAdapter);
+
     }
     void ShowDialogResult()
     {
