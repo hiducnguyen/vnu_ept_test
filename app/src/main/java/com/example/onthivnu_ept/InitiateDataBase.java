@@ -6,7 +6,7 @@ public class InitiateDataBase {
     public void start(DataBaseHelper dbHelper){
         //ID_infor = 1, part = 2, type = Listening
         //Information
-        dbHelper.addInfor(1, 0,  R.raw.id1_part2, "");
+        dbHelper.addInfor(1, 0,  R.raw., "");
         //Questions
         dbHelper.addQuestion("The topic of the radio program probably is _____.",
                 "Never think about past mistakes",
