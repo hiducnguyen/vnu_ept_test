@@ -40,9 +40,7 @@ public class QuestionModel {
         return question;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
+    public void setQuestion(String question) { this.question = question; }
 
     public String getAnswerA() {
         return answerA;
@@ -107,7 +105,7 @@ public class QuestionModel {
     public void setPart(int part) {
         this.part = part;
     }
-
+    
     public void set(String myQuestion, String myAnswerA, String myAnswerB, String myAnswerC, String myAnswerD, String myRightAnswer, String myType, int myIdInfor, int myPart){
         setQuestion(myQuestion);
         setAnswerA(myAnswerA);
@@ -119,4 +117,5 @@ public class QuestionModel {
         setIdInfor(myIdInfor);
         setPart(myPart);
     }
+
 }
