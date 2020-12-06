@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import java.io.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener
@@ -36,7 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener
             initDB.start(dataBaseHelper);
         }
 
-        List<QuestionModel> l = dataBaseHelper.findQuestionByPart(2, "Listening");
+        ArrayList<QuestionModel> l = dataBaseHelper.findQuestionByPart(2, "Listening");
 
         for (int i = 0; i < l.size(); i++){
             Log.i("hihi", l.get(i).toString());
@@ -46,6 +47,9 @@ public class MainActivity extends Activity implements View.OnClickListener
         InforModel i = dataBaseHelper.findInforById(1);
         Log.i("hihi", i.toString());
         setView();
+
+        Log.i("hihi", Integer.toString(dataBaseHelper.countQuestionByPart(2, "Listening")));
+        Log.i("hihi", Integer.toString(dataBaseHelper.countIdByPart(2, "Listening")));
     }
     public boolean validDataBase(){
         dataBaseHelper = new DataBaseHelper(MainActivity.this);
