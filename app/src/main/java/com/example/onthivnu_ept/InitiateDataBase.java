@@ -259,5 +259,118 @@ public class InitiateDataBase {
                 "Listening",
                 12,
                 3);
+        //ID_infor = 13, part = 4, type = Listening
+        //Information
+        dbHelper.addInfor(13, 0, R.raw.id13_part4, "The professor gives a/an (25) _____ of " +
+                "globalization, which emphasizes the " +
+                "acceleration and intensification of economic " +
+                "transactions among people, companies and " +
+                "(26) _____. He then cites the U.S., the " +
+                "International Monetary Fund and the World " +
+                "Bank as the examples of (27) _____ and two " +
+                "big international organizations that first involve " +
+                "globalization. The professor also names Coca " +
+                "Cola, McDonald, popular music and (28) _____ " +
+                "as representatives of U.S. cultural imperialism. " +
+                "In the first point of the lecture, the professor " +
+                "indicates that critics object to globalization " +
+                "because poor countries are often badly " +
+                "(29) _____ by international organizations to (i) " +
+                "adjust currency, (ii) eliminate tariffs, (iii) respect " +
+                "patents and copyright laws, (iv) privatize " +
+                "(30) _____, and (v) not subsidize domestic " +
+                "goods. To illustrate his point, the professor " +
+                "gives an example of (31) _____, which suffered " +
+                "rather than prospered. The professor then cites " +
+                "the opinion of critics to globalization that these " +
+                "organizations do not have good intentions to " +
+                "help poor countries; they want to take " +
+                "advantage of these countries instead. " +
+                "However, the professor suggests two more " +
+                "possible reasons for this practice. First, these " +
+                "rules are also implemented to some extent in " +
+                "rich countries. Second, poor countries which do " +
+                "not follow trade rules will not receive (32) _____ " +
+                "from rich countries.");
+        //Questions
+        dbHelper.addQuestion("(25) _____",
+                "explanation",
+                "definition",
+                "clarification",
+                "argument",
+                "B",
+                "Listening",
+                13,
+                4);
+        //Questions
+        dbHelper.addQuestion("(26) _____",
+                "leaders of different continents",
+                "different nations in many regions",
+                "governments of various countries",
+                "similar governments of some nations",
+                "C",
+                "Listening",
+                13,
+                4);
+        //Questions
+        dbHelper.addQuestion("(27) _____",
+                "capitalism",
+                "imperialism",
+                "culturalism",
+                "popularism",
+                "A",
+                "Listening",
+                13,
+                4);
+        //Questions
+        dbHelper.addQuestion("(28) _____",
+                "TV celebrities",
+                "computer programs",
+                "advertising programs",
+                "television shows",
+                "D",
+                "Listening",
+                13,
+                4);
+        //Questions
+        dbHelper.addQuestion("(29) _____",
+                "supported",
+                "directed",
+                "advised",
+                "financed",
+                "C",
+                "Listening",
+                13,
+                4);
+        //Questions
+        dbHelper.addQuestion("(30) _____",
+                "large corporations",
+                "all public businesses",
+                "the business sector",
+                "industry and banks",
+                "D",
+                "Listening",
+                13,
+                4);
+        //Questions
+        dbHelper.addQuestion("(31) _____",
+                "South Korea",
+                "South Africa",
+                "Argentina",
+                "Indonesia",
+                "C",
+                "Listening",
+                13,
+                4);
+        //Questions
+        dbHelper.addQuestion("(32) _____",
+                "investments",
+                "nonrefundable aids",
+                "technology transfer",
+                "economic counseling",
+                "A",
+                "Listening",
+                13,
+                4);
     }
 }
