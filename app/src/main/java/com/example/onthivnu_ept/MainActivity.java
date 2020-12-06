@@ -37,7 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener
             initDB.start(dataBaseHelper);
         }
 
-<<<<<<< HEAD
+
 //        List<QuestionModel> l = dataBaseHelper.findQuestionByPart(2, "Listening");
 //
 //        for (int i = 0; i < l.size(); i++){
@@ -47,7 +47,7 @@ public class MainActivity extends Activity implements View.OnClickListener
 //        //find inforModel by id
 //        InforModel i = dataBaseHelper.findInforById(1);
 //        Log.i("hihi", i.toString());
-=======
+
         ArrayList<QuestionModel> l = dataBaseHelper.findQuestionByPart(2, "Listening");
 
         for (int i = 0; i < l.size(); i++){
@@ -57,7 +57,7 @@ public class MainActivity extends Activity implements View.OnClickListener
         //find inforModel by id
         InforModel i = dataBaseHelper.findInforById(1);
         Log.i("hihi", i.toString());
->>>>>>> parent of 00e56d3... vd
+
         setView();
 
         Log.i("hihi", Integer.toString(dataBaseHelper.countQuestionByPart(2, "Listening")));
