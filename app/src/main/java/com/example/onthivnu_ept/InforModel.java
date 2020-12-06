@@ -4,15 +4,6 @@ public class InforModel {
     private int id;
     private String infor, type;
 
-    @Override
-    public String toString() {
-        return "InforModel{" +
-                "id=" + id +
-                ", infor='" + infor + '\'' +
-                ", type='" + type + '\'' +
-                '}';
-    }
-
     public String getType() {
         return type;
     }
