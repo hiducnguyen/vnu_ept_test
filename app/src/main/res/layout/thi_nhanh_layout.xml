@@ -10,9 +10,10 @@
         android:text="@string/in_part_1_you_will_hear_ten_conversations_between_two_people_after_the_second_listening_of_each_conversation_you_will_hear_a_question_and_there_are_four_possible_answers_provided_select_the_best_answer_to_each_question">
 
     </TextView>
+
     <ListView
         android:id="@+id/myListQuestionPart1tn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
     </ListView>
@@ -55,6 +56,12 @@
         android:layout_height="wrap_content">
 
     </ListView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/in_part_4_you_will_hear_part_of_a_lecture_after_the_second_listening_there_is_a_summary_of_the_lecture_with_eight_gaps_select_the_best_option_for_each_gap_to_complete_the_summary">
+
+    </TextView>
     <ImageView
         android:id="@+id/imagePart4"
         android:layout_width="wrap_content"

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.telecom.Conference;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -29,7 +30,6 @@ public class OnTheoPhanActivity extends Activity
     Integer n_right_answer = 0;
     Integer n_question = 0;
     Integer n_answer;
-    int pos = 0;
     Button btnNopBai;
     ImageView img;
     ArrayList<QuestionModel> questionModels;
@@ -104,8 +104,7 @@ public class OnTheoPhanActivity extends Activity
                                     public void onClick(View v)
                                     {
                                         context = getApplicationContext();
-                                        player = MediaPlayer.create(context,inforModels.get(position).getListeningInfor());
-                                        player.start();
+                                        play(context, inforModels.get(position).getListeningInfor());
                                     }
                                 });
                             }
@@ -138,8 +137,7 @@ public class OnTheoPhanActivity extends Activity
                             public void onClick(View v)
                             {
                                 context = getApplicationContext();
-                                player = MediaPlayer.create(context,inforModels.get(0).getListeningInfor());
-                                player.start();
+                                play(context, inforModels.get(0).getListeningInfor());
                             }
                         });
                         context = OnTheoPhanActivity.this;
@@ -183,8 +181,7 @@ public class OnTheoPhanActivity extends Activity
                             public void onClick(View v)
                             {
                                 context = getApplicationContext();
-                                player = MediaPlayer.create(context,inforModels.get(0).getListeningInfor());
-                                player.start();
+                                play(context, inforModels.get(0).getListeningInfor());
                             }
                         });
                         context = OnTheoPhanActivity.this;
@@ -195,7 +192,6 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                player.stop();
                                 checkAnswers();
                                 ShowDialogResult();
                             }
@@ -232,8 +228,7 @@ public class OnTheoPhanActivity extends Activity
                             public void onClick(View v)
                             {
                                 context = getApplicationContext();
-                                player = MediaPlayer.create(context,inforModels.get(0).getListeningInfor());
-                                player.start();
+                                play(context, inforModels.get(0).getListeningInfor());
                             }
                         });
                         context = OnTheoPhanActivity.this;
@@ -255,6 +250,8 @@ public class OnTheoPhanActivity extends Activity
                     {
                         n_question = 20;
                         questionModels = dataBaseHelper.findQuestionByPart(11, "Reading");
+                        ArrayList<QuestionModel> qm = dataBaseHelper.findQuestionByPart(12, "Reading");
+                        questionModels.addAll(qm);
 
                         for (int i = 0; i < questionModels.size(); i++)
                         {
@@ -281,7 +278,6 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                player.stop();
                                 checkAnswers();
                                 ShowDialogResult();
                             }
@@ -291,16 +287,111 @@ public class OnTheoPhanActivity extends Activity
                     case 5:
                     {
                         n_question = 6;
+                        questionModels = dataBaseHelper.findQuestionByPart(2, "Reading");
+
+                        for (int i = 0; i < questionModels.size(); i++)
+                        {
+                            Log.i("hihi", questionModels.get(i).toString());
+                        }
+
+                        InforModel inforModel = new InforModel();
+                        inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
+                        inforModels.add(inforModel);
+
+                        setContentView(R.layout.on_theo_phan_layout_reading_p1);
+                        myListQuestion= (ListView) findViewById(R.id.myListQuestionPart5);
+                        btnNopBai = (Button) findViewById(R.id.btnNopBai5);
+//                        btnNopBai.setEnabled(false);
+
+                        TextView txtP5 = (TextView) findViewById(R.id.txtP5);
+                        txtP5.setText(inforModels.get(0).getReadingInfor());
+
+                        context = OnTheoPhanActivity.this;
+                        questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
+                        myListQuestion.setAdapter(questionListenAdapterP23);
+                        btnNopBai.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                checkAnswers();
+                                ShowDialogResult();
+                            }
+                        });
                         break;
                     }
                     case 6:
                     {
                         n_question = 8;
+                        questionModels = dataBaseHelper.findQuestionByPart(3, "Reading");
+
+                        for (int i = 0; i < questionModels.size(); i++)
+                        {
+                            Log.i("hihi", questionModels.get(i).toString());
+                        }
+
+                        InforModel inforModel = new InforModel();
+                        inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
+                        inforModels.add(inforModel);
+
+                        setContentView(R.layout.on_theo_phan_layout_reading_p1);
+                        myListQuestion= (ListView) findViewById(R.id.myListQuestionPart5);
+                        btnNopBai = (Button) findViewById(R.id.btnNopBai5);
+//                        btnNopBai.setEnabled(false);
+
+                        TextView txtP5 = (TextView) findViewById(R.id.txtP5);
+                        txtP5.setText(inforModels.get(0).getReadingInfor());
+
+                        context = OnTheoPhanActivity.this;
+                        questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
+                        myListQuestion.setAdapter(questionListenAdapterP23);
+                        btnNopBai.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                checkAnswers();
+                                ShowDialogResult();
+                            }
+                        });
                         break;
                     }
                     case 7:
                     {
                         n_question = 6;
+                        questionModels = dataBaseHelper.findQuestionByPart(4, "Reading");
+
+                        for (int i = 0; i < questionModels.size(); i++)
+                        {
+                            Log.i("hihi", questionModels.get(i).toString());
+                        }
+
+                        InforModel inforModel = new InforModel();
+                        inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
+                        inforModels.add(inforModel);
+
+                        setContentView(R.layout.on_theo_phan_layout_reading_p4);
+                        myListQuestion= (ListView) findViewById(R.id.myListQuestionPart8);
+//                        btnNopBai.setEnabled(false);
+
+                        TextView txtP8 = (TextView) findViewById(R.id.txtP8);
+                        txtP8.setText(inforModels.get(0).getReadingInfor());
+                        ImageView img8 = (ImageView) findViewById(R.id.image8);
+                        img8.setBackgroundResource(inforModels.get(0).getListeningInfor());
+
+                        context = OnTheoPhanActivity.this;
+                        questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
+                        myListQuestion.setAdapter(questionListenAdapterP23);
+                        btnNopBai = (Button) findViewById(R.id.btnNopBai8);
+                        btnNopBai.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                checkAnswers();
+                                ShowDialogResult();
+                            }
+                        });
                         break;
                     }
                 }
@@ -352,5 +443,24 @@ public class OnTheoPhanActivity extends Activity
 //            }
 //            else if (!"0".equals(str)) n_answer++;
         }
+    }
+    void play(Context context, int resource)
+    {
+        if (player != null)
+        {
+            player.release();
+            player = null;
+        }
+        player = MediaPlayer.create(context, resource);
+        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+        {
+            @Override
+            public void onCompletion(MediaPlayer mp)
+            {
+                player.release();
+                player=null;
+            }
+        });
     }
 }
