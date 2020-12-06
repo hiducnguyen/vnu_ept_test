@@ -16,7 +16,7 @@ public class LuaChonCauHoi extends Activity {
     private Context context;
     private Bundle myBundle;
 
-    private DataBaseHelper dataBaseHelper;
+    private DataBaseHelper dataBaseHelper=new DataBaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,18 @@ public class LuaChonCauHoi extends Activity {
         btnTT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                int maxCount1=dataBaseHelper.countIdByPart(1,"Listening");
+                int maxCount2=dataBaseHelper.countIdByPart(2,"Listening");
+                int maxCount3=dataBaseHelper.countIdByPart(3,"Listening");
+                int maxCount4=dataBaseHelper.countIdByPart(4,"Listening");
+                int maxCountReading1=dataBaseHelper.countIdByPart(1,"Reading");
+                int maxCountReading2=dataBaseHelper.countIdByPart(2,"Reading")+
+                        dataBaseHelper.countIdByPart(3,"Reading")+
+                        dataBaseHelper.countIdByPart(4,"Reading");
+
+
                 int countListeningPart1=Integer.parseInt(edtPart1.getText().toString());
                 int countListeningPart2=Integer.parseInt(edtPart2.getText().toString());
                 int countListeningPart3=Integer.parseInt(edtPart3.getText().toString());
@@ -35,9 +47,11 @@ public class LuaChonCauHoi extends Activity {
                 int countReadingPart1=Integer.parseInt(edtPart5.getText().toString());
                 int countReadingPart2=Integer.parseInt(edtPart6.getText().toString());
 
-                boolean isValid=(countListeningPart1<100)&&(countListeningPart2<100)&&(countListeningPart3<100)
-                        &&(countListeningPart4<100)&&(countReadingPart1<100)&&(countReadingPart2<100)&&((countListeningPart1>0)||(countListeningPart2>0)||(countListeningPart3>0)
+                boolean isValid=(countListeningPart1<=maxCount1)&&(countListeningPart2<=maxCount2)&&(countListeningPart3<=maxCount3)
+                        &&(countListeningPart4<=maxCount4)&&(countReadingPart1<=maxCountReading1)&&(countReadingPart2<=maxCountReading2)
+                        &&((countListeningPart1>0)||(countListeningPart2>0)||(countListeningPart3>0)
                         ||(countListeningPart4>0)||(countReadingPart1>0)||(countReadingPart2>0));
+
                 if(isValid)
                 {
                     Intent myIntent = new Intent(LuaChonCauHoi.this,OnNgauNhien.class);
@@ -71,8 +85,5 @@ public class LuaChonCauHoi extends Activity {
 
     }
 
-    private void randomQuestion()
-    {
 
-    }
 }

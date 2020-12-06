@@ -4,11 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <Button
+        android:id="@+id/btnKT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="KIỂM TRA"
+        android:background="@drawable/custom_button1">
+
+    </Button>
 
     <ListView
+
         android:id="@+id/lListeningPart1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
     </ListView>
     <ListView
@@ -42,13 +53,5 @@
 
     </ListView>
 
-    <Button
-        android:id="@+id/btnKT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="KIỂM TRA"
-        android:background="@drawable/custom_button1">
 
-    </Button>
 </LinearLayout>
