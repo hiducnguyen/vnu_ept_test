@@ -2,6 +2,7 @@ package com.example.onthivnu_ept;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class LuaChonCauHoi extends AppCompatActivity {
+public class LuaChonCauHoi extends Activity {
     EditText edtPart1, edtPart2, edtPart3, edtPart4, edtPart5, edtPart6;
     Button btnTT;
     private Context context;
@@ -27,9 +28,30 @@ public class LuaChonCauHoi extends AppCompatActivity {
         btnTT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(LuaChonCauHoi.this,OnNgauNhien.class);
-                startActivities(new Intent[]{myIntent});
+                int countListeningPart1=Integer.parseInt(edtPart1.getText().toString());
+                int countListeningPart2=Integer.parseInt(edtPart2.getText().toString());
+                int countListeningPart3=Integer.parseInt(edtPart3.getText().toString());
+                int countListeningPart4=Integer.parseInt(edtPart4.getText().toString());
+                int countReadingPart1=Integer.parseInt(edtPart5.getText().toString());
+                int countReadingPart2=Integer.parseInt(edtPart6.getText().toString());
 
+                boolean isValid=(countListeningPart1<100)&&(countListeningPart2<100)&&(countListeningPart3<100)
+                        &&(countListeningPart4<100)&&(countReadingPart1<100)&&(countReadingPart2<100)&&((countListeningPart1>0)||(countListeningPart2>0)||(countListeningPart3>0)
+                        ||(countListeningPart4>0)||(countReadingPart1>0)||(countReadingPart2>0));
+                if(isValid)
+                {
+                    Intent myIntent = new Intent(LuaChonCauHoi.this,OnNgauNhien.class);
+                    Bundle myBundle=new Bundle();
+                    myBundle.putInt("countListeningPart1",countListeningPart1);
+                    myBundle.putInt("countListeningPart2",countListeningPart2);
+                    myBundle.putInt("countListeningPart3",countListeningPart3);
+                    myBundle.putInt("countListeningPart4",countListeningPart4);
+                    myBundle.putInt("countReadingPart1",countReadingPart1);
+                    myBundle.putInt("countReadingPart2",countReadingPart2);
+
+                    myIntent.putExtras(myBundle);
+                    startActivities(new Intent[]{myIntent});
+                }
 
             }
         });
@@ -46,6 +68,11 @@ public class LuaChonCauHoi extends AppCompatActivity {
         edtPart5=(EditText)findViewById(R.id.edtPart5);
         edtPart6=(EditText)findViewById(R.id.edtPart6);
         btnTT=(Button)findViewById(R.id.btnTT);
+
+    }
+
+    private void randomQuestion()
+    {
 
     }
 }

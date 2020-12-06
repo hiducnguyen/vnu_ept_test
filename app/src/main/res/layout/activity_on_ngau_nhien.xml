@@ -30,13 +30,20 @@
 
     </ListView>
     <ListView
-        android:id="@+id/lReading"
+        android:id="@+id/lReadingPart1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+    <ListView
+        android:id="@+id/lReadingPart2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </ListView>
 
     <Button
+        android:id="@+id/btnKT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
