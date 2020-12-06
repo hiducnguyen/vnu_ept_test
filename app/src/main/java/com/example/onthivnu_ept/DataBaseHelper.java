@@ -152,4 +152,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return i;
     }
+
+    public int countQuestionByPart(int myPart, String myType){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT COUNT(*) FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_PART + " = " + Integer.toString(myPart)
+                + " AND " + COLUMN_TYPE + " = '" + myType + "'";
+        Cursor cursor = db.rawQuery(query, null);
+
+        int result;
+
+        cursor.moveToFirst();
+        result = cursor.getInt(0);
+
+        return result;
+    }
+    public int countIdByPart(int myPart, String myType){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT COUNT (DISTINCT " + TABLE_INFORMATION + ".ID) FROM " + TABLE_QUESTION + " INNER JOIN " + TABLE_INFORMATION + " ON " + TABLE_QUESTION + ".ID_infor = " + TABLE_INFORMATION + ".ID WHERE " + TABLE_QUESTION +".Part = " + myPart + " AND " + TABLE_QUESTION + ".Type = '" + myType + "'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        int result;
+
+        cursor.moveToFirst();
+        result = cursor.getInt(0);
+
+        return result;
+    }
+
 }

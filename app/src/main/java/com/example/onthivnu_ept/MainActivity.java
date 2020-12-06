@@ -47,6 +47,9 @@ public class MainActivity extends Activity implements View.OnClickListener
         InforModel i = dataBaseHelper.findInforById(1);
         Log.i("hihi", i.toString());
         setView();
+
+        Log.i("hihi", Integer.toString(dataBaseHelper.countQuestionByPart(2, "Listening")));
+        Log.i("hihi", Integer.toString(dataBaseHelper.countIdByPart(2, "Listening")));
     }
     public boolean validDataBase(){
         dataBaseHelper = new DataBaseHelper(MainActivity.this);
