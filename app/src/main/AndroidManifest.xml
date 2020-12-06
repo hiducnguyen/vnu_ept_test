@@ -11,6 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ThiNhanhActivity"></activity>
         <activity android:name=".OnTheoPhanActivity" />
+        <activity android:name=".OnNgauNhien" />
+        <activity android:name=".LuaChonCauHoi" />
         <activity android:name=".AboutUs_activity" />
         <activity android:name=".MainActivity">
             <intent-filter>

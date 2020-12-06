@@ -38,7 +38,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="@string/nghe_t_ng_h_i_tho_i_v_tr_l_i_t_ng_c_u_h_i">
+                android:text="Nghe từng hội thoại và trả lời từng câu hỏi">
 
             </TextView>
 
@@ -69,7 +69,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="@string/nghe_h_i_tho_i_v_tr_l_i_t_t_c_c_c_c_u">
+                android:text="Nghe một hội thoại và trả lời tất cả các câu hỏi">
 
             </TextView>
 
@@ -100,7 +100,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="@string/nghe_b_i_n_i_v_tr_l_i_t_t_c_c_c_c_u">
+                android:text="Nghe một bài nói và trả lời tất cả các câu hỏi">
 
             </TextView>
 
@@ -131,7 +131,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="@string/nghe_v_i_n_v_o_o_n_v_n">
+                android:text="Nghe và điền vào đoạn văn">
 
             </TextView>
 
@@ -162,7 +162,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="@string/c_v_ki_m_tra_t_v_ng_ng_ph_p">
+                android:text="Đọc và kiểm tra từ vựng, ngữ pháp">
 
             </TextView>
 
@@ -193,7 +193,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="@string/c_v_ki_m_tra_c_hi_u">
+                android:text="Đọc và trả lời đọc hiểu">
 
             </TextView>
 
