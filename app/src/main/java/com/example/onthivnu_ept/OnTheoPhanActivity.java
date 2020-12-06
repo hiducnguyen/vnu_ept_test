@@ -14,13 +14,12 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OnTheoPhanActivity extends Activity
 {
     ListView myListView, myListQuestion;
     ArrayAdapter<String> myListAdapter;
-    QuestionListenAdapterP1 myQuestionAdapter;
+    QuestionListenAdapterP23 questionListenAdapterP23;
     Boolean is_not_done = true;
     MediaPlayer player;
     Integer n_right_answer = 0;
@@ -84,13 +83,12 @@ public class OnTheoPhanActivity extends Activity
                             {
                                 String str = inforModels.get(0).getInfor();
                                 player = MediaPlayer.create(context,Integer.parseInt(str));
-                                player.stop();
                                 player.start();
                             }
                         });
                         context = OnTheoPhanActivity.this;
-                        myQuestionAdapter = new QuestionListenAdapterP1(context,R.layout.question_form_02,questionModels);
-                        myListQuestion.setAdapter(myQuestionAdapter);
+                        questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
+                        myListQuestion.setAdapter(questionListenAdapterP23);
                         btnNopBai.setOnClickListener(new View.OnClickListener()
                         {
                             @Override
@@ -151,6 +149,7 @@ public class OnTheoPhanActivity extends Activity
         myListAdapter = new ArrayAdapter(context,R.layout.my_simple_list_item_1,myList);
         myListView.setAdapter(myListAdapter);
 
+
     }
     void ShowDialogResult()
     {
@@ -167,8 +166,9 @@ public class OnTheoPhanActivity extends Activity
 
         for (int i = 0; i < n_question; i++)
         {
+            
             View row;
-            row = myQuestionAdapter.getView(i,null,null);
+            row = questionListenAdapterP23.getView(i,null,null);
             RadioButton answerA,answerB,answerC,answerD;
             answerA = (RadioButton) row.findViewById(R.id.answerA);
             answerB = (RadioButton) row.findViewById(R.id.answerB);
@@ -184,6 +184,13 @@ public class OnTheoPhanActivity extends Activity
                 n_right_answer++;
                 n_answer++;
             }
+//            String str= questionListenAdapterP23.finalResult(i);
+//            if (questionModels.get(i).getRightAnswer().equals(str))
+//            {
+//                n_right_answer++;
+//                n_answer++;
+//            }
+//            else if (!"0".equals(str)) n_answer++;
         }
     }
 }
