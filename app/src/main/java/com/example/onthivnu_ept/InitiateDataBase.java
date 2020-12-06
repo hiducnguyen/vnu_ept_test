@@ -793,5 +793,134 @@ public class InitiateDataBase {
                 "Reading",
                 16,
                 3);
+        //Information
+        dbHelper.addInfor(17, 0, R.drawable.id17_part4, "\tCOLUMBIAN EXCHANGE\n" +
+                "1. The Columbian Exchange was the “exchange of plants, animals, foods, human populations " +
+                "(including slaves) communicable diseases, and ideas between the Eastern and Western " +
+                "hemispheres that occurred after 1492.” The term “Columbian Exchange,” coined in 1972 by " +
+                "historian Alfred Crosby, took hold and became not only standard shorthand for the " +
+                "phenomenon which it exemplified, but also a perspective for witnessing societal and " +
+                "ecological events.\n" +
+                "2. When Christopher Columbus made landfall with his crew in the Bahamas in October " +
+                "1492, two worlds with separate evolutionary histories met. When Europeans began to " +
+                "settle America’s east coast, they brought with them and cultivated familiar crops – wheat " +
+                "and apples – as well as familiar weeds, such as dandelion and chickweed. In the 1600s, " +
+                "they introduced cattle and horses, which flourished in the New World climate.\n" +
+                "3. Devastating diseases were introduced to the American population which had no resistance " +
+                "to them. John R. McNeill, professor of history at Georgetown University, points out that " +
+                "“when the first inhabitants of the Americas arrived across the Bering land bridge between " +
+                "20,000 and 12,000 years ago, they brought few diseases with them because they had no " +
+                "domesticated animals, the original source of human diseases such as smallpox and " +
+                "measles. In addition, as they passed from Siberia to North America, the first Americans had " +
+                "spent many years in extreme cold, which eliminated many of the disease-causing agents " +
+                "that might have traveled with them.” Consequently, between 1492 and 1650, over 90% of " +
+                "the Native American population died in epidemic after epidemic of smallpox, measles, " +
+                "mumps, whooping cough, influenza, chicken pox, and typhus. The loss of labor caused by " +
+                "pathogens indirectly led to the establishment of African slavery among European immigrants " +
+                "in the Americas, resulting in the importation of malaria and yellow fever from Africa, causing " +
+                "even more destruction of the Native American population.\n" +
+                "4. The export of American flora and fauna did not revolutionize the Old World as the influx of " +
+                "European agriculture altered the New World ecosystem. According to Crosby, the New " +
+                "World’s great contribution to the Old World was crop plants. Maize, white potatoes, sweet " +
+                "potatoes, various squashes, chilies, and manioc augmented and invigorated the European " +
+                "cuisine. Very few New World creatures traversed the ocean - the muskrat, the gray squirrel, " +
+                "and a few others - but they did not precipitate large scale changes in Old World ecosystems.\n" +
+                "5. Although some diseases made the ocean voyage from New World to the Old World, they did " +
+                "not have appreciable effects on the European population. Crosby stated that, although some " +
+                "deaths were attributed to ailments from America, the total was insignificant compared to " +
+                "Native American losses to smallpox alone. 6 In Crosby’s original work, he eschewed ideological statements. He reminded his readers " +
+                "that neither the Old nor the New World was inferior or superior to the other, and the " +
+                "encounter between the two worlds was fundamentally an exchange. By 1988, he " +
+                "summarized his long view of the encounter in this way: “My point is that the impact of the " +
+                "Encounter is so massive that we should consider it with the same sense of scale as we do " +
+                "events connected with the endings and beginnings of the geological periods and eras and " +
+                "their influence on the direction of evolution on the planet.”");
+        //Questions
+        dbHelper.addQuestion("What is the passage mainly about?",
+                "Exchanged things between Columbus and Native Americans.",
+                "Social and ecological development of the Americas after 1492.",
+                "Inferiority of the New World to the Old World.",
+                "Exchanges between the Americas and other continents since 1492.",
+                "D",
+                "Reading",
+                17,
+                4);
+        //Questions
+        dbHelper.addQuestion("Which sentence below best restates the meaning of the highlighted sentence in paragraph 2?",
+                "When Christopher Columbus " +
+                        "reached the Bahamas in October " +
+                        "1492, he fell on the land.",
+                "When Columbus’s group set foot on " +
+                        "the Americas, the Old World and the " +
+                        "New World encountered.",
+                "Christopher Columbus claimed the " +
+                        "honor of discovering two separate " +
+                        "evolutionary histories.",
+                "The Bahamas were the land where " +
+                        "Christopher Columbus met the " +
+                        "inhabitants of the New World.",
+                "B",
+                "Reading",
+                17,
+                4);
+        //Questions
+        dbHelper.addQuestion("Why does the author mention wheat and " +
+                        "apples in paragraph 2?",
+                "To show the two familiar crops grown " +
+                        "in the Americas.",
+                "To indicate that they are more " +
+                        "familiar than weeds and cattle",
+                "To give two examples of European " +
+                        "crops brought to America.",
+                "To explain which crops Americans " +
+                        "chose to cultivate.",
+                "C",
+                "Reading",
+                17,
+                4);
+        //Questions
+        dbHelper.addQuestion("The word them in paragraph 3 refers to " +
+                        "_____. ",
+                "inhabitants",
+                "Americans",
+                "the Americas",
+                "diseases",
+                "D",
+                "Reading",
+                17,
+                4);
+        //Questions
+        dbHelper.addQuestion(". According to paragraph 3, between 1492 " +
+                        "and 1650, Native Americans died of the " +
+                        "following European epidemics EXCEPT " +
+                        "_____.",
+                "mumps",
+                "influenza",
+                "malaria",
+                "chicken pox",
+                "C",
+                "Reading",
+                17,
+                4);
+        //Questions
+        dbHelper.addQuestion(". It can be inferred from paragraph 4 that _____.",
+                "the Columbian Exchange had more important impact on the Americas than on Europe",
+                "more Europeans liked the Old World’s crops",
+                "the New World animals did not change the Old World ecosystems",
+                "the muskrat and the gray squirrel were the Old World creatures",
+                "A",
+                "Reading",
+                17,
+                4);
+        //Questions
+        dbHelper.addQuestion("Which of the following best demonstrates the Columbian Exchange?",
+                "malaria and yellow fever",
+                "crops, weeds, cattle and horses",
+                "disease-causing agents",
+                "smallpox and measles",
+                "B",
+                "Reading",
+                17,
+                4);
     }
 }
