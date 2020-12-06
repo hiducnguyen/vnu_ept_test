@@ -36,7 +36,7 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View row = inflater.inflate(R.layout.question_form_listening_p1, null,false);
 
-        TextView question = (TextView) row.findViewById(R.id.question);
+        TextView question = (TextView) row.findViewById(R.id.question1);
         answerA = (RadioButton) row.findViewById(R.id.answerA);
         answerB = (RadioButton) row.findViewById(R.id.answerB);
         answerC = (RadioButton) row.findViewById(R.id.answerC);
