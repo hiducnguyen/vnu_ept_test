@@ -36,7 +36,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        if (true){ //if database is not exists
+        try { //if database is not exists
             String createTableQuestion = "CREATE TABLE " + TABLE_QUESTION + " ("
                     + COLUMN_QUESTION + " TEXT, "
                     + COLUMN_ANSWER_A + " TEXT, "
@@ -56,6 +56,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     + COLUMN_READING_INFOR + " TEXT)";
             db.execSQL(createTableQuestion);
             db.execSQL(createTableInfor);
+        }
+        catch(Exception e) {
         }
     }
 
