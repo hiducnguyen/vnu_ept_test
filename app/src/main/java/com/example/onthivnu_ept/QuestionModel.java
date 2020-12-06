@@ -1,8 +1,28 @@
 package com.example.onthivnu_ept;
 
+import java.util.Objects;
+
 public class QuestionModel {
     private String question, answerA, answerB, answerC, answerD, rightAnswer, type;
     private int idInfor, part;
+
+    @Override
+    public String toString() {
+        return "QuestionModel{" +
+                "question='" + question + '\'' +
+                ", answerA='" + answerA + '\'' +
+                ", answerB='" + answerB + '\'' +
+                ", answerC='" + answerC + '\'' +
+                ", answerD='" + answerD + '\'' +
+                ", rightAnswer='" + rightAnswer + '\'' +
+                ", type='" + type + '\'' +
+                ", idInfor=" + idInfor +
+                ", part=" + part +
+                '}';
+    }
+
+    public QuestionModel() {
+    }
 
     public QuestionModel(String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer, String type, int idInfor, int part) {
         this.question = question;
@@ -88,18 +108,15 @@ public class QuestionModel {
         this.part = part;
     }
 
-    @Override
-    public String toString() {
-        return "QuestionModel{" +
-                "question='" + question + '\'' +
-                ", answerA='" + answerA + '\'' +
-                ", answerB='" + answerB + '\'' +
-                ", answerC='" + answerC + '\'' +
-                ", answerD='" + answerD + '\'' +
-                ", rightAnswer='" + rightAnswer + '\'' +
-                ", type='" + type + '\'' +
-                ", idInfor=" + idInfor +
-                ", part=" + part +
-                '}';
+    public void set(String myQuestion, String myAnswerA, String myAnswerB, String myAnswerC, String myAnswerD, String myRightAnswer, String myType, int myIdInfor, int myPart){
+        setQuestion(myQuestion);
+        setAnswerA(myAnswerA);
+        setAnswerB(myAnswerB);
+        setAnswerC(myAnswerC);
+        setAnswerD(myAnswerD);
+        setRightAnswer(myRightAnswer);
+        setType(myType);
+        setIdInfor(myIdInfor);
+        setPart(myPart);
     }
 }
