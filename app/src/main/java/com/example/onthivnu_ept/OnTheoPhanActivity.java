@@ -65,7 +65,7 @@ public class OnTheoPhanActivity extends Activity
                         n_question = 10;
                         questionModels = dataBaseHelper.findQuestionByPart(1, "Listening");
 
-                        for (int i = 0; i < questionModels.size(); i++)
+                        for (int i = 0; i < n_question; i++)
                         {
                             Log.i("hihi", questionModels.get(i).toString());
 
@@ -97,7 +97,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
                             {
-                                img = (ImageView) view.findViewById(R.id.image23);
+                                img = (ImageView) view.findViewById(R.id.image);
                                 img.setOnClickListener(new View.OnClickListener()
                                 {
                                     @Override
