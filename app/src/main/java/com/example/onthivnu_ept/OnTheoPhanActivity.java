@@ -2,11 +2,14 @@ package com.example.onthivnu_ept;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class OnTheoPhanActivity extends Activity {
     ListView myListView, myListQuestion;
@@ -18,11 +21,22 @@ public class OnTheoPhanActivity extends Activity {
             "Phần nghe Part 3","Phần nghe Part 4",
             "Phần đọc Part 1","Phần đọc Part 2",
             "Phần đọc Part 3","Phần đọc Part 4"};
+    DataBaseHelper dbHelper = new DataBaseHelper(OnTheoPhanActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_theo_phan);
+
+        ArrayList<QuestionModel> l = dbHelper.findQuestionByPart(2, "Listening");
+
+        for (int i = 0; i < l.size(); i++){
+            Log.i("haha", l.get(i).toString());
+        }
+
+        //find inforModel by id
+        InforModel i = dbHelper.findInforById(1);
+        Log.i("haha", i.toString());
 
         myListView=(ListView) findViewById(R.id.list_item_otp);
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener()

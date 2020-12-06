@@ -34,28 +34,29 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, "vnuept_test.db", null, 1);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableQuestion = "CREATE TABLE " + TABLE_QUESTION + " ("
-                + COLUMN_QUESTION + " TEXT, "
-                + COLUMN_ANSWER_A + " TEXT, "
-                + COLUMN_ANSWER_B + " TEXT, "
-                + COLUMN_ANSWER_C + " TEXT, "
-                + COLUMN_ANSWER_D + " TEXT, "
-                + COLUMN_RIGHT_ANSWER + " TEXT, "
-                + COLUMN_TYPE + " TEXT, "
-                + COLUMN_ID_INFOR + " INTEGER, "
-                + COLUMN_PART + " INTEGER, "
-                + "FOREIGN KEY (" + COLUMN_ID_INFOR + ") REFERENCES " + TABLE_INFORMATION + " (" + COLUMN_ID + ")"
-                +")";
-        String createTableInfor = "CREATE TABLE " + TABLE_INFORMATION + " ("
-                + COLUMN_ID + " INTEGER, "
-                + COLUMN_IMG_INFOR + " INTEGER, "
-                + COLUMN_LISTENING_INFOR + " INTEGER, "
-                + COLUMN_READING_INFOR + " TEXT)";
-        db.execSQL(createTableQuestion);
-        db.execSQL(createTableInfor);
+        if (true){ //if database is not exists
+            String createTableQuestion = "CREATE TABLE " + TABLE_QUESTION + " ("
+                    + COLUMN_QUESTION + " TEXT, "
+                    + COLUMN_ANSWER_A + " TEXT, "
+                    + COLUMN_ANSWER_B + " TEXT, "
+                    + COLUMN_ANSWER_C + " TEXT, "
+                    + COLUMN_ANSWER_D + " TEXT, "
+                    + COLUMN_RIGHT_ANSWER + " TEXT, "
+                    + COLUMN_TYPE + " TEXT, "
+                    + COLUMN_ID_INFOR + " INTEGER, "
+                    + COLUMN_PART + " INTEGER, "
+                    + "FOREIGN KEY (" + COLUMN_ID_INFOR + ") REFERENCES " + TABLE_INFORMATION + " (" + COLUMN_ID + ")"
+                    +")";
+            String createTableInfor = "CREATE TABLE " + TABLE_INFORMATION + " ("
+                    + COLUMN_ID + " INTEGER, "
+                    + COLUMN_IMG_INFOR + " INTEGER, "
+                    + COLUMN_LISTENING_INFOR + " INTEGER, "
+                    + COLUMN_READING_INFOR + " TEXT)";
+            db.execSQL(createTableQuestion);
+            db.execSQL(createTableInfor);
+        }
     }
 
     @Override
@@ -103,13 +104,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<QuestionModel> findQuestionByPart(int myPart, String myType){
+    public ArrayList<QuestionModel> findQuestionByPart(int myPart, String myType){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_PART + " = " + Integer.toString(myPart)
                 + " AND " + COLUMN_TYPE + " = '" + myType + "'";
         Cursor cursor = db.rawQuery(query, null);
 
-        List<QuestionModel> list = new ArrayList<>();
+        ArrayList<QuestionModel> list = new ArrayList<>();
 
         int num = cursor.getCount();
 
