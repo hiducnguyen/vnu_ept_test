@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements View.OnClickListener
     private Context context;
     private Bundle myBundle;
     private Intent myIntent;
-    DataBaseHelper dataBaseHelper;
+    public DataBaseHelper dataBaseHelper;
     private SQLiteDatabase dataBase;
 
     @Override
@@ -36,15 +36,15 @@ public class MainActivity extends Activity implements View.OnClickListener
             initDB.start(dataBaseHelper);
         }
 
-        List<QuestionModel> l = dataBaseHelper.findQuestionByPart(2, "Listening");
+       // List<QuestionModel> l = dataBaseHelper.findQuestionByPart(2, "Listening");
 
-        for (int i = 0; i < l.size(); i++){
-            Log.i("hihi", l.get(i).toString());
-        }
-
-        //find inforModel by id
-        InforModel i = dataBaseHelper.findInforById(1);
-        Log.i("hihi", i.toString());
+//        for (int i = 0; i < l.size(); i++){
+//            Log.i("hihi", l.get(i).toString());
+//        }
+//
+//        //find inforModel by id
+//        InforModel i = dataBaseHelper.findInforById(1);
+//        Log.i("hihi", i.toString());
         setView();
     }
     public boolean validDataBase(){
