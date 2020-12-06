@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,6 +31,7 @@ public class OnTheoPhanActivity extends Activity
     ArrayList<QuestionModel> questionModels;
     ArrayList<InforModel> inforModels;
     Context context;
+    DataBaseHelper dataBaseHelper = new DataBaseHelper(this);
     String[] myList={"Phần nghe Part 1",
             "Phần nghe Part 2",
             "Phần nghe Part 3",
@@ -64,13 +66,16 @@ public class OnTheoPhanActivity extends Activity
                         n_question = 6;
                         questionModels = new ArrayList<>();
                         inforModels = new ArrayList<>();
-                        for(int i = 0; i< n_question; i++)
-                        {
-                            QuestionModel questionModel = new QuestionModel("","A","B","C","D","A","",2,2);
-                            questionModels.add(questionModel);
-                        }
-                        inforModels.add(new InforModel(2,Integer.toString(R.raw.p1_1)));
+                        questionModels = dataBaseHelper.findQuestionByPart(2,"Listening");
+                        InforModel inf = new InforModel();
+                        inf = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
+                        inforModels.add(inf);
 
+                        for (int i=0;i<n_question;i++)
+                        {
+                            Log.i("as",questionModels.get(i).toString()+"\n");
+
+                        }
                         setContentView(R.layout.on_theo_phan_layout_listenning_p23);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart2);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai2);
@@ -81,8 +86,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                String str = inforModels.get(0).getInfor();
-                                player = MediaPlayer.create(context,Integer.parseInt(str));
+                                player = MediaPlayer.create(context,inforModels.get(0).getListeningInfor());
                                 player.start();
                             }
                         });
@@ -148,8 +152,6 @@ public class OnTheoPhanActivity extends Activity
         context= getApplicationContext();
         myListAdapter = new ArrayAdapter(context,R.layout.my_simple_list_item_1,myList);
         myListView.setAdapter(myListAdapter);
-
-
     }
     void ShowDialogResult()
     {
@@ -166,7 +168,7 @@ public class OnTheoPhanActivity extends Activity
 
         for (int i = 0; i < n_question; i++)
         {
-            
+
             View row;
             row = questionListenAdapterP23.getView(i,null,null);
             RadioButton answerA,answerB,answerC,answerD;

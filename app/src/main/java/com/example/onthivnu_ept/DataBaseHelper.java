@@ -103,13 +103,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<QuestionModel> findQuestionByPart(int myPart, String myType){
+    public ArrayList<QuestionModel> findQuestionByPart(int myPart, String myType){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_PART + " = " + Integer.toString(myPart)
                 + " AND " + COLUMN_TYPE + " = '" + myType + "'";
         Cursor cursor = db.rawQuery(query, null);
 
-        List<QuestionModel> list = new ArrayList<>();
+        ArrayList<QuestionModel> list = new ArrayList<>();
 
         int num = cursor.getCount();
 

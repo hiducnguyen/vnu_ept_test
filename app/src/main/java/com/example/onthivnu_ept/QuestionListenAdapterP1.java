@@ -21,15 +21,13 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
     private Context context;
     private int resource;
     private ArrayList<QuestionModel> questionModels;
-    private  ArrayList<InforModel> inforModels;
     RadioButton answerA,answerB,answerC,answerD;
-    public QuestionListenAdapterP1(Context context, int resource, ArrayList<QuestionModel> questionModels, ArrayList<InforModel> inforModels)
+    public QuestionListenAdapterP1(Context context, int resource, ArrayList<QuestionModel> questionModels)
     {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
         this.resource = resource;
-        this.inforModels=inforModels;
     }
     @NonNull
     @Override
@@ -39,7 +37,6 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         View row = inflater.inflate(R.layout.question_form_listening_p1, null,false);
 
         TextView question = (TextView) row.findViewById(R.id.question);
-
         answerA = (RadioButton) row.findViewById(R.id.answerA);
         answerB = (RadioButton) row.findViewById(R.id.answerB);
         answerC = (RadioButton) row.findViewById(R.id.answerC);
