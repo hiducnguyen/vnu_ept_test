@@ -13,23 +13,27 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OnTheoPhanActivity extends Activity
 {
     ListView myListView, myListQuestion;
     ArrayAdapter<String> myListAdapter;
     QuestionListenAdapterP23 questionListenAdapterP23;
+    QuestionListenAdapterP1 questionListenAdapterP1;
     Boolean is_not_done = true;
     MediaPlayer player;
     Integer n_right_answer = 0;
     Integer n_question = 0;
     Integer n_answer;
+    int pos = 0;
     Button btnNopBai;
     ImageView img;
     ArrayList<QuestionModel> questionModels;
-    ArrayList<InforModel> inforModels;
+    ArrayList<InforModel> inforModels = new ArrayList<>();
     Context context;
     DataBaseHelper dataBaseHelper = new DataBaseHelper(this);
     String[] myList={"Phần nghe Part 1",
@@ -59,23 +63,70 @@ public class OnTheoPhanActivity extends Activity
                     case 0:
                     {
                         n_question = 10;
+                        questionModels = dataBaseHelper.findQuestionByPart(1, "Listening");
+
+                        for (int i = 0; i < n_question; i++)
+                        {
+                            Log.i("hihi", questionModels.get(i).toString());
+
+                            InforModel inforModel = new InforModel();
+                            inforModel = dataBaseHelper.findInforById(questionModels.get(i).getIdInfor());
+                            inforModels.add(inforModel);
+                        }
+
+
+                        setContentView(R.layout.on_theo_phan_layout_listenning_p1);
+                        myListQuestion= (ListView) findViewById(R.id.myListQuestionPart1);
+                        btnNopBai = (Button) findViewById(R.id.btnNopBai1);
+//                        btnNopBai.setEnabled(false);
+                        context = OnTheoPhanActivity.this;
+                        questionListenAdapterP1 = new QuestionListenAdapterP1(context,R.layout.question_form_listening_p1,questionModels);
+                        myListQuestion.setAdapter(questionListenAdapterP1);
+                        btnNopBai.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                player.stop();
+                                checkAnswers();
+                                ShowDialogResult();
+                            }
+                        });
+                        myListQuestion.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                        {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
+                            {
+                                img = (ImageView) view.findViewById(R.id.image);
+                                img.setOnClickListener(new View.OnClickListener()
+                                {
+                                    @Override
+                                    public void onClick(View v)
+                                    {
+                                        context = getApplicationContext();
+                                        player = MediaPlayer.create(context,inforModels.get(position).getListeningInfor());
+                                        player.start();
+                                    }
+                                });
+                            }
+                        });
+
                         break;
                     }
                     case 1:
                     {
                         n_question = 6;
-                        questionModels = new ArrayList<>();
-                        inforModels = new ArrayList<>();
-                        questionModels = dataBaseHelper.findQuestionByPart(2,"Listening");
-                        InforModel inf = new InforModel();
-                        inf = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
-                        inforModels.add(inf);
+                        questionModels = dataBaseHelper.findQuestionByPart(2, "Listening");
 
-                        for (int i=0;i<n_question;i++)
+                        for (int i = 0; i < questionModels.size(); i++)
                         {
-                            Log.i("as",questionModels.get(i).toString()+"\n");
-
+                            Log.i("hihi", questionModels.get(i).toString());
                         }
+
+                        InforModel inforModel = new InforModel();
+                        inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
+                        inforModels.add(inforModel);
+
                         setContentView(R.layout.on_theo_phan_layout_listenning_p23);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart2);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai2);
@@ -86,6 +137,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
+                                context = getApplicationContext();
                                 player = MediaPlayer.create(context,inforModels.get(0).getListeningInfor());
                                 player.start();
                             }
@@ -98,31 +150,105 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
+                                player.stop();
                                 checkAnswers();
                                 ShowDialogResult();
                             }
                         });
-//                        while (is_not_done)
-//                        {
-//
-//
-//                            if (n_answer == n_question)
-//                            {
-//                                btnNopBai.setEnabled(true);
-//                                is_not_done=false;
-//                            }
-//                        }
 
                         break;
                     }
                     case 2:
                     {
                         n_question = 8;
+                        questionModels = dataBaseHelper.findQuestionByPart(3, "Listening");
+
+                        for (int i = 0; i < questionModels.size(); i++)
+                        {
+                            Log.i("hihi", questionModels.get(i).toString());
+                        }
+
+                        InforModel inforModel = new InforModel();
+                        inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
+                        inforModels.add(inforModel);
+
+                        setContentView(R.layout.on_theo_phan_layout_listenning_p23);
+                        myListQuestion= (ListView) findViewById(R.id.myListQuestionPart2);
+                        btnNopBai = (Button) findViewById(R.id.btnNopBai2);
+//                        btnNopBai.setEnabled(false);
+                        img = (ImageView) findViewById(R.id.image23);
+                        img.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                context = getApplicationContext();
+                                player = MediaPlayer.create(context,inforModels.get(0).getListeningInfor());
+                                player.start();
+                            }
+                        });
+                        context = OnTheoPhanActivity.this;
+                        questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
+                        myListQuestion.setAdapter(questionListenAdapterP23);
+                        btnNopBai.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                player.stop();
+                                checkAnswers();
+                                ShowDialogResult();
+                            }
+                        });
+
                         break;
                     }
                     case 3:
                     {
                         n_question = 8;
+                        questionModels = dataBaseHelper.findQuestionByPart(4, "Listening");
+
+                        for (int i = 0; i < questionModels.size(); i++)
+                        {
+                            Log.i("hihi", questionModels.get(i).toString());
+                        }
+
+                        InforModel inforModel = new InforModel();
+                        inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
+                        inforModels.add(inforModel);
+
+                        setContentView(R.layout.on_theo_phan_layout_listenning_p4);
+                        myListQuestion= (ListView) findViewById(R.id.myListQuestionPart4);
+                        btnNopBai = (Button) findViewById(R.id.btnNopBai4);
+//                        btnNopBai.setEnabled(false);
+
+                        TextView txtP4 = (TextView) findViewById(R.id.txtP4);
+                        txtP4.setText(inforModels.get(0).getReadingInfor());
+
+                        img = (ImageView) findViewById(R.id.image4);
+                        img.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                context = getApplicationContext();
+                                player = MediaPlayer.create(context,inforModels.get(0).getListeningInfor());
+                                player.start();
+                            }
+                        });
+                        context = OnTheoPhanActivity.this;
+                        questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
+                        myListQuestion.setAdapter(questionListenAdapterP23);
+                        btnNopBai.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                player.stop();
+                                checkAnswers();
+                                ShowDialogResult();
+                            }
+                        });
                         break;
                     }
                     case 4:

@@ -35,11 +35,17 @@ public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel>
     {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View row = inflater.inflate(resource, null);
-        question = (TextView) row.findViewById(R.id.question);
+        question = (TextView) row.findViewById(R.id.question2);
         answerA = (RadioButton) row.findViewById(R.id.answerA);
         answerB = (RadioButton) row.findViewById(R.id.answerB);
         answerC = (RadioButton) row.findViewById(R.id.answerC);
         answerD = (RadioButton) row.findViewById(R.id.answerD);
+
+        question.setText(questionModels.get(position).getQuestion());
+        answerA.setText(questionModels.get(position).getAnswerA());
+        answerB.setText(questionModels.get(position).getAnswerB());
+        answerC.setText(questionModels.get(position).getAnswerC());
+        answerD.setText(questionModels.get(position).getAnswerD());
 
         return (row);
     }
