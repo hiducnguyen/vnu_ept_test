@@ -254,6 +254,38 @@ public class OnTheoPhanActivity extends Activity
                     case 4:
                     {
                         n_question = 20;
+                        questionModels = dataBaseHelper.findQuestionByPart(11, "Reading");
+
+                        for (int i = 0; i < questionModels.size(); i++)
+                        {
+                            Log.i("hihi", questionModels.get(i).toString());
+                        }
+
+                        InforModel inforModel = new InforModel();
+                        inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
+                        inforModels.add(inforModel);
+
+                        setContentView(R.layout.on_theo_phan_layout_reading_p1);
+                        myListQuestion= (ListView) findViewById(R.id.myListQuestionPart5);
+                        btnNopBai = (Button) findViewById(R.id.btnNopBai5);
+//                        btnNopBai.setEnabled(false);
+
+                        TextView txtP5 = (TextView) findViewById(R.id.txtP5);
+                        txtP5.setText(inforModels.get(0).getReadingInfor());
+
+                        context = OnTheoPhanActivity.this;
+                        questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
+                        myListQuestion.setAdapter(questionListenAdapterP23);
+                        btnNopBai.setOnClickListener(new View.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(View v)
+                            {
+                                player.stop();
+                                checkAnswers();
+                                ShowDialogResult();
+                            }
+                        });
                         break;
                     }
                     case 5:
