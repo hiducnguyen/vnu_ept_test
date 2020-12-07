@@ -21,7 +21,8 @@ public class ThiNhanhActivity extends Activity
     questionModelsPart3,questionModelsPart4,
     questionModelsPart5,questionModelsPart6,
     questionModelsPart7,questionModelsPart8, questionModels;
-    QuestionListenAdapterP1 adapterP1,adapterP2,adapterP3,
+    QuestionListenAdapterP1 adapterP1;
+    QuestionListenAdapterP23 adapterP2,adapterP3,
             adapterP4,adapterP5,adapterP6,adapterP7,adapterP8;
     MediaPlayer player;
     ArrayList<InforModel> inforModelsPart1 = new ArrayList<>(),inforModelsPart2 = new ArrayList<>(),
@@ -49,23 +50,23 @@ public class ThiNhanhActivity extends Activity
         questionModelsPart3 = dataBaseHelper.findQuestionByPart(3, "Listening");
         questionModelsPart4 = dataBaseHelper.findQuestionByPart(4, "Listening");
         questionModelsPart5 = dataBaseHelper.findQuestionByPart(11, "Listening");
-        questionModels = dataBaseHelper.findQuestionByPart(12, "Listening");
+        questionModels = dataBaseHelper.findQuestionByPart(12, "Reading");
         questionModelsPart5.addAll(questionModels);
-        questionModelsPart6 = dataBaseHelper.findQuestionByPart(2, "Listening");
-        questionModelsPart7 = dataBaseHelper.findQuestionByPart(3, "Listening");
-        questionModelsPart8 = dataBaseHelper.findQuestionByPart(4, "Listening");
+        questionModelsPart6 = dataBaseHelper.findQuestionByPart(2, "Reading");
+        questionModelsPart7 = dataBaseHelper.findQuestionByPart(3, "Reading");
+        questionModelsPart8 = dataBaseHelper.findQuestionByPart(4, "Reading");
 
 
         for (int i = 0; i < 10; i++)
         {
-            Log.i("hihi", questionModelsPart1.get(i).toString());
+            //Log.i("hihi", questionModelsPart1.get(i).toString());
 
             InforModel inforModel = new InforModel();
             inforModel = dataBaseHelper.findInforById(questionModelsPart1.get(i).getIdInfor());
             inforModelsPart1.add(inforModel);
         }
 
-
+        context = ThiNhanhActivity.this;
         adapterP1 = new QuestionListenAdapterP1(this,R.layout.question_form_listening_p1,questionModelsPart1);
         myListQuestionPart1.setAdapter(adapterP1);
 
@@ -88,10 +89,10 @@ public class ThiNhanhActivity extends Activity
 //            }
 //        });
 
-        for (int i = 0; i < questionModelsPart2.size(); i++)
-        {
-            Log.i("hihi", questionModelsPart2.get(i).toString());
-        }
+//        for (int i = 0; i < questionModelsPart2.size(); i++)
+//        {
+//            Log.i("hihi", questionModelsPart2.get(i).toString());
+//        }
 
         InforModel inforModel = new InforModel();
         inforModel = dataBaseHelper.findInforById(questionModelsPart2.get(0).getIdInfor());
@@ -108,10 +109,8 @@ public class ThiNhanhActivity extends Activity
             }
         });
         context = ThiNhanhActivity.this;
-        adapterP2 = new QuestionListenAdapterP1(context,R.layout.question_form_02,questionModelsPart2);
+        adapterP2 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModelsPart2);
         myListQuestionPart2.setAdapter(adapterP2);
-
-
     }
     void setView()
     {

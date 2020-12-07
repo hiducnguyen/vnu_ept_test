@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.telecom.Conference;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,11 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OnTheoPhanActivity extends Activity
 {
@@ -74,7 +71,6 @@ public class OnTheoPhanActivity extends Activity
                             inforModels.add(inforModel);
                         }
 
-
                         setContentView(R.layout.on_theo_phan_layout_listenning_p1);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart1);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai1);
@@ -87,8 +83,8 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                player.stop();
-                                checkAnswers();
+                                if(player != null) player.stop();
+                                checkAnswers1();
                                 ShowDialogResult();
                             }
                         });
@@ -148,8 +144,8 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                player.stop();
-                                checkAnswers();
+                                if (player != null) player.stop();
+                                checkAnswers2();
                                 ShowDialogResult();
                             }
                         });
@@ -192,7 +188,8 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                checkAnswers();
+                                if (player != null) player.stop();
+                                checkAnswers2();
                                 ShowDialogResult();
                             }
                         });
@@ -239,8 +236,8 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                player.stop();
-                                checkAnswers();
+                                if (player != null) player.stop();
+                                checkAnswers2();
                                 ShowDialogResult();
                             }
                         });
@@ -278,7 +275,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                checkAnswers();
+                                checkAnswers2();
                                 ShowDialogResult();
                             }
                         });
@@ -314,7 +311,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                checkAnswers();
+                                checkAnswers2();
                                 ShowDialogResult();
                             }
                         });
@@ -322,7 +319,7 @@ public class OnTheoPhanActivity extends Activity
                     }
                     case 6:
                     {
-                        n_question = 8;
+                        n_question = 7;
                         questionModels = dataBaseHelper.findQuestionByPart(3, "Reading");
 
                         for (int i = 0; i < questionModels.size(); i++)
@@ -350,7 +347,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                checkAnswers();
+                                checkAnswers2();
                                 ShowDialogResult();
                             }
                         });
@@ -366,7 +363,7 @@ public class OnTheoPhanActivity extends Activity
                             Log.i("hihi", questionModels.get(i).toString());
                         }
 
-                        InforModel inforModel = new InforModel();
+                        InforModel inforModel = new InforModel(1,1,1,"");
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
                         inforModels.add(inforModel);
 
@@ -388,7 +385,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                checkAnswers();
+                                checkAnswers2();
                                 ShowDialogResult();
                             }
                         });
@@ -410,38 +407,37 @@ public class OnTheoPhanActivity extends Activity
                 .setPositiveButton("Close", null)
                 .show();
     }
-    void checkAnswers()
+    void checkAnswers1()
     {
         n_right_answer=0;
         n_answer = 0;
 
         for (int i = 0; i < n_question; i++)
         {
+            String str1 = questionListenAdapterP1.finalResult(i);
+//            String str2 = questionListenAdapterP23.finalResult(i);
 
-            View row;
-            row = questionListenAdapterP23.getView(i,null,null);
-            RadioButton answerA,answerB,answerC,answerD;
-            answerA = (RadioButton) row.findViewById(R.id.answerA);
-            answerB = (RadioButton) row.findViewById(R.id.answerB);
-            answerC = (RadioButton) row.findViewById(R.id.answerC);
-            answerD = (RadioButton) row.findViewById(R.id.answerD);
-
-            if ((answerA.isChecked()&&questionModels.get(i).getRightAnswer()=="A") ||
-                    (answerB.isChecked()&&questionModels.get(i).getRightAnswer()=="B") ||
-                    (answerC.isChecked()&&questionModels.get(i).getRightAnswer()=="C") ||
-                    (answerD.isChecked()&&questionModels.get(i).getRightAnswer()=="D")
-            )
+            if (questionModels.get(i).getRightAnswer().equals(str1))
             {
                 n_right_answer++;
                 n_answer++;
             }
-//            String str= questionListenAdapterP23.finalResult(i);
-//            if (questionModels.get(i).getRightAnswer().equals(str))
-//            {
-//                n_right_answer++;
-//                n_answer++;
-//            }
-//            else if (!"0".equals(str)) n_answer++;
+        }
+    }
+    void checkAnswers2()
+    {
+        n_right_answer=0;
+        n_answer = 0;
+
+        for (int i = 0; i < n_question; i++)
+        {
+            String str2 = questionListenAdapterP23.finalResult(i);
+
+            if (questionModels.get(i).getRightAnswer().equals(str2))
+            {
+                n_right_answer++;
+                n_answer++;
+            }
         }
     }
     void play(Context context, int resource)
@@ -462,5 +458,11 @@ public class OnTheoPhanActivity extends Activity
                 player=null;
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (player!=null) player.stop();
     }
 }
