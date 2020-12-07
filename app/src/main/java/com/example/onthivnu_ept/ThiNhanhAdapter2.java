@@ -31,7 +31,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
     MediaPlayer player;
     private int trueColor = R.color.colorBlue,
             falseColor = R.color.colorRed;
-    public static ArrayList<String> listAnswer= new ArrayList<>();
+    public ArrayList<String> listAnswer= new ArrayList<>();
     public ThiNhanhAdapter2(Context context, int resource, ArrayList<QuestionModel> questionModels,ArrayList<InforModel> inforModels,ArrayList<String> answers)
     {
         super(context, resource, questionModels);

@@ -56,7 +56,16 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         answerC = (RadioButton) row.findViewById(R.id.answerC);
         answerD = (RadioButton) row.findViewById(R.id.answerD);
 
+        img=(ImageView)row.findViewById(R.id.image1);
+        img.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
 
+                play(context,inforModels.get(position).getListeningInfor());
+            }
+        });
 
         question.setText(questionModels.get(position).getQuestion());
         answerA.setText(questionModels.get(position).getAnswerA());
@@ -64,10 +73,10 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         answerC.setText(questionModels.get(position).getAnswerC());
         answerD.setText(questionModels.get(position).getAnswerD());
 
-        answerA.setChecked(listAnswer.get(position)=="A");
-        answerB.setChecked(listAnswer.get(position)=="B");
-        answerC.setChecked(listAnswer.get(position)=="C");
-        answerD.setChecked(listAnswer.get(position)=="D");
+        answerA.setChecked(listAnswer.get(position).equals("A"));
+        answerB.setChecked(listAnswer.get(position).equals("B"));
+        answerC.setChecked(listAnswer.get(position).equals("C"));
+        answerD.setChecked(listAnswer.get(position).equals("D"));
 
         answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -113,28 +122,13 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         });
 
 
-        img=(ImageView)row.findViewById(R.id.image1);
-        img.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-                play(context,inforModels.get(position).getListeningInfor());
-            }
-        });
 
 
-        img.setFocusable(false);
         answerA.setFocusable(false);
         answerB.setFocusable(false);
         answerC.setFocusable(false);
         answerD.setFocusable(false);
-        img.setFocusableInTouchMode(false);
-        answerA.setFocusableInTouchMode(false);
-        answerB.setFocusableInTouchMode(false);
-        answerC.setFocusableInTouchMode(false);
-        answerD.setFocusableInTouchMode(false);
+
 
         return (row);
     }

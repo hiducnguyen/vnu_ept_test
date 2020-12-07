@@ -18,19 +18,20 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class OnNgauNhien extends Activity {
-    ImageView img;
+
     MediaPlayer player;
 
 
     ListView listListeningPart1, listListeningPart2, listListeningPart3, listListeningPart4,
-            listReadingPart1, listReadingPart2;
-    Button btnNext1,btnPrevious1;
+            listReadingPart1, listReadingPart2,listReadingPart3,listReadingPart4;
+
 
 
     private int countListeningPart1;
@@ -70,13 +71,24 @@ public class OnNgauNhien extends Activity {
     ArrayList<InforModel>arrayResultListReadingPart4=new ArrayList<>();
 
     DataBaseHelper dataBaseHelper=new DataBaseHelper(this);
-    QuestionListenAdapterP1 questionListenAdapterP1;
-    QuestionListenAdapterP23 questionListenAdapterP23;
-    OnNgauNhienAdapter adapterListeningP2;
+
+    OnNgauNhienAdapter adapterListeningP1;
+    OnNgauNhienAdapter2 adapterListeningP2,adapterListeningP3,adapterListeningP4,
+            adapterReadingP1,adapterReadingP2,adapterReadingP3,adapterReadingP4;
 
     Context context;
 
-    Button btnKT;
+    Button btnNext1,btnPrevious1;
+    Button btnNext2,btnPrevious2;
+    Button btnNext3,btnPrevious3;
+    Button btnNext4,btnPrevious4;
+    Button btnNext5,btnPrevious5;
+    Button btnNext6,btnPrevious6;
+    Button btnNext7,btnPrevious7;
+    Button btnNext8,btnPrevious8;
+
+    ImageView imgP2,imgP3,imgP4;
+    TextView txtP4tn,txtP5tn,txtP6tn,txtP7tn,txtP8tn;
 
 
     @Override
@@ -97,49 +109,53 @@ public class OnNgauNhien extends Activity {
 
         initDataOfLists();
         randomQuestion();
-        if(countListeningPart1>0)
-            doPart1();
-        else if(countListeningPart2>0)
-            doPart2();
-        else if(countListeningPart3>0)
-        {
-            //doPart3();
-        }
-        else if(countListeningPart4>0)
-        {
-            //doPart4();
-        }
-        else if(countReadingPart1>0)
-        {
-            //doPart5();
-        }
-        else if (countReadingPart2>0)
-        {
-            //doPart6();
-        }
-        else if(countReadingPart3>0)
-        {
-            //doPart7();
-        }
-        else if(countReadingPart4>0)
-        {
-            //doPart8();
-        }
+        doPart1();
+//        if(countListeningPart1>0)
+//            doPart1();
+//        else if(countListeningPart2>0)
+//            doPart2();
+//        else if(countListeningPart3>0)
+//        {
+//            //doPart3();
+//        }
+//        else if(countListeningPart4>0)
+//        {
+//            //doPart4();
+//        }
+//        else if(countReadingPart1>0)
+//        {
+//            //doPart5();
+//        }
+//        else if (countReadingPart2>0)
+//        {
+//            //doPart6();
+//        }
+//        else if(countReadingPart3>0)
+//        {
+//            //doPart7();
+//        }
+//        else if(countReadingPart4>0)
+//        {
+//            //doPart8();
+//        }
 
     }
 
     private void doPart1() {
+
+        if (player!=null) player.stop();
         setContentView(R.layout.on_ngau_nhien_layout_listening_p1);
-        listReadingPart1 = (ListView) findViewById(R.id.myListQuestionPart1tn);
+        context = OnNgauNhien.this;
+        listListeningPart1 = (ListView) findViewById(R.id.list1);
 
-        btnNext1 = (Button) findViewById(R.id.btnNext1);
-        btnPrevious1 = (Button) findViewById(R.id.btnPrevios1);
+        btnNext1 = (Button) findViewById(R.id.btnNextONN1);
+        btnPrevious1 = (Button) findViewById(R.id.btnPreviousONN1);
+        if(adapterListeningP1==null)
+            adapterListeningP1 = new OnNgauNhienAdapter(this, R.layout.question_form_listening_p1, arrayResultListListeningPart1, arrayListListeningPart1Info);
 
-        questionListenAdapterP1 = new QuestionListenAdapterP1(this, R.layout.question_form_listening_p1, arrayResultListListeningPart1, arrayListListeningPart1Info);
-        listReadingPart1.setAdapter(questionListenAdapterP1);
-        listReadingPart1.setFocusable(false);
+        listListeningPart1.setAdapter(adapterListeningP1);
 
-        listReadingPart1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listListeningPart1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
 
@@ -149,23 +165,28 @@ public class OnNgauNhien extends Activity {
         btnNext1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player = adapterListeningP1.getPlayer();
                 doPart2();
             }
         });
     }
     private void doPart2()
     {
+        if (player!=null) player.stop();
+
         setContentView(R.layout.on_ngau_nhien_layout_listening_p2);
-
-        btnNext1 = (Button) findViewById(R.id.btnNext2);
-        btnPrevious1 = (Button) findViewById(R.id.btnPrevios2);
-        img = (ImageView) findViewById(R.id.image2tn);
-        listListeningPart2=(ListView) findViewById(R.id.myListQuestionPart2tn);
-
         context = OnNgauNhien.this;
-        adapterListeningP2 = new OnNgauNhienAdapter(this,R.layout.question_form_02,arrayListListeningPart2Question);
+
+        btnNext2 = (Button) findViewById(R.id.btnNextONN2);
+        btnPrevious2 = (Button) findViewById(R.id.btnPreviousONN2);
+        imgP2 = (ImageView) findViewById(R.id.imageONN2tn);
+        listListeningPart2=(ListView) findViewById(R.id.list2);
+
+        if(adapterListeningP2==null)
+            adapterListeningP2 = new OnNgauNhienAdapter2(this, R.layout.question_form_02, arrayListListeningPart2Question);
+
         listListeningPart2.setAdapter(adapterListeningP2);
-        img.setOnClickListener(new View.OnClickListener()
+        imgP2.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -173,13 +194,13 @@ public class OnNgauNhien extends Activity {
                 play(context,arrayResultListListeningPart2.get(0).getListeningInfor());
             }
         });
-        btnNext1.setOnClickListener(new View.OnClickListener() {
+        btnNext2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doPart3();
             }
         });
-        btnPrevious1.setOnClickListener(new View.OnClickListener() {
+        btnPrevious2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doPart1();
@@ -189,17 +210,20 @@ public class OnNgauNhien extends Activity {
 
     private void doPart3()
     {
-        setContentView(R.layout.on_ngau_nhien_layout_listening_p2);
-
-        btnNext1 = (Button) findViewById(R.id.btnNext2);
-        btnPrevious1 = (Button) findViewById(R.id.btnPrevios2);
-        img = (ImageView) findViewById(R.id.image2tn);
-        listListeningPart2=(ListView) findViewById(R.id.myListQuestionPart2tn);
-
+        if (player!=null) player.stop();
+        setContentView(R.layout.on_ngau_nhien_layout_listening_p3);
         context = OnNgauNhien.this;
-        adapterListeningP2 = new OnNgauNhienAdapter(this,R.layout.question_form_02,arrayListListeningPart3Question);
-        listListeningPart2.setAdapter(adapterListeningP2);
-        img.setOnClickListener(new View.OnClickListener()
+
+        btnNext3 = (Button) findViewById(R.id.btnNextONN3);
+        btnPrevious3 = (Button) findViewById(R.id.btnPreviousONN3);
+        imgP3 = (ImageView) findViewById(R.id.imageONN3tn);
+        listListeningPart3=(ListView) findViewById(R.id.list3);
+
+        if(adapterListeningP3==null)
+            adapterListeningP3 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListListeningPart3Question);
+
+        listListeningPart3.setAdapter(adapterListeningP3);
+        imgP3.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -207,16 +231,171 @@ public class OnNgauNhien extends Activity {
                 play(context,arrayResultListListeningPart3.get(0).getListeningInfor());
             }
         });
-        btnNext1.setOnClickListener(new View.OnClickListener() {
+        btnNext3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //doPart4();
+                doPart4();
             }
         });
-        btnPrevious1.setOnClickListener(new View.OnClickListener() {
+        btnPrevious3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doPart2();
+            }
+        });
+    }
+    private void doPart4()
+    {
+        if (player!=null) player.stop();
+        setContentView(R.layout.on_ngau_nhien_layout_listening_p4);
+        context = OnNgauNhien.this;
+
+        btnNext4 = (Button) findViewById(R.id.btnNextONN4);
+        btnPrevious4 = (Button) findViewById(R.id.btnPreviousONN4);
+        imgP4 = (ImageView) findViewById(R.id.imageONN4tn);
+        txtP4tn=(TextView)findViewById(R.id.txtONNP4tn);
+        txtP4tn.setText(arrayResultListListeningPart4.get(0).getReadingInfor());
+        listListeningPart4=(ListView) findViewById(R.id.list4);
+
+        if(adapterListeningP4==null)
+            adapterListeningP4 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListListeningPart4Question);
+        listListeningPart4.setAdapter(adapterListeningP4);
+
+        imgP4.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                play(context,arrayResultListListeningPart4.get(0).getListeningInfor());
+            }
+        });
+        btnNext4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doPart5();
+            }
+        });
+        btnPrevious4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doPart3();
+            }
+        });
+    }
+
+    private void doPart5()
+    {
+        if (player!=null) player.stop();
+        setContentView(R.layout.on_ngau_nhien_layout_reading);
+        context = OnNgauNhien.this;
+
+        btnNext5 = (Button) findViewById(R.id.btnNextONN5);
+        btnPrevious5 = (Button) findViewById(R.id.btnPreviousONN5);
+        txtP5tn=(TextView)findViewById(R.id.txtONNP5tn);
+        txtP5tn.setText(arrayResultListReadingPart1.get(0).getReadingInfor());
+
+        listReadingPart1=(ListView) findViewById(R.id.list5);
+
+        if(adapterReadingP1==null)
+            adapterReadingP1 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart1Question);
+        listReadingPart1.setAdapter(adapterReadingP1);
+
+        btnNext5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doPart6();
+            }
+        });
+        btnPrevious5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doPart4();
+            }
+        });
+    }
+    private void doPart6()
+    {
+        if (player!=null) player.stop();
+        setContentView(R.layout.on_ngau_nhien_layout_reading_p2);
+        context = OnNgauNhien.this;
+
+        btnNext6 = (Button) findViewById(R.id.btnNextONN6);
+        btnPrevious6 = (Button) findViewById(R.id.btnPreviousONN6);
+        txtP6tn=(TextView)findViewById(R.id.txtONNP6tn);
+        txtP6tn.setText(arrayResultListReadingPart2.get(0).getReadingInfor());
+
+        listReadingPart2=(ListView) findViewById(R.id.list6);
+
+        if(adapterReadingP2==null)
+            adapterReadingP2 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart2Question);
+        listReadingPart2.setAdapter(adapterReadingP2);
+
+        btnNext6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doPart7();
+            }
+        });
+        btnPrevious6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doPart5();
+            }
+        });
+    }
+
+    private void doPart7()
+    {
+        if (player!=null) player.stop();
+        setContentView(R.layout.on_ngau_nhien_layout_reading_p3);
+        context = OnNgauNhien.this;
+
+        btnNext7 = (Button) findViewById(R.id.btnNextONN7);
+        btnPrevious7 = (Button) findViewById(R.id.btnPreviousONN7);
+        txtP7tn=(TextView)findViewById(R.id.txtONNP7tn);
+        txtP7tn.setText(arrayResultListReadingPart3.get(0).getReadingInfor());
+
+        listReadingPart3=(ListView) findViewById(R.id.list7);
+
+        if(adapterReadingP3==null)
+            adapterReadingP3 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart3Question);
+        listReadingPart3.setAdapter(adapterReadingP3);
+
+        btnNext7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doPart8();
+            }
+        });
+        btnPrevious7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doPart6();
+            }
+        });
+    }
+    private void doPart8()
+    {
+        if (player!=null) player.stop();
+        setContentView(R.layout.on_ngau_nhien_layout_reading_p4);
+        context = OnNgauNhien.this;
+
+        btnNext8 = (Button) findViewById(R.id.btnNextONN8);
+        btnPrevious8 = (Button) findViewById(R.id.btnPreviousONN8);
+        txtP8tn=(TextView)findViewById(R.id.txtONNP8tn);
+        txtP8tn.setText(arrayResultListReadingPart4.get(0).getReadingInfor());
+
+        listReadingPart4=(ListView) findViewById(R.id.list8);
+
+        if(adapterReadingP4==null)
+            adapterReadingP4 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart4Question);
+        listReadingPart4.setAdapter(adapterReadingP4);
+
+        btnNext8.setEnabled(false);
+        btnPrevious8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doPart7();
             }
         });
     }
@@ -370,6 +549,12 @@ public class OnNgauNhien extends Activity {
                 player=null;
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (player!=null) player.stop();
     }
 
 

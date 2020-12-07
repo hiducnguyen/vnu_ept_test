@@ -17,12 +17,12 @@
             android:layout_gravity="center"
             android:text="@string/previos"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnPrevios2">
+            android:id="@+id/btnPreviousONN2">
 
         </Button>
         <ImageView
             android:layout_marginLeft="80dp"
-            android:id="@+id/image2tn"
+            android:id="@+id/imageONN2tn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/listen_icon1">
@@ -35,7 +35,7 @@
             android:layout_marginLeft="80dp"
             android:text="@string/next"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnNext2">
+            android:id="@+id/btnNextONN2">
 
         </Button>
 
@@ -44,7 +44,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/myListQuestionPart2tn"
+        android:id="@+id/list2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

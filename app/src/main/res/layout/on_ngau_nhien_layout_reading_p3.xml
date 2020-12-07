@@ -4,21 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:layout_gravity="center">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/previos"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnPreviousONN1">
+            android:id="@+id/btnPreviousONN7">
 
         </Button>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,15 +26,34 @@
             android:layout_marginLeft="120dp"
             android:text="@string/next"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnNextONN1">
+            android:id="@+id/btnNextONN7">
 
         </Button>
-    </LinearLayout>
-    <ListView
-        android:id="@+id/list1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-    </ListView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="5dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtONNP7tn">
+
+            </TextView>
+        </ScrollView>
+
+        <ListView
+            android:id="@+id/list7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </LinearLayout>
+
 
 </LinearLayout>
