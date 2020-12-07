@@ -80,7 +80,7 @@ public class OnTheoPhanActivity extends Activity
                         btnNopBai = (Button) findViewById(R.id.btnNopBai1);
 //                        btnNopBai.setEnabled(false);
                         context = OnTheoPhanActivity.this;
-                        questionListenAdapterP1 = new QuestionListenAdapterP1(context,R.layout.question_form_listening_p1,questionModels);
+                        questionListenAdapterP1 = new QuestionListenAdapterP1(context,R.layout.question_form_listening_p1,questionModels,inforModels);
                         myListQuestion.setAdapter(questionListenAdapterP1);
                         btnNopBai.setOnClickListener(new View.OnClickListener()
                         {

@@ -42,6 +42,11 @@ public class OnNgauNhien extends Activity {
     ArrayList<InforModel>arrayListReadingPart2=new ArrayList<>();
 
     ArrayList<InforModel>arrayListListeningPart1Info=new ArrayList<>();
+    ArrayList<QuestionModel>arrayListListeningPart2Question=new ArrayList<>();
+    ArrayList<QuestionModel>arrayListListeningPart3Question=new ArrayList<>();
+    ArrayList<QuestionModel>arrayListListeningPart4Question=new ArrayList<>();
+    ArrayList<QuestionModel>arrayListReadingPart1Question=new ArrayList<>();
+    ArrayList<QuestionModel>arrayListReadingPart2Question=new ArrayList<>();
 
     ArrayList<QuestionModel>arrayResultListListeningPart1=new ArrayList<>();
     ArrayList<InforModel>arrayResultListListeningPart2=new ArrayList<>();
@@ -72,7 +77,8 @@ public class OnNgauNhien extends Activity {
         countReadingPart1=myBundle.getInt("countReadingPart1");
         countReadingPart2=myBundle.getInt("countReadingPart2");
 
-        arrayListListeningPart1=new ArrayList<>(dataBaseHelper.findQuestionByPart(1,"Listening"));
+
+        handlingDataOfListeningPart1();
 
         randomQuestion();
         context=OnNgauNhien.this;
@@ -81,26 +87,11 @@ public class OnNgauNhien extends Activity {
         listReadingPart1.setAdapter(questionListenAdapterP1);
         listReadingPart1.setFocusable(false);
 
-
-
         listReadingPart1.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
             {
-
-            }
-            
-        });
-        btnKT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String r="";
-                for(int i=0;i<arrayResultListListeningPart1.size();i++)
-                {
-                    r=r+questionListenAdapterP1.listAnswer.get(i);
-                }
-                Toast.makeText(context,r,Toast.LENGTH_LONG).show();
             }
         });
 
@@ -118,8 +109,14 @@ public class OnNgauNhien extends Activity {
 
     }
 
-
-
+    private void handlingDataOfListeningPart1()
+    {
+        arrayListListeningPart1=new ArrayList<>(dataBaseHelper.findQuestionByPart(1,"Listening"));
+    }
+    private void handlingDataOfListeningPart2()
+    {
+        arrayListListeningPart2Question=new ArrayList<>(dataBaseHelper.)
+    }
 
 
     private void randomQuestion()

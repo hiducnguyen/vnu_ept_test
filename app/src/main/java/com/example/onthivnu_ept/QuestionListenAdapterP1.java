@@ -67,7 +67,7 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // set Yes values in ArrayList if RadioButton is checked
+
                 if (isChecked)
                     listAnswer.set(position,"A");
             }
@@ -76,7 +76,7 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         answerB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // set Yes values in ArrayList if RadioButton is checked
+
                 if (isChecked)
                     listAnswer.set(position,"B");
             }
@@ -84,7 +84,7 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // set Yes values in ArrayList if RadioButton is checked
+
                 if (isChecked)
                     listAnswer.set(position,"C");
             }
@@ -92,13 +92,13 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         answerD.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // set Yes values in ArrayList if RadioButton is checked
+
                 if (isChecked)
                     listAnswer.set(position,"D");
             }
         });
 
-        img = (ImageView) row.findViewById(R.id.image1);
+        img=(ImageView)row.findViewById(R.id.image1);
         img.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -109,7 +109,7 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
             }
         });
 
-        img=(ImageView)row.findViewById(R.id.image1);
+
         img.setFocusable(false);
         answerA.setFocusable(false);
         answerB.setFocusable(false);
