@@ -77,8 +77,9 @@ public class OnNgauNhien extends Activity {
         randomQuestion();
         context=OnNgauNhien.this;
 
-        questionListenAdapterP1 = new QuestionListenAdapterP1(context,R.layout.question_form_listening_p1,arrayResultListListeningPart1);
+        questionListenAdapterP1 = new QuestionListenAdapterP1(context,R.layout.question_form_listening_p1,arrayResultListListeningPart1,arrayListListeningPart1Info);
         listReadingPart1.setAdapter(questionListenAdapterP1);
+        listReadingPart1.setFocusable(false);
 
 
 
@@ -87,16 +88,7 @@ public class OnNgauNhien extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
             {
-                img = (ImageView) view.findViewById(R.id.image1);
-                img.setOnClickListener(new View.OnClickListener()
-                {
-                    @Override
-                    public void onClick(View v)
-                    {
 
-                        play(context,arrayListListeningPart1Info.get(position).getListeningInfor());
-                    }
-                });
             }
             
         });
@@ -126,25 +118,7 @@ public class OnNgauNhien extends Activity {
 
     }
 
-    void play(Context context, int resource)
-    {
-        if (player != null)
-        {
-            player.release();
-            player = null;
-        }
-        player = MediaPlayer.create(context, resource);
-        player.start();
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
-        {
-            @Override
-            public void onCompletion(MediaPlayer mp)
-            {
-                player.release();
-                player=null;
-            }
-        });
-    }
+
 
 
 

@@ -2,6 +2,7 @@ package com.example.onthivnu_ept;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,15 +24,18 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
     private Context context;
     private int resource;
     private ArrayList<QuestionModel> questionModels;
+    private ArrayList<InforModel>inforModels;
     RadioButton answerA,answerB,answerC,answerD;
     ImageView img;
     public static ArrayList<String> listAnswer;
+    MediaPlayer player;
 
-    public QuestionListenAdapterP1(Context context, int resource, ArrayList<QuestionModel> questionModels)
+    public QuestionListenAdapterP1(Context context, int resource, ArrayList<QuestionModel> questionModels,ArrayList<InforModel> infoModels)
     {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
+        this.inforModels=infoModels;
         this.resource = resource;
         listAnswer=new ArrayList<>();
         for(int i=0;i<questionModels.size();i++)
@@ -94,35 +98,50 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
             }
         });
 
+        img = (ImageView) row.findViewById(R.id.image1);
+        img.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+
+                play(context,inforModels.get(position).getListeningInfor());
+            }
+        });
+
         img=(ImageView)row.findViewById(R.id.image1);
-        //img.setFocusable(false);
+        img.setFocusable(false);
         answerA.setFocusable(false);
         answerB.setFocusable(false);
         answerC.setFocusable(false);
         answerD.setFocusable(false);
-        //img.setFocusableInTouchMode(false);
-//        answerA.setFocusableInTouchMode(false);
-//        answerB.setFocusableInTouchMode(false);
-//        answerC.setFocusableInTouchMode(false);
-//        answerD.setFocusableInTouchMode(false);
+        img.setFocusableInTouchMode(false);
+        answerA.setFocusableInTouchMode(false);
+        answerB.setFocusableInTouchMode(false);
+        answerC.setFocusableInTouchMode(false);
+        answerD.setFocusableInTouchMode(false);
 
         return (row);
     }
-    public String finalResult()
+    void play(Context context, int resource)
     {
-        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.question_form_listening_p1, null);
 
-        answerA = (RadioButton) row.findViewById(R.id.answerA);
-        answerB = (RadioButton) row.findViewById(R.id.answerB);
-        answerC = (RadioButton) row.findViewById(R.id.answerC);
-        answerD = (RadioButton) row.findViewById(R.id.answerD);
-
-        if (answerA.isChecked()) return "A";
-        if (answerB.isChecked()) return "B";
-        if (answerC.isChecked()) return "C";
-        if (answerD.isChecked()) return "D";
-        return "0";
+        if (player != null)
+        {
+            player.release();
+            player = null;
+        }
+        player = MediaPlayer.create(context, resource);
+        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+        {
+            @Override
+            public void onCompletion(MediaPlayer mp)
+            {
+                player.release();
+                player=null;
+            }
+        });
     }
 
 }
