@@ -4,35 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtDirectionPart23"
-        android:text="@string/in_part_4_you_will_hear_part_of_a_lecture_after_the_second_listening_there_is_a_summary_of_the_lecture_with_eight_gaps_select_the_best_option_for_each_gap_to_complete_the_summary">
-
-    </TextView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:orientation="horizontal"
+        android:layout_gravity="center">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/n_p_b_i"
+            android:text="@string/previos"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnNopBai4">
+            android:id="@+id/btnPrevios7">
 
         </Button>
-        <ImageView
-            android:id="@+id/image4"
-            android:layout_marginLeft="80dp"
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/listen_icon1">
+            android:layout_gravity="center"
+            android:layout_marginLeft="120dp"
+            android:text="@string/next"
+            android:background="@drawable/custom_button1"
+            android:id="@+id/btnNext7">
 
-        </ImageView>
-
+        </Button>
 
     </LinearLayout>
     <LinearLayout
@@ -41,17 +37,18 @@
         android:orientation="vertical">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="200dp"
+            android:padding="5dp">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:id="@+id/txtP4">
+                android:layout_height="wrap_content"
+                android:id="@+id/txtP7tn">
 
             </TextView>
         </ScrollView>
 
         <ListView
-            android:id="@+id/myListQuestionPart4"
+            android:id="@+id/myListQuestionPart7tn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

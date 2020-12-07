@@ -1,7 +1,9 @@
 package com.example.onthivnu_ept;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,53 +14,63 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.ViewUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel>
+public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
 {
     private Context context;
     private int resource;
     private ArrayList<QuestionModel> questionModels;
-    TextView question;
+    private ArrayList<InforModel> inforModels;
     RadioButton answerA,answerB,answerC,answerD;
+    ImageView img;
+    MediaPlayer player;
+    private int trueColor = R.color.colorBlue,
+            falseColor = R.color.colorRed;
     public static ArrayList<String> listAnswer;
-    public QuestionListenAdapterP23(Context context, int resource, ArrayList<QuestionModel> questionModels)
+    public ThiNhanhAdapter(Context context, int resource, ArrayList<QuestionModel> questionModels,ArrayList<InforModel> inforModels,ArrayList<String> answers)
     {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
+        this.inforModels = inforModels;
         this.resource = resource;
-        listAnswer=new ArrayList<>();
-        for(int i=  0; i < questionModels.size();i++)
-        {
-            listAnswer.add("N");
-        }
+        listAnswer = answers;
     }
     @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent)
     {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.question_form_02, null);
-        question = (TextView) row.findViewById(R.id.question2);
+        View row = inflater.inflate(R.layout.question_form_listening_p1, null,false);
+
+        TextView question = (TextView) row.findViewById(R.id.question1);
         answerA = (RadioButton) row.findViewById(R.id.answerA);
         answerB = (RadioButton) row.findViewById(R.id.answerB);
         answerC = (RadioButton) row.findViewById(R.id.answerC);
         answerD = (RadioButton) row.findViewById(R.id.answerD);
-
+        img=(ImageView)row.findViewById(R.id.image1);
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                play(context,inforModels.get(position).getListeningInfor());
+            }
+        });
         question.setText(questionModels.get(position).getQuestion());
         answerA.setText(questionModels.get(position).getAnswerA());
         answerB.setText(questionModels.get(position).getAnswerB());
         answerC.setText(questionModels.get(position).getAnswerC());
         answerD.setText(questionModels.get(position).getAnswerD());
+
         answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"A");
+                if (answerA.isChecked()) check("A", position);
             }
         });
 
@@ -66,26 +78,24 @@ public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"B");
+                if (answerB.isChecked()) check("B", position);
             }
         });
         answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"C");
+                if (answerC.isChecked()) check("C", position);
             }
         });
         answerD.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"D");
+                if (answerD.isChecked()) check("D", position);
             }
         });
+
 
         answerA.setFocusable(false);
         answerB.setFocusable(false);
@@ -93,8 +103,44 @@ public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel>
         answerD.setFocusable(false);
         return (row);
     }
-    public String finalResult(int position)
+    @SuppressLint("ResourceAsColor")
+    void check(String answer, int position)
     {
-        return listAnswer.get(position);
+        if (listAnswer.get(position).equals(answer))
+        {
+            switch (answer)
+            {
+                case "A": {answerA.setTextColor(trueColor); break;}
+                case "B": {answerB.setTextColor(trueColor);break;}
+                case "C": {answerC.setTextColor(trueColor);break;}
+                case "D": {answerD.setTextColor(trueColor);break;}
+            }
+        }
+
+        answerA.setEnabled(false);
+        answerB.setEnabled(false);
+        answerC.setEnabled(false);
+        answerD.setEnabled(false);
+
+    }
+    void play(Context context, int resource)
+    {
+
+        if (player != null)
+        {
+            player.release();
+            player = null;
+        }
+        player = MediaPlayer.create(context, resource);
+        player.start();
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+        {
+            @Override
+            public void onCompletion(MediaPlayer mp)
+            {
+                player.release();
+                player=null;
+            }
+        });
     }
 }
