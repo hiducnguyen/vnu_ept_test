@@ -65,6 +65,11 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         answerC.setText(questionModels.get(position).getAnswerC());
         answerD.setText(questionModels.get(position).getAnswerD());
 
+        answerA.setChecked(listAnswer.get(position).equals("A"));
+        answerB.setChecked(listAnswer.get(position).equals("B"));
+        answerC.setChecked(listAnswer.get(position).equals("C"));
+        answerD.setChecked(listAnswer.get(position).equals("D"));
+
         answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

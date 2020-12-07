@@ -26,7 +26,7 @@ public class ThiNhanhActivity extends Activity
     Button btnPrevios1, btnNext1,btnPrevios2, btnNext2,btnPrevios3, btnNext3,btnPrevios4, btnNext4,
             btnPrevios5, btnNext5,btnPrevios6, btnNext6,btnPrevios7, btnNext7,btnPrevios8, btnNext8;
     TextView txtP4tn,txtP5tn,txtP6tn,txtP7tn,txtP8tn;
-    MediaPlayer player;
+    public MediaPlayer player = null;
     ArrayList<InforModel> inforModelsPart1 = new ArrayList<>(),inforModelsPart2 = new ArrayList<>(),
     inforModelsPart3 = new ArrayList<>(),inforModelsPart4 = new ArrayList<>(),
     inforModelsPart5 = new ArrayList<>(),inforModelsPart6 = new ArrayList<>(),
@@ -36,14 +36,12 @@ public class ThiNhanhActivity extends Activity
             answerList5=new ArrayList<>(),answerList6=new ArrayList<>(),
             answerList7=new ArrayList<>(),answerList8=new ArrayList<>();
 
-    Integer n_right_answer = 0;
-    Integer n_answer;
     Context context;
     ListView myListQuestionPart1,myListQuestionPart2,
             myListQuestionPart3,myListQuestionPart4,
             myListQuestionPart5,myListQuestionPart6,
             myListQuestionPart7,myListQuestionPart8;
-    ImageView imgPart1,imgPart2,imgPart3,imgPart4;
+    ImageView imgPart2,imgPart3,imgPart4;
     DataBaseHelper dataBaseHelper = new DataBaseHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,6 +51,7 @@ public class ThiNhanhActivity extends Activity
     }
     void doPart1()
     {
+        if (player!=null) player.stop();
         setContentView(R.layout.activity_thi_nhanh_p1);
         questionModelsPart1 = dataBaseHelper.findQuestionByPart(1, "Listening");
         myListQuestionPart1= (ListView) findViewById(R.id.myListQuestionPart1tn);
@@ -78,6 +77,8 @@ public class ThiNhanhActivity extends Activity
         adapter = new ThiNhanhAdapter(this,R.layout.question_form_listening_p1,questionModelsPart1,inforModelsPart1,answerList1);
         context = ThiNhanhActivity.this;
         myListQuestionPart1.setAdapter(adapter);
+
+
         myListQuestionPart1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
@@ -85,10 +86,11 @@ public class ThiNhanhActivity extends Activity
 
             }
         });
-
     }
     void doPart2()
     {
+        player = adapter.getPlayer();
+        if (player!=null) player.stop();
         setContentView(R.layout.activity_thi_nhanh_p2);
         questionModelsPart2 = dataBaseHelper.findQuestionByPart(2, "Listening");
 
@@ -130,6 +132,7 @@ public class ThiNhanhActivity extends Activity
     }
     void doPart3()
     {
+        if (player!=null) player.stop();
         setContentView(R.layout.activity_thi_nhanh_p3);
         questionModelsPart3 = dataBaseHelper.findQuestionByPart(3, "Listening");
 
@@ -172,6 +175,7 @@ public class ThiNhanhActivity extends Activity
     }
     void doPart4()
     {
+        if (player!=null) player.stop();
         setContentView(R.layout.activity_thi_nhanh_p4);
         questionModelsPart4 = dataBaseHelper.findQuestionByPart(4, "Listening");
 
@@ -216,6 +220,7 @@ public class ThiNhanhActivity extends Activity
     }
     void doPart5()
     {
+        if (player!=null) player.stop();
         setContentView(R.layout.activity_thi_nhanh_p5);
         questionModelsPart5 = dataBaseHelper.findQuestionByPart(11, "Reading");
         questionModels = dataBaseHelper.findQuestionByPart(12, "Reading");
@@ -253,6 +258,7 @@ public class ThiNhanhActivity extends Activity
     }
     void doPart6()
     {
+        if (player!=null) player.stop();
         setContentView(R.layout.activity_thi_nhanh_p6);
         questionModelsPart6 = dataBaseHelper.findQuestionByPart(2, "Reading");
 
@@ -289,6 +295,7 @@ public class ThiNhanhActivity extends Activity
     }
     void doPart7()
     {
+        if (player!=null) player.stop();
         setContentView(R.layout.activity_thi_nhanh_p7);
         questionModelsPart7 = dataBaseHelper.findQuestionByPart(3, "Reading");
 
@@ -325,6 +332,7 @@ public class ThiNhanhActivity extends Activity
     }
     void doPart8()
     {
+        if (player!=null) player.stop();
         setContentView(R.layout.activity_thi_nhanh_p8);
         questionModelsPart8 = dataBaseHelper.findQuestionByPart(4, "Reading");
 
@@ -371,5 +379,11 @@ public class ThiNhanhActivity extends Activity
                 player=null;
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (player!=null) player.stop();
     }
 }

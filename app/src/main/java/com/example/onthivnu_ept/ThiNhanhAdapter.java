@@ -27,18 +27,28 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
     private ArrayList<InforModel> inforModels;
     RadioButton answerA,answerB,answerC,answerD;
     ImageView img;
+    ArrayList<String> answers;
     MediaPlayer player;
     private int trueColor = R.color.colorBlue,
             falseColor = R.color.colorRed;
-    public static ArrayList<String> listAnswer;
-    public ThiNhanhAdapter(Context context, int resource, ArrayList<QuestionModel> questionModels,ArrayList<InforModel> inforModels,ArrayList<String> answers)
+    public static ArrayList<String> listAnswer = new ArrayList<>();
+
+    public MediaPlayer getPlayer() {
+        return player;
+    }
+
+    public ThiNhanhAdapter(Context context, int resource, ArrayList<QuestionModel> questionModels, ArrayList<InforModel> inforModels, ArrayList<String> answers)
     {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
         this.inforModels = inforModels;
         this.resource = resource;
-        listAnswer = answers;
+        this.answers = answers;
+        for(int i=0;i<questionModels.size();i++)
+        {
+            listAnswer.add("N");
+        }
     }
     @NonNull
     @Override
@@ -66,11 +76,17 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
         answerC.setText(questionModels.get(position).getAnswerC());
         answerD.setText(questionModels.get(position).getAnswerD());
 
+        answerA.setChecked(listAnswer.get(position).equals("A"));
+        answerB.setChecked(listAnswer.get(position).equals("B"));
+        answerC.setChecked(listAnswer.get(position).equals("C"));
+        answerD.setChecked(listAnswer.get(position).equals("D"));
+
         answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (answerA.isChecked()) check("A", position);
+                check("A", position,answerA,answerB,answerC,answerD);
+                if (isChecked)  listAnswer.set(position,"A");
             }
         });
 
@@ -78,21 +94,24 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (answerB.isChecked()) check("B", position);
+                check("B",position,answerA,answerB,answerC,answerD);
+                if (isChecked) listAnswer.set(position,"B");
             }
         });
         answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (answerC.isChecked()) check("C", position);
+                check("C",position,answerA,answerB,answerC,answerD);
+                if (isChecked) listAnswer.set(position,"C");
             }
         });
         answerD.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (answerD.isChecked()) check("D", position);
+                check("D", position,answerA,answerB,answerC,answerD);
+                if (isChecked) listAnswer.set(position,"D");
             }
         });
 
@@ -104,23 +123,33 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
         return (row);
     }
     @SuppressLint("ResourceAsColor")
-    void check(String answer, int position)
+    void check(String answer, int position, RadioButton radioButtonA, RadioButton radioButtonB, RadioButton radioButtonC, RadioButton radioButtonD)
     {
-        if (listAnswer.get(position).equals(answer))
+        if (answer.equals(answers.get(position)))
         {
             switch (answer)
             {
-                case "A": {answerA.setTextColor(trueColor); break;}
-                case "B": {answerB.setTextColor(trueColor);break;}
-                case "C": {answerC.setTextColor(trueColor);break;}
-                case "D": {answerD.setTextColor(trueColor);break;}
+                case "A": {radioButtonA.setTextColor(trueColor); break;}
+                case "B": {radioButtonB.setTextColor(trueColor);break;}
+                case "C": {radioButtonC.setTextColor(trueColor);break;}
+                case "D": {radioButtonD.setTextColor(trueColor);break;}
+            }
+        }
+        else
+        {
+            switch (answers.get(position))
+            {
+                case "A": {radioButtonA.setTextColor(falseColor); break;}
+                case "B": {radioButtonB.setTextColor(falseColor);break;}
+                case "C": {radioButtonC.setTextColor(falseColor);break;}
+                case "D": {radioButtonD.setTextColor(falseColor);break;}
             }
         }
 
-        answerA.setEnabled(false);
-        answerB.setEnabled(false);
-        answerC.setEnabled(false);
-        answerD.setEnabled(false);
+        radioButtonA.setEnabled(false);
+        radioButtonB.setEnabled(false);
+        radioButtonC.setEnabled(false);
+        radioButtonD.setEnabled(false);
 
     }
     void play(Context context, int resource)
