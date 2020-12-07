@@ -25,20 +25,25 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
     private int resource;
     private ArrayList<QuestionModel> questionModels;
     private ArrayList<InforModel> inforModels;
+    ArrayList<String> answers;
     RadioButton answerA,answerB,answerC,answerD;
     ImageView img;
     MediaPlayer player;
     private int trueColor = R.color.colorBlue,
             falseColor = R.color.colorRed;
-    public static ArrayList<String> listAnswer;
+    public static ArrayList<String> listAnswer= new ArrayList<>();
     public ThiNhanhAdapter2(Context context, int resource, ArrayList<QuestionModel> questionModels,ArrayList<InforModel> inforModels,ArrayList<String> answers)
     {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
         this.inforModels = inforModels;
+        this.answers= answers;
         this.resource = resource;
-        listAnswer = answers;
+        for(int i=0;i<questionModels.size();i++)
+        {
+            listAnswer.add("N");
+        }
     }
     @NonNull
     @Override
@@ -59,11 +64,17 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
         answerC.setText(questionModels.get(position).getAnswerC());
         answerD.setText(questionModels.get(position).getAnswerD());
 
+        answerA.setChecked(listAnswer.get(position).equals("A"));
+        answerB.setChecked(listAnswer.get(position).equals("B"));
+        answerC.setChecked(listAnswer.get(position).equals("C"));
+        answerD.setChecked(listAnswer.get(position).equals("D"));
+
         answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (answerA.isChecked()) check("A", position);
+                check("A", position);
+                if (isChecked) listAnswer.set(position,"A");
             }
         });
 
@@ -71,21 +82,26 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (answerB.isChecked()) check("B", position);
+                check("B", position);
+                if (isChecked) listAnswer.set(position,"B");
             }
         });
         answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (answerC.isChecked()) check("C", position);
+                check("C", position);
+                if (isChecked) listAnswer.set(position,"C");
+
             }
         });
         answerD.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (answerD.isChecked()) check("D", position);
+                check("D", position);
+                if (isChecked) listAnswer.set(position,"D");
+
             }
         });
 
@@ -95,17 +111,17 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
         answerC.setFocusable(false);
         answerD.setFocusable(false);
 
-        answerA.setChecked(listAnswer.get(position)=="A");
-        answerA.setChecked(listAnswer.get(position)=="A");
-        answerA.setChecked(listAnswer.get(position)=="A");
-        answerA.setChecked(listAnswer.get(position)=="A");
+        answerA.setChecked(listAnswer.get(position).equals("A"));
+        answerB.setChecked(listAnswer.get(position).equals("B"));
+        answerC.setChecked(listAnswer.get(position).equals("C"));
+        answerD.setChecked(listAnswer.get(position).equals("D"));
 
         return (row);
     }
     @SuppressLint("ResourceAsColor")
     void check(String answer, int position)
     {
-        if (listAnswer.get(position).equals(answer))
+        if (answer.equals(answers.get(position)))
         {
             switch (answer)
             {
@@ -113,6 +129,17 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
                 case "B": {answerB.setTextColor(trueColor);break;}
                 case "C": {answerC.setTextColor(trueColor);break;}
                 case "D": {answerD.setTextColor(trueColor);break;}
+            }
+
+        }
+        else
+        {
+            switch (answers.get(position))
+            {
+                case "A": {answerA.setTextColor(falseColor); break;}
+                case "B": {answerB.setTextColor(falseColor);break;}
+                case "C": {answerC.setTextColor(falseColor);break;}
+                case "D": {answerD.setTextColor(falseColor);break;}
             }
         }
 

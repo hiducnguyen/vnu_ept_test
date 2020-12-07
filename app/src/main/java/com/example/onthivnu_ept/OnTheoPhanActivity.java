@@ -415,6 +415,7 @@ public class OnTheoPhanActivity extends Activity
     }
     void checkAnswers2()
     {
+
         n_right_answer=0;
         n_answer = 0;
 

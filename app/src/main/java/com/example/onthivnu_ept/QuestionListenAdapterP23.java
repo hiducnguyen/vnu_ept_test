@@ -53,6 +53,11 @@ public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel>
         answerB.setText(questionModels.get(position).getAnswerB());
         answerC.setText(questionModels.get(position).getAnswerC());
         answerD.setText(questionModels.get(position).getAnswerD());
+
+        answerA.setChecked(listAnswer.get(position).equals("A"));
+        answerB.setChecked(listAnswer.get(position).equals("B"));
+        answerC.setChecked(listAnswer.get(position).equals("C"));
+        answerD.setChecked(listAnswer.get(position).equals("D"));
         answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -91,6 +96,11 @@ public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel>
         answerB.setFocusable(false);
         answerC.setFocusable(false);
         answerD.setFocusable(false);
+
+        answerA.setFocusableInTouchMode(false);
+        answerB.setFocusableInTouchMode(false);
+        answerC.setFocusableInTouchMode(false);
+        answerD.setFocusableInTouchMode(false);
         return (row);
     }
     public String finalResult(int position)
