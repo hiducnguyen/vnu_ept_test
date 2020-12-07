@@ -41,7 +41,7 @@ public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel>
     public View getView(final int position, View convertView, ViewGroup parent)
     {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(resource, null);
+        View row = inflater.inflate(R.layout.question_form_02, null);
         question = (TextView) row.findViewById(R.id.question2);
         answerA = (RadioButton) row.findViewById(R.id.answerA);
         answerB = (RadioButton) row.findViewById(R.id.answerB);

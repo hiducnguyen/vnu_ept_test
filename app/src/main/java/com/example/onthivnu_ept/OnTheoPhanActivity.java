@@ -49,7 +49,6 @@ public class OnTheoPhanActivity extends Activity
         setContentView(R.layout.activity_on_theo_phan);
         context = getApplicationContext();
         myListView=(ListView) findViewById(R.id.list_item_otp);
-
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -76,14 +75,14 @@ public class OnTheoPhanActivity extends Activity
                         btnNopBai = (Button) findViewById(R.id.btnNopBai1);
 //                        btnNopBai.setEnabled(false);
                         context = OnTheoPhanActivity.this;
-                        questionListenAdapterP1 = new QuestionListenAdapterP1(context,R.layout.question_form_listening_p1,questionModels);
+                        questionListenAdapterP1 = new QuestionListenAdapterP1(context,R.layout.question_form_listening_p1,questionModels,inforModels);
                         myListQuestion.setAdapter(questionListenAdapterP1);
                         btnNopBai.setOnClickListener(new View.OnClickListener()
                         {
                             @Override
                             public void onClick(View v)
                             {
-                                if(player != null) player.stop();
+                                if(questionListenAdapterP1.getPlayer() != null) questionListenAdapterP1.player.stop();
                                 checkAnswers1();
                                 ShowDialogResult();
                             }
@@ -93,16 +92,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
                             {
-                                img = (ImageView) view.findViewById(R.id.image);
-                                img.setOnClickListener(new View.OnClickListener()
-                                {
-                                    @Override
-                                    public void onClick(View v)
-                                    {
-                                        context = getApplicationContext();
-                                        play(context, inforModels.get(position).getListeningInfor());
-                                    }
-                                });
+
                             }
                         });
 
@@ -144,7 +134,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                if (player != null) player.stop();
+                                if(player!= null) player.stop();
                                 checkAnswers2();
                                 ShowDialogResult();
                             }
@@ -188,7 +178,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                if (player != null) player.stop();
+                                if(player!= null) player.stop();
                                 checkAnswers2();
                                 ShowDialogResult();
                             }
@@ -236,7 +226,7 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                if (player != null) player.stop();
+                                if(player!= null) player.stop();
                                 checkAnswers2();
                                 ShowDialogResult();
                             }
@@ -415,7 +405,6 @@ public class OnTheoPhanActivity extends Activity
         for (int i = 0; i < n_question; i++)
         {
             String str1 = questionListenAdapterP1.finalResult(i);
-//            String str2 = questionListenAdapterP23.finalResult(i);
 
             if (questionModels.get(i).getRightAnswer().equals(str1))
             {
