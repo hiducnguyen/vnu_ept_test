@@ -31,7 +31,7 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
     MediaPlayer player;
     private int trueColor = R.color.colorBlue,
             falseColor = R.color.colorRed;
-    public static ArrayList<String> listAnswer = new ArrayList<>();
+    public ArrayList<String> listAnswer = new ArrayList<>();
 
     public MediaPlayer getPlayer() {
         return player;
@@ -129,20 +129,20 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
         {
             switch (answer)
             {
-                case "A": {radioButtonA.setTextColor(trueColor); break;}
-                case "B": {radioButtonB.setTextColor(trueColor);break;}
-                case "C": {radioButtonC.setTextColor(trueColor);break;}
-                case "D": {radioButtonD.setTextColor(trueColor);break;}
+                case "A": {radioButtonA.setBackgroundColor(trueColor); break;}
+                case "B": {radioButtonB.setBackgroundColor(trueColor);break;}
+                case "C": {radioButtonC.setBackgroundColor(trueColor);break;}
+                case "D": {radioButtonD.setBackgroundColor(trueColor);break;}
             }
         }
         else
         {
             switch (answers.get(position))
             {
-                case "A": {radioButtonA.setTextColor(falseColor); break;}
-                case "B": {radioButtonB.setTextColor(falseColor);break;}
-                case "C": {radioButtonC.setTextColor(falseColor);break;}
-                case "D": {radioButtonD.setTextColor(falseColor);break;}
+                case "A": {radioButtonA.setBackgroundColor(falseColor); break;}
+                case "B": {radioButtonB.setBackgroundColor(falseColor);break;}
+                case "C": {radioButtonC.setBackgroundColor(falseColor);break;}
+                case "D": {radioButtonD.setBackgroundColor(falseColor);break;}
             }
         }
 
@@ -171,5 +171,10 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
                 player=null;
             }
         });
+    }
+
+    @Override
+    public void setNotifyOnChange(boolean notifyOnChange) {
+        super.setNotifyOnChange(notifyOnChange);
     }
 }

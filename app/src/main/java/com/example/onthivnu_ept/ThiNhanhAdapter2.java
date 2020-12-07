@@ -31,7 +31,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
     MediaPlayer player;
     private int trueColor = R.color.colorBlue,
             falseColor = R.color.colorRed;
-    public static ArrayList<String> listAnswer= new ArrayList<>();
+    public ArrayList<String> listAnswer= new ArrayList<>();
     public ThiNhanhAdapter2(Context context, int resource, ArrayList<QuestionModel> questionModels,ArrayList<InforModel> inforModels,ArrayList<String> answers)
     {
         super(context, resource, questionModels);
@@ -73,7 +73,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                check("A", position);
+                check("A", position, answerA,answerB,answerC,answerD);
                 if (isChecked) listAnswer.set(position,"A");
             }
         });
@@ -82,7 +82,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                check("B", position);
+                check("B", position, answerA,answerB,answerC,answerD);
                 if (isChecked) listAnswer.set(position,"B");
             }
         });
@@ -90,7 +90,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                check("C", position);
+                check("C", position, answerA,answerB,answerC,answerD);
                 if (isChecked) listAnswer.set(position,"C");
 
             }
@@ -99,7 +99,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                check("D", position);
+                check("D", position, answerA,answerB,answerC,answerD);
                 if (isChecked) listAnswer.set(position,"D");
 
             }
@@ -119,16 +119,16 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
         return (row);
     }
     @SuppressLint("ResourceAsColor")
-    void check(String answer, int position)
+    void check(String answer, int position, RadioButton ra, RadioButton rb, RadioButton rc, RadioButton rd)
     {
         if (answer.equals(answers.get(position)))
         {
             switch (answer)
             {
-                case "A": {answerA.setTextColor(trueColor); break;}
-                case "B": {answerB.setTextColor(trueColor);break;}
-                case "C": {answerC.setTextColor(trueColor);break;}
-                case "D": {answerD.setTextColor(trueColor);break;}
+                case "A": {ra.setBackgroundColor(trueColor); break;}
+                case "B": {rb.setBackgroundColor(trueColor);break;}
+                case "C": {rc.setBackgroundColor(trueColor);break;}
+                case "D": {rd.setBackgroundColor(trueColor);break;}
             }
 
         }
@@ -136,10 +136,10 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
         {
             switch (answers.get(position))
             {
-                case "A": {answerA.setTextColor(falseColor); break;}
-                case "B": {answerB.setTextColor(falseColor);break;}
-                case "C": {answerC.setTextColor(falseColor);break;}
-                case "D": {answerD.setTextColor(falseColor);break;}
+                case "A": {ra.setBackgroundColor(falseColor); break;}
+                case "B": {rb.setBackgroundColor(falseColor);break;}
+                case "C": {rc.setBackgroundColor(falseColor);break;}
+                case "D": {rd.setBackgroundColor(falseColor);break;}
             }
         }
 
