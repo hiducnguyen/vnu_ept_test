@@ -1,16 +1,20 @@
 package com.example.onthivnu_ept;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -57,10 +61,12 @@ public class OnNgauNhien extends Activity {
 
     DataBaseHelper dataBaseHelper=new DataBaseHelper(this);
     QuestionListenAdapterP1 questionListenAdapterP1;
+    QuestionListenAdapterP23 questionListenAdapterP23;
     Context context;
 
     Button btnKT;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,12 +86,16 @@ public class OnNgauNhien extends Activity {
 
         handlingDataOfListeningPart1();
 
+        arrayListListeningPart2Question=new ArrayList<>(dataBaseHelper.findQuestionByPart(2,"Listening"));
+
         randomQuestion();
         context=OnNgauNhien.this;
 
         questionListenAdapterP1 = new QuestionListenAdapterP1(context,R.layout.question_form_listening_p1,arrayResultListListeningPart1,arrayListListeningPart1Info);
         listReadingPart1.setAdapter(questionListenAdapterP1);
         listReadingPart1.setFocusable(false);
+
+
 
         listReadingPart1.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -95,8 +105,25 @@ public class OnNgauNhien extends Activity {
             }
         });
 
+        questionListenAdapterP23=new QuestionListenAdapterP23(context,R.layout.question_form_02,arrayListListeningPart2Question);
+        listListeningPart2.setAdapter(questionListenAdapterP23);
+
+        btnKT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String r="";
+                for(int i=0;i<questionListenAdapterP1.listAnswer.size();i++)
+                    r=r+questionListenAdapterP1.listAnswer.get(i);
+
+                Toast.makeText(context,r,Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
 
     }
+
     private void setWidget()
     {
         btnKT=(Button)findViewById(R.id.btnKT);
@@ -115,7 +142,17 @@ public class OnNgauNhien extends Activity {
     }
     private void handlingDataOfListeningPart2()
     {
-        arrayListListeningPart2Question=new ArrayList<>(dataBaseHelper.)
+
+        arrayListListeningPart2Question=new ArrayList<>(dataBaseHelper.findQuestionByPart(2,"Listening"));
+
+        for(int i=0;i<arrayListListeningPart2Question.size();i++)
+        {
+            InforModel im=dataBaseHelper.findInforById(arrayListListeningPart2Question.get(i).getIdInfor());
+            if(!arrayListListeningPart2.contains(im))
+            {
+                arrayListListeningPart2.add(im);
+            }
+        }
     }
 
 
@@ -131,12 +168,12 @@ public class OnNgauNhien extends Activity {
             arrayListListeningPart1.remove(randomIndex);
         }
 
-        for (int i = 0; i < countListeningPart2; i++) {
-            int randomIndex = rand.nextInt(arrayListListeningPart2.size());
-            InforModel im  = arrayListListeningPart2.get(randomIndex);
-            arrayResultListListeningPart2.add(im);
-            arrayListListeningPart2.remove(randomIndex);
-        }
+//        for (int i = 0; i < countListeningPart2; i++) {
+//            int randomIndex = rand.nextInt(arrayListListeningPart2.size());
+//            InforModel im  = arrayListListeningPart2.get(randomIndex);
+//            arrayResultListListeningPart2.add(im);
+//            arrayListListeningPart2.remove(randomIndex);
+//        }
 
         for (int i = 0; i < countListeningPart3; i++) {
             int randomIndex = rand.nextInt(arrayListListeningPart3.size());

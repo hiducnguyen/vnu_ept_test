@@ -64,12 +64,20 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         answerC.setText(questionModels.get(position).getAnswerC());
         answerD.setText(questionModels.get(position).getAnswerD());
 
+        answerA.setChecked(listAnswer.get(position)=="A");
+        answerB.setChecked(listAnswer.get(position)=="B");
+        answerC.setChecked(listAnswer.get(position)=="C");
+        answerD.setChecked(listAnswer.get(position)=="D");
+
         answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked)
-                    listAnswer.set(position,"A");
+                if (isChecked) {
+                    listAnswer.set(position, "A");
+
+                }
+
             }
         });
 
@@ -77,26 +85,33 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked)
-                    listAnswer.set(position,"B");
+                if (isChecked) {
+                    listAnswer.set(position, "B");
+
+                }
             }
         });
         answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked)
-                    listAnswer.set(position,"C");
+                if (isChecked) {
+                    listAnswer.set(position, "C");
+
+                }
             }
         });
         answerD.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if (isChecked)
-                    listAnswer.set(position,"D");
+                if (isChecked) {
+                    listAnswer.set(position, "D");
+
+                }
             }
         });
+
 
         img=(ImageView)row.findViewById(R.id.image1);
         img.setOnClickListener(new View.OnClickListener()
