@@ -1,9 +1,9 @@
 package com.example.onthivnu_ept;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,28 +14,24 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.ViewUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
-{
+public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel> {
     private Context context;
     private int resource;
     private ArrayList<QuestionModel> questionModels;
-    private ArrayList<InforModel>inforModels;
-    RadioButton answerA,answerB,answerC,answerD;
-    ImageView img;
-    public static ArrayList<String> listAnswer;
-    MediaPlayer player;
 
-    public QuestionListenAdapterP1(Context context, int resource, ArrayList<QuestionModel> questionModels,ArrayList<InforModel> infoModels)
+    RadioButton answerA,answerB,answerC,answerD;
+
+
+    public static ArrayList<String> listAnswer;
+    public OnNgauNhienAdapter(Context context, int resource, ArrayList<QuestionModel> questionModels)
     {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
-        this.inforModels=infoModels;
+
         this.resource = resource;
         listAnswer=new ArrayList<>();
         for(int i=0;i<questionModels.size();i++)
@@ -48,15 +44,13 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
     public View getView(final int position, View convertView, ViewGroup parent)
     {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.question_form_listening_p1, null,false);
+        View row = inflater.inflate(R.layout.question_form_02, null,false);
 
-        TextView question = (TextView) row.findViewById(R.id.question1);
+        TextView question = (TextView) row.findViewById(R.id.question2);
         answerA = (RadioButton) row.findViewById(R.id.answerA);
         answerB = (RadioButton) row.findViewById(R.id.answerB);
         answerC = (RadioButton) row.findViewById(R.id.answerC);
         answerD = (RadioButton) row.findViewById(R.id.answerD);
-
-
 
         question.setText(questionModels.get(position).getQuestion());
         answerA.setText(questionModels.get(position).getAnswerA());
@@ -75,7 +69,6 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
 
                 if (isChecked) {
                     listAnswer.set(position, "A");
-
                 }
 
             }
@@ -87,7 +80,6 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
 
                 if (isChecked) {
                     listAnswer.set(position, "B");
-
                 }
             }
         });
@@ -97,7 +89,6 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
 
                 if (isChecked) {
                     listAnswer.set(position, "C");
-
                 }
             }
         });
@@ -107,30 +98,15 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
 
                 if (isChecked) {
                     listAnswer.set(position, "D");
-
                 }
             }
         });
 
-
-        img=(ImageView)row.findViewById(R.id.image1);
-        img.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-
-                play(context,inforModels.get(position).getListeningInfor());
-            }
-        });
-
-
-        img.setFocusable(false);
         answerA.setFocusable(false);
         answerB.setFocusable(false);
         answerC.setFocusable(false);
         answerD.setFocusable(false);
-        img.setFocusableInTouchMode(false);
+
         answerA.setFocusableInTouchMode(false);
         answerB.setFocusableInTouchMode(false);
         answerC.setFocusableInTouchMode(false);
@@ -138,33 +114,5 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
 
         return (row);
     }
-    void play(Context context, int resource)
-    {
 
-        if (player != null)
-        {
-            player.release();
-            player = null;
-        }
-        player = MediaPlayer.create(context, resource);
-        player.start();
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
-        {
-            @Override
-            public void onCompletion(MediaPlayer mp)
-            {
-                player.release();
-                player=null;
-            }
-        });
-    }
-
-    public MediaPlayer getPlayer() {
-        return player;
-    }
-
-    public String finalResult(int pos)
-    {
-        return listAnswer.get(pos);
-    }
 }

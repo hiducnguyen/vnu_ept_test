@@ -19,6 +19,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:textColor="#000000"></TextView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +32,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
             <TextView
                 android:id="@+id/tvPart1"
                 android:layout_width="140dp"
@@ -38,7 +42,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="Nghe từng hội thoại và trả lời từng câu hỏi">
+                android:text="Listening Part 1">
 
             </TextView>
 
@@ -60,7 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            >
             <TextView
                 android:id="@+id/tvPart2"
                 android:layout_width="140dp"
@@ -69,7 +74,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="Nghe một hội thoại và trả lời tất cả các câu hỏi">
+                android:text="Listening Part 2">
 
             </TextView>
 
@@ -91,7 +96,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            >
             <TextView
                 android:id="@+id/tvPart3"
                 android:layout_width="140dp"
@@ -100,7 +106,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="Nghe một bài nói và trả lời tất cả các câu hỏi">
+                android:text="Listening Part 3">
 
             </TextView>
 
@@ -122,7 +128,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            >
             <TextView
                 android:id="@+id/tvPart4"
                 android:layout_width="140dp"
@@ -131,7 +138,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="Nghe và điền vào đoạn văn">
+                android:text="Listening Part 4">
 
             </TextView>
 
@@ -153,7 +160,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            >
             <TextView
                 android:id="@+id/tvPart5"
                 android:layout_width="140dp"
@@ -162,7 +170,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="Đọc và kiểm tra từ vựng, ngữ pháp">
+                android:text="Reading Part 1">
 
             </TextView>
 
@@ -184,7 +192,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            >
             <TextView
                 android:id="@+id/tvPart6"
                 android:layout_width="140dp"
@@ -193,7 +202,7 @@
                 android:textColor="#000000"
 
                 android:background="@drawable/custom_textview"
-                android:text="Đọc và trả lời đọc hiểu">
+                android:text="Reading Part 2">
 
             </TextView>
 
@@ -213,9 +222,79 @@
 
             </EditText>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:id="@+id/tvPart7"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#000000"
+
+                android:background="@drawable/custom_textview"
+                android:text="Reading Part 3">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/edtPart7"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/custom_textview"
+                android:inputType="number"
+
+                android:text="0"
+
+                >
+
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:id="@+id/tvPart8"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="#000000"
+
+                android:background="@drawable/custom_textview"
+                android:text="Reading Part 4">
+
+            </TextView>
+
+            <EditText
+                android:id="@+id/edtPart8"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/custom_textview"
+                android:inputType="number"
+
+                android:text="0"
+
+                >
+
+            </EditText>
+        </LinearLayout>
+
 
 
     </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/btnTT"

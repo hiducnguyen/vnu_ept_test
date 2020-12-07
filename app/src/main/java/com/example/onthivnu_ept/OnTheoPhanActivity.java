@@ -454,4 +454,6 @@ public class OnTheoPhanActivity extends Activity
         super.onPause();
         if (player!=null) player.stop();
     }
+
+
 }

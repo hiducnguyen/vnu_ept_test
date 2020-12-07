@@ -137,6 +137,36 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public ArrayList<QuestionModel> findQuestionById(int myId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_ID_INFOR + " = " + Integer.toString(myId);
+        Cursor cursor = db.rawQuery(query, null);
+
+        ArrayList<QuestionModel> list = new ArrayList<>();
+
+        int num = cursor.getCount();
+
+        cursor.moveToFirst();
+        for (int i = 0; i < num; i++){
+            QuestionModel q = new QuestionModel();
+
+            q.setQuestion(cursor.getString(cursor.getColumnIndex(COLUMN_QUESTION)));
+            q.setAnswerA(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_A)));
+            q.setAnswerB(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_B)));
+            q.setAnswerC(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_C)));
+            q.setAnswerD(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_D)));
+            q.setRightAnswer(cursor.getString(cursor.getColumnIndex(COLUMN_RIGHT_ANSWER)));
+            q.setType(cursor.getString(cursor.getColumnIndex(COLUMN_TYPE)));
+            q.setIdInfor(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_INFOR)));
+            q.setPart(cursor.getInt(cursor.getColumnIndex(COLUMN_PART)));
+
+            list.add(q);
+            cursor.moveToNext();
+        }
+
+        return list;
+    }
+
     public InforModel findInforById(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM "+ TABLE_INFORMATION + " WHERE " + COLUMN_ID + " = " + Integer.toString(id);
