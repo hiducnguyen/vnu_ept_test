@@ -46,8 +46,6 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
         this.inforModels = inforModels;
         this.resource = resource;
 
-
-        this.resource = resource;
         if(listAnswer.isEmpty()) {
             for (int i = 0; i < questionModels.size(); i++) {
                 listAnswer.add("N");
@@ -129,6 +127,8 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
         return (row);
     }
 
+
+
     void play(Context context, int resource)
     {
 
@@ -153,4 +153,11 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
     public ArrayList<String> getListAnswer() {
         return listAnswer;
     }
+
+    public boolean isValid()
+    {
+        return !listAnswer.contains("N");
+    }
+
+
 }

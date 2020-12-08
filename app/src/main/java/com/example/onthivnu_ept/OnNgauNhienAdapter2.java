@@ -125,6 +125,12 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
 
         return (row);
     }
+    public boolean isValid()
+    {
+        return !listAnswer.contains("N");
+    }
+
+
 
 
     public ArrayList<String> getListAnswer() {

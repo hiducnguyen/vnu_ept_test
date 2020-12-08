@@ -100,6 +100,9 @@ public class OnNgauNhien extends Activity {
 
     ArrayList<String>listAnswer;
 
+    ArrayList<String> wrongAnswer;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,8 +172,12 @@ public class OnNgauNhien extends Activity {
             @Override
             public void onClick(View view) {
                 if(adapterListeningP1.getPlayer() != null) adapterListeningP1.player.stop();
-                checkAnswer();
-                showDialogResult();
+                if(checkValidAnswer()) {
+                    checkAnswer();
+                    showDialogResult();
+                }
+                else
+                    showDialogNotValidAnswer();
             }
         });
 
@@ -236,8 +243,12 @@ public class OnNgauNhien extends Activity {
             @Override
             public void onClick(View view) {
                 if(player!=null) player.stop();
-                checkAnswer();
-                showDialogResult();
+                if(checkValidAnswer()) {
+                    checkAnswer();
+                    showDialogResult();
+                }
+                else
+                    showDialogNotValidAnswer();
             }
         });
 
@@ -323,8 +334,12 @@ public class OnNgauNhien extends Activity {
             @Override
             public void onClick(View view) {
                 if(player!=null) player.stop();
-                checkAnswer();
-                showDialogResult();
+                if(checkValidAnswer()) {
+                    checkAnswer();
+                    showDialogResult();
+                }
+                else
+                    showDialogNotValidAnswer();
             }
         });
 
@@ -411,8 +426,12 @@ public class OnNgauNhien extends Activity {
             @Override
             public void onClick(View view) {
                 if(player!=null) player.stop();
-                checkAnswer();
-                showDialogResult();
+                if(checkValidAnswer()) {
+                    checkAnswer();
+                    showDialogResult();
+                }
+                else
+                    showDialogNotValidAnswer();
             }
         });
 
@@ -491,8 +510,12 @@ public class OnNgauNhien extends Activity {
             @Override
             public void onClick(View view) {
                 if(player!=null) player.stop();
-                checkAnswer();
-                showDialogResult();
+                if(checkValidAnswer()) {
+                    checkAnswer();
+                    showDialogResult();
+                }
+                else
+                    showDialogNotValidAnswer();
             }
         });
 
@@ -570,8 +593,12 @@ public class OnNgauNhien extends Activity {
             @Override
             public void onClick(View view) {
                 if(player!=null) player.stop();
-                checkAnswer();
-                showDialogResult();
+                if(checkValidAnswer()) {
+                    checkAnswer();
+                    showDialogResult();
+                }
+                else
+                    showDialogNotValidAnswer();
             }
         });
 
@@ -649,8 +676,12 @@ public class OnNgauNhien extends Activity {
             @Override
             public void onClick(View view) {
                 if(player!=null) player.stop();
-                checkAnswer();
-                showDialogResult();
+                if(checkValidAnswer()) {
+                    checkAnswer();
+                    showDialogResult();
+                }
+                else
+                    showDialogNotValidAnswer();
             }
         });
 
@@ -724,8 +755,12 @@ public class OnNgauNhien extends Activity {
             @Override
             public void onClick(View view) {
                 if(player!=null) player.stop();
-                checkAnswer();
-                showDialogResult();
+                if(checkValidAnswer()) {
+                    checkAnswer();
+                    showDialogResult();
+                }
+                else
+                    showDialogNotValidAnswer();
             }
         });
 
@@ -764,33 +799,116 @@ public class OnNgauNhien extends Activity {
     private void checkAnswer()
     {
         listAnswer.clear();
+        wrongAnswer.clear();
+
+        int pos=0;
+
         countResult=0;
 
-        if(countListeningPart1>0)
+
+        if(countListeningPart1>0) {
+            for(int i=0;i<adapterListeningP1.getListAnswer().size();i++)
+            {
+                if(!adapterListeningP1.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
+                {
+                    wrongAnswer.add("ListeningPart1: câu"+String.valueOf(i+1));
+                }
+                pos=pos+1;
+            }
             listAnswer.addAll(adapterListeningP1.getListAnswer());
-        if(countListeningPart2>0)
+
+        }
+        if(countListeningPart2>0) {
+            for(int i=0;i<adapterListeningP2.getListAnswer().size();i++)
+            {
+                if(!adapterListeningP2.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
+                {
+                    wrongAnswer.add("ListeningPart2: câu"+String.valueOf(i+1));
+                }
+                pos=pos+1;
+            }
             listAnswer.addAll(adapterListeningP2.getListAnswer());
-        if(countListeningPart3>0)
+
+        }
+        if(countListeningPart3>0) {
+            for(int i=0;i<adapterListeningP3.getListAnswer().size();i++)
+            {
+                if(!adapterListeningP3.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
+                {
+                    wrongAnswer.add("ListeningPart3: câu"+String.valueOf(i+1));
+                }
+                pos=pos+1;
+            }
+
             listAnswer.addAll(adapterListeningP3.getListAnswer());
+        }
         if(countListeningPart4>0)
+        {
+            for(int i=0;i<adapterListeningP4.getListAnswer().size();i++)
+            {
+                if(!adapterListeningP4.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
+                {
+                    wrongAnswer.add("ListeningPart3: câu"+String.valueOf(i+1));
+                }
+                pos=pos+1;
+            }
+
             listAnswer.addAll(adapterListeningP4.getListAnswer());
+
+        }
         if(countReadingPart1>0)
+        {
+            for(int i=0;i<adapterReadingP1.getListAnswer().size();i++)
+            {
+                if(!adapterReadingP1.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
+                {
+                    wrongAnswer.add("ListeningPart3: câu"+String.valueOf(i+1));
+                }
+                pos=pos+1;
+            }
             listAnswer.addAll(adapterReadingP1.getListAnswer());
+
+        }
         if(countReadingPart2>0)
+        {
+            for(int i=0;i<adapterReadingP2.getListAnswer().size();i++)
+            {
+                if(!adapterReadingP2.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
+                {
+                    wrongAnswer.add("ListeningPart3: câu "+String.valueOf(i+1));
+                }
+                pos=pos+1;
+            }
             listAnswer.addAll(adapterReadingP2.getListAnswer());
+
+        }
         if(countReadingPart3>0)
+        {
+            for(int i=0;i<adapterReadingP3.getListAnswer().size();i++)
+            {
+                if(!adapterReadingP3.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
+                {
+                    wrongAnswer.add("ListeningPart3: câu "+String.valueOf(i+1));
+                }
+                pos=pos+1;
+            }
             listAnswer.addAll(adapterReadingP3.getListAnswer());
+
+        }
         if(countReadingPart4>0)
+        {
+            for(int i=0;i<adapterReadingP4.getListAnswer().size();i++)
+            {
+                if(!adapterReadingP4.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
+                {
+                    wrongAnswer.add("ListeningPart3: câu "+String.valueOf(i+1));
+                }
+                pos=pos+1;
+            }
             listAnswer.addAll(adapterReadingP4.getListAnswer());
 
+        }
 
-
-        String s1="",s2="";
-        for(int i=0;i<listAnswer.size();i++)
-            s1=s1+listAnswer.get(i);
-        for(int i=0;i<listRightAnswer.size();i++)
-            s2=s2+listRightAnswer.get(i);
-        Toast.makeText(context,"List1"+s1+"  List2"+s2,Toast.LENGTH_LONG).show();
 
 
         for(int i=0;i<listAnswer.size();i++)
@@ -806,8 +924,60 @@ public class OnNgauNhien extends Activity {
     void showDialogResult()
     {
         AlertDialog.Builder myBuilder = new AlertDialog.Builder(context);
+        String mess="";
+        if(countResult<sumQuestion) {
+            String r = "";
+            for (int i = 0; i <wrongAnswer.size();i++)
+            {
+                r=r+wrongAnswer.get(i)+"\n";
+            }
+            mess="Bạn có "+String.valueOf(countResult)+"/"+ String.valueOf(sumQuestion) +" câu trả lời đúng\n" +
+                    "Những câu sai\n"+r;
+        }
+        else
+            mess="Bạn có "+String.valueOf(countResult)+"/"+ String.valueOf(sumQuestion) +" câu trả lời đúng";
 
-        myBuilder.setMessage("Bạn có "+String.valueOf(countResult)+"/"+ String.valueOf(sumQuestion) +" câu trả lời đúng")
+
+        myBuilder.setMessage(mess)
+                .setPositiveButton("Close", null)
+                .show();
+    }
+
+    boolean checkValidAnswer()
+    {
+
+        if(countListeningPart1>0)
+            if(!adapterListeningP1.isValid())
+                return false;
+        if(countListeningPart2>0)
+            if(!adapterListeningP2.isValid())
+                return false;
+        if(countListeningPart3>0)
+            if(!adapterListeningP3.isValid())
+                return false;
+        if(countListeningPart4>0)
+            if(!adapterListeningP4.isValid())
+                return false;
+        if(countReadingPart1>0)
+            if(!adapterReadingP1.isValid())
+                return false;
+        if(countReadingPart2>0)
+            if(!adapterReadingP2.isValid())
+                return false;
+        if(countReadingPart3>0)
+            if(!adapterReadingP3.isValid())
+                return false;
+        if(countReadingPart4>0)
+            if(!adapterReadingP4.isValid())
+                return false;
+
+        return true;
+    }
+    void showDialogNotValidAnswer()
+    {
+        AlertDialog.Builder myBuilder = new AlertDialog.Builder(context);
+
+        myBuilder.setMessage("Bạn phải trả lời tất cả câu hỏi")
                 .setPositiveButton("Close", null)
                 .show();
     }
@@ -833,12 +1003,9 @@ public class OnNgauNhien extends Activity {
 
         listRightAnswer=new ArrayList<>();
         listAnswer=new ArrayList<>();
+        wrongAnswer=new ArrayList<>();
+
         countResult=0;
-
-
-
-
-
 
     }
 
