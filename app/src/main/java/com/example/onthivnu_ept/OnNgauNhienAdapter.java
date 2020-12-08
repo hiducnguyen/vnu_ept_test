@@ -12,8 +12,10 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.ViewUtils;
 
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
 
     MediaPlayer player;
 
-    public ArrayList<String> listAnswer=new ArrayList<>() ;
+    private ArrayList<String> listAnswer=new ArrayList<>() ;
 
     public MediaPlayer getPlayer() {
         return player;
@@ -57,7 +59,8 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
     public View getView(final int position, View convertView, ViewGroup parent)
     {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.question_form_listening_p1, null,false);
+
+        View row = inflater.inflate(R.layout.question_form_listening_p1, parent,false);
 
         TextView question = (TextView) row.findViewById(R.id.question1);
         answerA = (RadioButton) row.findViewById(R.id.answerA);
@@ -97,7 +100,9 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
 
-                if (isChecked) listAnswer.set(position,"B");
+                if (isChecked) {
+                    listAnswer.set(position,"B");}
+
             }
         });
         answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -116,7 +121,6 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
                 if (isChecked) listAnswer.set(position,"D");
             }
         });
-
 
         answerA.setFocusable(false);
         answerB.setFocusable(false);
@@ -146,13 +150,7 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
         });
     }
 
-    public String getAnswer()
-    {
-        String r="";
-        for(int i=0;i<listAnswer.size();i++)
-        {
-            r=r+listAnswer.get(i);
-        }
-        return r;
+    public ArrayList<String> getListAnswer() {
+        return listAnswer;
     }
 }

@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -31,6 +32,7 @@ public class OnNgauNhien extends Activity {
 
     ListView listListeningPart1, listListeningPart2, listListeningPart3, listListeningPart4,
             listReadingPart1, listReadingPart2,listReadingPart3,listReadingPart4;
+
 
 
 
@@ -86,9 +88,17 @@ public class OnNgauNhien extends Activity {
     Button btnNext6,btnPrevious6;
     Button btnNext7,btnPrevious7;
     Button btnNext8,btnPrevious8;
+    int sumQuestion;
+
+    Button btnKT1,btnKT2,btnKT3,btnKT4,btnKT5,btnKT6,btnKT7,btnKT8;
 
     ImageView imgP2,imgP3,imgP4;
     TextView txtP4tn,txtP5tn,txtP6tn,txtP7tn,txtP8tn;
+
+    int countResult=0;
+    ArrayList<String>listRightAnswer;
+
+    ArrayList<String>listAnswer;
 
 
     @Override
@@ -106,38 +116,28 @@ public class OnNgauNhien extends Activity {
         countReadingPart2=myBundle.getInt("countReadingPart2");
         countReadingPart3=myBundle.getInt("countReadingPart3");
         countReadingPart4=myBundle.getInt("countReadingPart4");
+        sumQuestion=countListeningPart1+countListeningPart2+countListeningPart3+
+                countListeningPart4+countReadingPart1+countReadingPart2+countReadingPart3+countReadingPart4;
 
         initDataOfLists();
         randomQuestion();
-        doPart1();
-//        if(countListeningPart1>0)
-//            doPart1();
-//        else if(countListeningPart2>0)
-//            doPart2();
-//        else if(countListeningPart3>0)
-//        {
-//            //doPart3();
-//        }
-//        else if(countListeningPart4>0)
-//        {
-//            //doPart4();
-//        }
-//        else if(countReadingPart1>0)
-//        {
-//            //doPart5();
-//        }
-//        else if (countReadingPart2>0)
-//        {
-//            //doPart6();
-//        }
-//        else if(countReadingPart3>0)
-//        {
-//            //doPart7();
-//        }
-//        else if(countReadingPart4>0)
-//        {
-//            //doPart8();
-//        }
+
+        if(countListeningPart1>0)
+            doPart1();
+        else if(countListeningPart2>0)
+            doPart2();
+        else if(countListeningPart3>0)
+            doPart3();
+        else if(countListeningPart4>0)
+            doPart4();
+        else if(countReadingPart1>0)
+            doPart5();
+        else if (countReadingPart2>0)
+            doPart6();
+        else if(countReadingPart3>0)
+            doPart7();
+        else if(countReadingPart4>0)
+            doPart8();
 
     }
 
@@ -150,6 +150,9 @@ public class OnNgauNhien extends Activity {
 
         btnNext1 = (Button) findViewById(R.id.btnNextONN1);
         btnPrevious1 = (Button) findViewById(R.id.btnPreviousONN1);
+
+
+
         if(adapterListeningP1==null)
             adapterListeningP1 = new OnNgauNhienAdapter(this, R.layout.question_form_listening_p1, arrayResultListListeningPart1, arrayListListeningPart1Info);
 
@@ -161,14 +164,45 @@ public class OnNgauNhien extends Activity {
 
             }
         });
-        btnPrevious1.setEnabled(false);
-        btnNext1.setOnClickListener(new View.OnClickListener() {
+        btnKT1=(Button)findViewById(R.id.btnKT1);
+        btnKT1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                player = adapterListeningP1.getPlayer();
-                doPart2();
+            public void onClick(View view) {
+                if(adapterListeningP1.getPlayer() != null) adapterListeningP1.player.stop();
+                checkAnswer();
+                showDialogResult();
             }
         });
+
+        btnPrevious1.setEnabled(false);
+        if(sumQuestion-countListeningPart1==0)
+        {
+
+            btnNext1.setEnabled(false);
+        }
+        else {
+
+            btnNext1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    player = adapterListeningP1.getPlayer();
+                    if(countListeningPart2>0)
+                        doPart2();
+                    else if(countListeningPart3>0)
+                        doPart3();
+                    else if(countListeningPart4>0)
+                        doPart4();
+                    else if(countReadingPart1>0)
+                        doPart5();
+                    else if(countReadingPart2>0)
+                        doPart6();
+                    else if(countReadingPart3>0)
+                        doPart7();
+                    else if(countReadingPart4>0)
+                        doPart8();
+                }
+            });
+        }
     }
     private void doPart2()
     {
@@ -179,6 +213,8 @@ public class OnNgauNhien extends Activity {
 
         btnNext2 = (Button) findViewById(R.id.btnNextONN2);
         btnPrevious2 = (Button) findViewById(R.id.btnPreviousONN2);
+
+
         imgP2 = (ImageView) findViewById(R.id.imageONN2tn);
         listListeningPart2=(ListView) findViewById(R.id.list2);
 
@@ -194,18 +230,69 @@ public class OnNgauNhien extends Activity {
                 play(context,arrayResultListListeningPart2.get(0).getListeningInfor());
             }
         });
-        btnNext2.setOnClickListener(new View.OnClickListener() {
+
+        btnKT2=(Button)findViewById(R.id.btnKT2);
+        btnKT2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                doPart3();
+            public void onClick(View view) {
+                if(player!=null) player.stop();
+                checkAnswer();
+                showDialogResult();
             }
         });
-        btnPrevious2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doPart1();
+
+        if(sumQuestion-countListeningPart2==0)
+        {
+            btnNext2.setEnabled(false);
+            btnPrevious2.setEnabled(false);
+        }
+        else
+        {
+            if(sumQuestion-countListeningPart1-countListeningPart2>0)
+            {
+                btnNext2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(countListeningPart3>0)
+                            doPart3();
+                        else if(countListeningPart4>0)
+                            doPart4();
+                        else if(countReadingPart1>0)
+                            doPart5();
+                        else if(countReadingPart2>0)
+                            doPart6();
+                        else if(countReadingPart3>0)
+                            doPart7();
+                        else if(countReadingPart4>0)
+                            doPart8();
+                    }
+                });
             }
-        });
+            else
+            {
+                //btnKt
+                btnNext2.setEnabled(false);
+            }
+            //
+            if(countListeningPart1>0) {
+
+                btnPrevious2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        doPart1();
+                    }
+                });
+            }
+            else
+            {
+                btnPrevious2.setEnabled(false);
+            }
+        }
+
+
+
     }
 
     private void doPart3()
@@ -231,18 +318,68 @@ public class OnNgauNhien extends Activity {
                 play(context,arrayResultListListeningPart3.get(0).getListeningInfor());
             }
         });
-        btnNext3.setOnClickListener(new View.OnClickListener() {
+        btnKT3=(Button)findViewById(R.id.btnKT3);
+        btnKT3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                doPart4();
+            public void onClick(View view) {
+                if(player!=null) player.stop();
+                checkAnswer();
+                showDialogResult();
             }
         });
-        btnPrevious3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doPart2();
+
+
+        if(sumQuestion-countListeningPart3==0)
+        {
+            //btnKT
+            btnNext3.setEnabled(false);
+            btnPrevious3.setEnabled(false);
+        }
+        else
+        {
+            if(sumQuestion-countListeningPart1-countListeningPart2-countListeningPart3>0)
+            {
+                btnNext3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(countListeningPart4>0)
+                            doPart4();
+                        else if(countReadingPart1>0)
+                            doPart5();
+                        else if(countReadingPart2>0)
+                            doPart6();
+                        else if(countReadingPart3>0)
+                            doPart7();
+                        else if(countReadingPart4>0)
+                            doPart8();
+                    }
+                });
             }
-        });
+            else
+            {
+                //btnKt
+                btnNext3.setEnabled(false);
+            }
+            //
+            if(countListeningPart1+countListeningPart2>0) {
+
+                btnPrevious3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(countListeningPart2>0)
+                            doPart2();
+                        else if(countListeningPart1>0)
+                            doPart1();
+                    }
+                });
+            }
+            else
+            {
+                btnPrevious3.setEnabled(false);
+            }
+        }
     }
     private void doPart4()
     {
@@ -269,18 +406,67 @@ public class OnNgauNhien extends Activity {
                 play(context,arrayResultListListeningPart4.get(0).getListeningInfor());
             }
         });
-        btnNext4.setOnClickListener(new View.OnClickListener() {
+        btnKT4=(Button)findViewById(R.id.btnKT1);
+        btnKT4.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                doPart5();
+            public void onClick(View view) {
+                if(player!=null) player.stop();
+                checkAnswer();
+                showDialogResult();
             }
         });
-        btnPrevious4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doPart3();
+
+        if(sumQuestion-countListeningPart4==0)
+        {
+            //btnKT
+            btnNext4.setEnabled(false);
+            btnPrevious4.setEnabled(false);
+        }
+        else
+        {
+            if(countReadingPart1+countReadingPart2+countReadingPart3+countReadingPart4>0)
+            {
+                btnNext4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(countReadingPart1>0)
+                            doPart5();
+                        else if(countReadingPart2>0)
+                            doPart6();
+                        else if(countReadingPart3>0)
+                            doPart7();
+                        else if(countReadingPart4>0)
+                            doPart8();
+                    }
+                });
             }
-        });
+            else
+            {
+                //btnKt
+                btnNext4.setEnabled(false);
+            }
+            //
+            if(countListeningPart1+countListeningPart2+countListeningPart3>0) {
+
+                btnPrevious4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(countListeningPart3>0)
+                            doPart3();
+                        else if(countListeningPart2>0)
+                            doPart2();
+                        else if(countListeningPart1>0)
+                            doPart1();
+                    }
+                });
+            }
+            else
+            {
+                btnPrevious4.setEnabled(false);
+            }
+        }
     }
 
     private void doPart5()
@@ -300,18 +486,67 @@ public class OnNgauNhien extends Activity {
             adapterReadingP1 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart1Question);
         listReadingPart1.setAdapter(adapterReadingP1);
 
-        btnNext5.setOnClickListener(new View.OnClickListener() {
+        btnKT5=(Button)findViewById(R.id.btnKT5);
+        btnKT5.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                doPart6();
+            public void onClick(View view) {
+                if(player!=null) player.stop();
+                checkAnswer();
+                showDialogResult();
             }
         });
-        btnPrevious5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doPart4();
+
+        if(sumQuestion-countReadingPart1==0)
+        {
+            //btnKT
+            btnNext5.setEnabled(false);
+            btnPrevious5.setEnabled(false);
+        }
+        else
+        {
+            if(countReadingPart2+countReadingPart3+countReadingPart4>0)
+            {
+                btnNext5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(countReadingPart2>0)
+                            doPart6();
+                        else if(countReadingPart3>0)
+                            doPart7();
+                        else if(countReadingPart4>0)
+                            doPart8();
+                    }
+                });
             }
-        });
+            else
+            {
+                //btnKt
+                btnNext5.setEnabled(false);
+            }
+            //
+            if(countListeningPart1+countListeningPart2+countListeningPart3+countListeningPart4>0) {
+
+                btnPrevious5.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(countListeningPart4>0)
+                            doPart4();
+                        else if(countListeningPart3>0)
+                            doPart3();
+                        else if(countListeningPart2>0)
+                            doPart2();
+                        else if(countListeningPart1>0)
+                            doPart1();
+                    }
+                });
+            }
+            else
+            {
+                btnPrevious5.setEnabled(false);
+            }
+        }
     }
     private void doPart6()
     {
@@ -330,18 +565,66 @@ public class OnNgauNhien extends Activity {
             adapterReadingP2 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart2Question);
         listReadingPart2.setAdapter(adapterReadingP2);
 
-        btnNext6.setOnClickListener(new View.OnClickListener() {
+        btnKT6=(Button)findViewById(R.id.btnKT6);
+        btnKT6.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                doPart7();
+            public void onClick(View view) {
+                if(player!=null) player.stop();
+                checkAnswer();
+                showDialogResult();
             }
         });
-        btnPrevious6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doPart5();
+
+        if(sumQuestion-countReadingPart2==0)
+        {
+            //btnKT
+            btnNext6.setEnabled(false);
+            btnPrevious6.setEnabled(false);
+        }
+        else
+        {
+            if(countReadingPart3+countReadingPart4>0)
+            {
+                btnNext6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(countReadingPart3>0)
+                            doPart7();
+                        else if(countReadingPart4>0)
+                            doPart8();
+                    }
+                });
             }
-        });
+            else
+            {
+                //btnKt
+                btnNext6.setEnabled(false);
+            }
+            //
+            if(countListeningPart1+countListeningPart2+countListeningPart3+countListeningPart4+countReadingPart1>0) {
+
+                btnPrevious6.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(countReadingPart1>0)
+                            doPart5();
+                        else if(countListeningPart4>0)
+                            doPart4();
+                        else if(countListeningPart3>0)
+                            doPart3();
+                        else if(countListeningPart2>0)
+                            doPart2();
+                        else if(countListeningPart1>0)
+                            doPart1();
+                    }
+                });
+            }
+            else
+            {
+                btnPrevious6.setEnabled(false);
+            }
+        }
     }
 
     private void doPart7()
@@ -361,18 +644,64 @@ public class OnNgauNhien extends Activity {
             adapterReadingP3 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart3Question);
         listReadingPart3.setAdapter(adapterReadingP3);
 
-        btnNext7.setOnClickListener(new View.OnClickListener() {
+        btnKT7=(Button)findViewById(R.id.btnKT7);
+        btnKT7.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                doPart8();
+            public void onClick(View view) {
+                if(player!=null) player.stop();
+                checkAnswer();
+                showDialogResult();
             }
         });
-        btnPrevious7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doPart6();
+
+        if(sumQuestion-countReadingPart3==0)
+        {
+            //btnKT
+            btnNext7.setEnabled(false);
+            btnPrevious7.setEnabled(false);
+        }
+        else
+        {
+            if(countReadingPart4>0)
+            {
+                btnNext7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                            doPart8();
+                    }
+                });
             }
-        });
+            else
+            {
+                //btnKt
+                btnNext7.setEnabled(false);
+            }
+            //
+            if(sumQuestion-countReadingPart3-countReadingPart4>0) {
+
+                btnPrevious7.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(countReadingPart2>0)
+                            doPart6();
+                        else if(countReadingPart1>0)
+                            doPart5();
+                        else if(countListeningPart4>0)
+                            doPart4();
+                        else if(countListeningPart3>0)
+                            doPart3();
+                        else if(countListeningPart2>0)
+                            doPart2();
+                        else if(countListeningPart1>0)
+                            doPart1();
+                    }
+                });
+            }
+            else
+            {
+                btnPrevious7.setEnabled(false);
+            }
+        }
     }
     private void doPart8()
     {
@@ -390,14 +719,97 @@ public class OnNgauNhien extends Activity {
         if(adapterReadingP4==null)
             adapterReadingP4 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart4Question);
         listReadingPart4.setAdapter(adapterReadingP4);
-
-        btnNext8.setEnabled(false);
-        btnPrevious8.setOnClickListener(new View.OnClickListener() {
+        btnKT8=(Button)findViewById(R.id.btnKT8);
+        btnKT8.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                doPart7();
+            public void onClick(View view) {
+                if(player!=null) player.stop();
+                checkAnswer();
+                showDialogResult();
             }
         });
+
+        btnNext8.setEnabled(false);
+
+        if(sumQuestion-countReadingPart4==0)
+        {
+            btnPrevious8.setEnabled(false);
+        }
+        else
+        {
+                btnPrevious8.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(countReadingPart3>0)
+                            doPart7();
+                        else if(countReadingPart2>0)
+                            doPart6();
+                        else if(countReadingPart1>0)
+                            doPart5();
+                        else if(countListeningPart4>0)
+                            doPart4();
+                        else if(countListeningPart3>0)
+                            doPart3();
+                        else if(countListeningPart2>0)
+                            doPart2();
+                        else if(countListeningPart1>0)
+                            doPart1();
+                    }
+                });
+        }
+
+
+    }
+
+    private void checkAnswer()
+    {
+        listAnswer.clear();
+        countResult=0;
+
+        if(countListeningPart1>0)
+            listAnswer.addAll(adapterListeningP1.getListAnswer());
+        if(countListeningPart2>0)
+            listAnswer.addAll(adapterListeningP2.getListAnswer());
+        if(countListeningPart3>0)
+            listAnswer.addAll(adapterListeningP3.getListAnswer());
+        if(countListeningPart4>0)
+            listAnswer.addAll(adapterListeningP4.getListAnswer());
+        if(countReadingPart1>0)
+            listAnswer.addAll(adapterReadingP1.getListAnswer());
+        if(countReadingPart2>0)
+            listAnswer.addAll(adapterReadingP2.getListAnswer());
+        if(countReadingPart3>0)
+            listAnswer.addAll(adapterReadingP3.getListAnswer());
+        if(countReadingPart4>0)
+            listAnswer.addAll(adapterReadingP4.getListAnswer());
+
+
+
+        String s1="",s2="";
+        for(int i=0;i<listAnswer.size();i++)
+            s1=s1+listAnswer.get(i);
+        for(int i=0;i<listRightAnswer.size();i++)
+            s2=s2+listRightAnswer.get(i);
+        Toast.makeText(context,"List1"+s1+"  List2"+s2,Toast.LENGTH_LONG).show();
+
+
+        for(int i=0;i<listAnswer.size();i++)
+        {
+            if(listAnswer.get(i).equals(listRightAnswer.get(i)))
+            {
+                countResult=countResult+1;
+            }
+        }
+
+
+    }
+    void showDialogResult()
+    {
+        AlertDialog.Builder myBuilder = new AlertDialog.Builder(context);
+
+        myBuilder.setMessage("Bạn có "+String.valueOf(countResult)+"/"+ String.valueOf(sumQuestion) +" câu trả lời đúng")
+                .setPositiveButton("Close", null)
+                .show();
     }
 
 
@@ -419,6 +831,15 @@ public class OnNgauNhien extends Activity {
         arrayListReadingPart4=new ArrayList<>(dataBaseHelper.findInforByPart(4,"Reading"));
 
 
+        listRightAnswer=new ArrayList<>();
+        listAnswer=new ArrayList<>();
+        countResult=0;
+
+
+
+
+
+
     }
 
 
@@ -427,13 +848,18 @@ public class OnNgauNhien extends Activity {
         Random rand=new Random();
         InforModel im;
         int randomIdx;
+        if(countListeningPart1>0) {
+            for (int i = 0; i < countListeningPart1; i++) {
+                int randomIndex = rand.nextInt(arrayListListeningPart1.size());
+                QuestionModel ques = arrayListListeningPart1.get(randomIndex);
+                arrayResultListListeningPart1.add(ques);
 
-        for (int i = 0; i < countListeningPart1; i++) {
-            int randomIndex = rand.nextInt(arrayListListeningPart1.size());
-            QuestionModel ques  = arrayListListeningPart1.get(randomIndex);
-            arrayResultListListeningPart1.add(ques);
-            arrayListListeningPart1Info.add(dataBaseHelper.findInforById(ques.getIdInfor()));
-            arrayListListeningPart1.remove(randomIndex);
+                listRightAnswer.add(ques.getRightAnswer());
+
+                arrayListListeningPart1Info.add(dataBaseHelper.findInforById(ques.getIdInfor()));
+                arrayListListeningPart1.remove(randomIndex);
+            }
+
         }
 
         //
@@ -443,11 +869,14 @@ public class OnNgauNhien extends Activity {
             arrayResultListListeningPart2.add(im);
             arrayListListeningPart2Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
 
+
             for (int i = 0; i < arrayListListeningPart2Question.size() - countListeningPart2; ) {
                 int randomIndex = rand.nextInt(arrayListListeningPart2Question.size());
                 arrayListListeningPart2Question.remove(randomIndex);
-
             }
+
+            for(int i=0;i<arrayListListeningPart2Question.size();i++)
+                listRightAnswer.add(arrayListListeningPart2Question.get(i).getRightAnswer());
         }
         //
         if(countListeningPart3>0) {
@@ -462,7 +891,11 @@ public class OnNgauNhien extends Activity {
                 arrayListListeningPart3Question.remove(randomIndex);
 
             }
+
+            for(int i=0;i<arrayListListeningPart3Question.size();i++)
+                listRightAnswer.add(arrayListListeningPart3Question.get(i).getRightAnswer());
         }
+        //
         if(countListeningPart4>0) {
 
             randomIdx = rand.nextInt(arrayListListeningPart4.size());
@@ -475,6 +908,8 @@ public class OnNgauNhien extends Activity {
                 arrayListListeningPart4Question.remove(randomIndex);
 
             }
+            for(int i=0;i<arrayListListeningPart4Question.size();i++)
+                listRightAnswer.add(arrayListListeningPart4Question.get(i).getRightAnswer());
         }
 
         if(countReadingPart1>0) {
@@ -489,6 +924,8 @@ public class OnNgauNhien extends Activity {
                 arrayListReadingPart1Question.remove(randomIndex);
 
             }
+            for(int i=0;i<arrayListReadingPart1Question.size();i++)
+                listRightAnswer.add(arrayListReadingPart1Question.get(i).getRightAnswer());
         }
         if(countReadingPart2>0) {
 
@@ -502,6 +939,8 @@ public class OnNgauNhien extends Activity {
                 arrayListReadingPart2Question.remove(randomIndex);
 
             }
+            for(int i=0;i<arrayListReadingPart2Question.size();i++)
+                listRightAnswer.add(arrayListReadingPart2Question.get(i).getRightAnswer());
         }
 
         if(countReadingPart3>0) {
@@ -515,6 +954,8 @@ public class OnNgauNhien extends Activity {
                 arrayListReadingPart3Question.remove(randomIndex);
 
             }
+            for(int i=0;i<arrayListReadingPart3Question.size();i++)
+                listRightAnswer.add(arrayListReadingPart3Question.get(i).getRightAnswer());
         }
         if(countReadingPart4>0) {
 
@@ -528,7 +969,26 @@ public class OnNgauNhien extends Activity {
                 arrayListReadingPart4Question.remove(randomIndex);
 
             }
+            for(int i=0;i<arrayListReadingPart4Question.size();i++)
+                listRightAnswer.add(arrayListReadingPart4Question.get(i).getRightAnswer());
         }
+        if(countListeningPart1>0)
+            adapterListeningP1 = new OnNgauNhienAdapter(this, R.layout.question_form_listening_p1, arrayResultListListeningPart1, arrayListListeningPart1Info);
+        if(countListeningPart2>0)
+            adapterListeningP2 = new OnNgauNhienAdapter2(this, R.layout.question_form_02, arrayListListeningPart2Question);
+        if(countListeningPart3>0)
+            adapterListeningP3 = new OnNgauNhienAdapter2(this, R.layout.question_form_02, arrayListListeningPart3Question);
+        if(countListeningPart4>0)
+            adapterListeningP4 = new OnNgauNhienAdapter2(this, R.layout.question_form_02, arrayListListeningPart4Question);
+
+        if(countReadingPart1>0)
+            adapterReadingP1 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart1Question);
+        if(countReadingPart2>0)
+            adapterReadingP2 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart2Question);
+        if(countReadingPart3>0)
+            adapterReadingP3 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart3Question);
+        if(countReadingPart4>0)
+            adapterReadingP4 = new OnNgauNhienAdapter2(this,R.layout.question_form_02,arrayListReadingPart4Question);
     }
     void play(Context context, int resource)
     {

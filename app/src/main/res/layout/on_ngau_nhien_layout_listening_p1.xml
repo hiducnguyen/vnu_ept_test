@@ -5,27 +5,47 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTENING PART 1">
+    </TextView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/previos"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnPreviousONN1">
+            android:id="@+id/btnPreviousONN1"
+            android:layout_weight="1">
 
         </Button>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="120dp"
+            android:text="kiểm tra"
+            android:background="@drawable/custom_button1"
+            android:id="@+id/btnKT1"
+            android:layout_weight="1">
+
+        </Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="@string/next"
             android:background="@drawable/custom_button1"
+            android:layout_weight="1"
             android:id="@+id/btnNextONN1">
 
         </Button>

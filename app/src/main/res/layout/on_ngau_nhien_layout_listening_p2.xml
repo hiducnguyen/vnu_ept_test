@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTENING PART 2">
+    </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,31 +22,41 @@
             android:layout_gravity="center"
             android:text="@string/previos"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnPreviousONN2">
+            android:id="@+id/btnPreviousONN2"
+            android:layout_weight="1">
 
         </Button>
-        <ImageView
-            android:layout_marginLeft="80dp"
-            android:id="@+id/imageONN2tn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/listen_icon1">
-
-        </ImageView>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="80dp"
+            android:text="kiểm tra"
+            android:background="@drawable/custom_button1"
+            android:id="@+id/btnKT2"
+            android:layout_weight="1">
+
+        </Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:text="@string/next"
             android:background="@drawable/custom_button1"
             android:id="@+id/btnNextONN2">
 
         </Button>
 
-
-
     </LinearLayout>
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/imageONN2tn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/listen_icon1">
+
+    </ImageView>
 
     <ListView
         android:id="@+id/list2"

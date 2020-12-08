@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.ViewUtils;
@@ -24,13 +25,14 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
     private Context context;
     private int resource;
     private ArrayList<QuestionModel> questionModels;
+    int i;
 
 
     RadioButton answerA,answerB,answerC,answerD;
     ImageView img;
     MediaPlayer player;
 
-    public ArrayList<String> listAnswer=new ArrayList<>();
+    private ArrayList<String> listAnswer=new ArrayList<>();
 
     public OnNgauNhienAdapter2(Context context, int resource, ArrayList<QuestionModel> questionModels)
     {
@@ -40,6 +42,7 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
 
 
         this.resource = resource;
+        i=0;
         listAnswer.clear();
         if(listAnswer.isEmpty()) {
             for (int i = 0; i < questionModels.size(); i++) {
@@ -77,6 +80,7 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
                 // set Yes values in ArrayList if RadioButton is checked
 
                 if (isChecked) listAnswer.set(position,"A");
+
             }
         });
 
@@ -108,6 +112,7 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
         });
 
 
+
         answerA.setFocusable(false);
         answerB.setFocusable(false);
         answerC.setFocusable(false);
@@ -120,14 +125,9 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
 
         return (row);
     }
-    public String getAnswer()
-    {
-        String r="";
-        for(int i=0;i<listAnswer.size();i++)
-        {
-            r=r+listAnswer.get(i);
-        }
-        return r;
-    }
 
+
+    public ArrayList<String> getListAnswer() {
+        return listAnswer;
+    }
 }
