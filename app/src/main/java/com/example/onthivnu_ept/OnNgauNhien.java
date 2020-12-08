@@ -33,9 +33,6 @@ public class OnNgauNhien extends Activity {
     ListView listListeningPart1, listListeningPart2, listListeningPart3, listListeningPart4,
             listReadingPart1, listReadingPart2,listReadingPart3,listReadingPart4;
 
-
-
-
     private int countListeningPart1;
     private int countListeningPart2;
     private int countListeningPart3;
@@ -290,9 +287,6 @@ public class OnNgauNhien extends Activity {
                 btnPrevious2.setEnabled(false);
             }
         }
-
-
-
     }
 
     private void doPart3()

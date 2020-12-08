@@ -184,4 +184,14 @@ public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel> {
             }
         }
     }
+    Boolean is_filled()
+    {
+        int count = 0;
+        for (int i = 0; i<questionModels.size();i++)
+        {
+            if (!listAnswer.get(i).equals("N")) count++;
+        }
+        if (count==questionModels.size()) return  true;
+        return false;
+    }
 }

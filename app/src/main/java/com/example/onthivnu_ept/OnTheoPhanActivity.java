@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,12 +25,10 @@ public class OnTheoPhanActivity extends Activity
     ArrayAdapter<String> myListAdapter;
     QuestionListenAdapterP23 questionListenAdapterP23;
     QuestionListenAdapterP1 questionListenAdapterP1;
-    Boolean is_not_done = true;
     MediaPlayer player;
     Integer n_right_answer = 0;
     Integer n_question = 0;
     int trueColor =R.color.colorRed;
-    Integer n_answer;
     Button btnNopBai;
     ImageView img;
     ArrayList<QuestionModel> questionModels;
@@ -60,9 +60,7 @@ public class OnTheoPhanActivity extends Activity
                 {
                     case 0:
                     {
-                        n_question = 10;
                         questionModels = dataBaseHelper.findQuestionByPart(1, "Listening");
-
                         for (int i = 0; i < n_question; i++)
                         {
                             InforModel inforModel = new InforModel();
@@ -73,26 +71,21 @@ public class OnTheoPhanActivity extends Activity
                         setContentView(R.layout.on_theo_phan_layout_listenning_p1);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart1);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai1);
-//                        btnNopBai.setEnabled(false);
                         context = OnTheoPhanActivity.this;
                         questionListenAdapterP1 = new QuestionListenAdapterP1(context,R.layout.question_form_listening_p1,questionModels,inforModels);
                         myListQuestion.setAdapter(questionListenAdapterP1);
+
                         btnNopBai.setOnClickListener(new View.OnClickListener()
                         {
                             @Override
                             public void onClick(View v)
                             {
                                 if(questionListenAdapterP1.getPlayer() != null) questionListenAdapterP1.player.stop();
-                                checkAnswers1();
-                                ShowDialogResult();
-                            }
-                        });
-                        myListQuestion.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                        {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
-                            {
-
+                                if (questionListenAdapterP1.is_filled()){
+                                    checkAnswers1();
+                                    ShowDialogResult();
+                                }
+                                else Toast.makeText(context, "Hãy trả lời tất cả các câu hỏi", Toast.LENGTH_LONG).show();
                             }
                         });
 
@@ -100,9 +93,7 @@ public class OnTheoPhanActivity extends Activity
                     }
                     case 1:
                     {
-                        n_question = 6;
                         questionModels = dataBaseHelper.findQuestionByPart(2, "Listening");
-
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
                         inforModels.add(inforModel);
@@ -110,7 +101,6 @@ public class OnTheoPhanActivity extends Activity
                         setContentView(R.layout.on_theo_phan_layout_listenning_p23);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart2);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai2);
-//                        btnNopBai.setEnabled(false);
                         img = (ImageView) findViewById(R.id.image23);
                         img.setOnClickListener(new View.OnClickListener()
                         {
@@ -130,18 +120,21 @@ public class OnTheoPhanActivity extends Activity
                             public void onClick(View v)
                             {
                                 if(player!= null) player.stop();
-                                checkAnswers2();
-                                ShowDialogResult();
+                                if (questionListenAdapterP23.is_filled())
+                                {
+                                    checkAnswers2();
+                                    ShowDialogResult();
+                                }
+                                else Toast.makeText(context, "Hãy trả lời tất cả các câu hỏi", Toast.LENGTH_LONG).show();
                             }
                         });
+
 
                         break;
                     }
                     case 2:
                     {
-                        n_question = 8;
                         questionModels = dataBaseHelper.findQuestionByPart(3, "Listening");
-
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
                         inforModels.add(inforModel);
@@ -151,7 +144,6 @@ public class OnTheoPhanActivity extends Activity
                         TextView textView = (TextView) findViewById(R.id.txtDirectionPart23);
                         textView.setText(R.string.in_part_3_you_will_hear_a_talk_after_the_second_listening_there_are_eight_questions_select_the_best_answer_to_each_question);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai2);
-//                        btnNopBai.setEnabled(false);
                         img = (ImageView) findViewById(R.id.image23);
                         img.setOnClickListener(new View.OnClickListener()
                         {
@@ -171,8 +163,13 @@ public class OnTheoPhanActivity extends Activity
                             public void onClick(View v)
                             {
                                 if(player!= null) player.stop();
-                                checkAnswers2();
-                                ShowDialogResult();
+                                if (questionListenAdapterP23.is_filled())
+                                {
+                                    checkAnswers2();
+                                    ShowDialogResult();
+                                }
+                                else Toast.makeText(context, "Hãy trả lời tất cả các câu hỏi", Toast.LENGTH_LONG).show();
+
                             }
                         });
 
@@ -180,9 +177,7 @@ public class OnTheoPhanActivity extends Activity
                     }
                     case 3:
                     {
-                        n_question = 8;
                         questionModels = dataBaseHelper.findQuestionByPart(4, "Listening");
-
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
                         inforModels.add(inforModel);
@@ -190,7 +185,6 @@ public class OnTheoPhanActivity extends Activity
                         setContentView(R.layout.on_theo_phan_layout_listenning_p4);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart4);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai4);
-//                        btnNopBai.setEnabled(false);
 
                         TextView txtP4 = (TextView) findViewById(R.id.txtP4);
                         txtP4.setText(inforModels.get(0).getReadingInfor());
@@ -214,19 +208,21 @@ public class OnTheoPhanActivity extends Activity
                             public void onClick(View v)
                             {
                                 if(player!= null) player.stop();
-                                checkAnswers2();
-                                ShowDialogResult();
+                                if (questionListenAdapterP23.is_filled())
+                                {
+                                    checkAnswers2();
+                                    ShowDialogResult();
+                                }
+                                else Toast.makeText(context, "Hãy trả lời tất cả các câu hỏi", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
                     }
                     case 4:
                     {
-                        n_question = 20;
                         questionModels = dataBaseHelper.findQuestionByPart(11, "Reading");
                         ArrayList<QuestionModel> qm = dataBaseHelper.findQuestionByPart(12, "Reading");
                         questionModels.addAll(qm);
-
 
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
@@ -235,7 +231,6 @@ public class OnTheoPhanActivity extends Activity
                         setContentView(R.layout.on_theo_phan_layout_reading_p1);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart5);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai5);
-//                        btnNopBai.setEnabled(false);
 
                         TextView txtP5 = (TextView) findViewById(R.id.txtP5);
                         txtP5.setText(inforModels.get(0).getReadingInfor());
@@ -248,18 +243,20 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                checkAnswers2();
-                                ShowDialogResult();
+                                if(player!= null) player.stop();
+                                if (questionListenAdapterP23.is_filled())
+                                {
+                                    checkAnswers2();
+                                    ShowDialogResult();
+                                }
+                                else Toast.makeText(context, "Hãy trả lời tất cả các câu hỏi", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
                     }
                     case 5:
                     {
-                        n_question = 6;
                         questionModels = dataBaseHelper.findQuestionByPart(2, "Reading");
-
-
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
                         inforModels.add(inforModel);
@@ -267,7 +264,6 @@ public class OnTheoPhanActivity extends Activity
                         setContentView(R.layout.on_theo_phan_layout_reading_p1);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart5);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai5);
-//                        btnNopBai.setEnabled(false);
 
                         TextView txtP5 = (TextView) findViewById(R.id.txtP5);
                         txtP5.setText(inforModels.get(0).getReadingInfor());
@@ -281,18 +277,20 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                checkAnswers2();
-                                ShowDialogResult();
+                                if(player!= null) player.stop();
+                                if (questionListenAdapterP23.is_filled())
+                                {
+                                    checkAnswers2();
+                                    ShowDialogResult();
+                                }
+                                else Toast.makeText(context, "Hãy trả lời tất cả các câu hỏi", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
                     }
                     case 6:
                     {
-                        n_question = 7;
                         questionModels = dataBaseHelper.findQuestionByPart(3, "Reading");
-
-
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
                         inforModels.add(inforModel);
@@ -300,7 +298,6 @@ public class OnTheoPhanActivity extends Activity
                         setContentView(R.layout.on_theo_phan_layout_reading_p1);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart5);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai5);
-//                        btnNopBai.setEnabled(false);
 
                         TextView txtP5 = (TextView) findViewById(R.id.txtP5);
                         txtP5.setText(inforModels.get(0).getReadingInfor());
@@ -315,24 +312,26 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                checkAnswers2();
-                                ShowDialogResult();
+                                if(player!= null) player.stop();
+                                if (questionListenAdapterP23.is_filled())
+                                {
+                                    checkAnswers2();
+                                    ShowDialogResult();
+                                }
+                                else Toast.makeText(context, "Hãy trả lời tất cả các câu hỏi", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
                     }
                     case 7:
                     {
-                        n_question = 6;
                         questionModels = dataBaseHelper.findQuestionByPart(4, "Reading");
-
                         InforModel inforModel = new InforModel(1,1,1,"");
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
                         inforModels.add(inforModel);
 
                         setContentView(R.layout.on_theo_phan_layout_reading_p4);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart8);
-//                        btnNopBai.setEnabled(false);
 
                         TextView txtP8 = (TextView) findViewById(R.id.txtP8);
                         txtP8.setText(inforModels.get(0).getReadingInfor());
@@ -350,8 +349,13 @@ public class OnTheoPhanActivity extends Activity
                             @Override
                             public void onClick(View v)
                             {
-                                checkAnswers2();
-                                ShowDialogResult();
+                                if(player!= null) player.stop();
+                                if (questionListenAdapterP23.is_filled())
+                                {
+                                    checkAnswers2();
+                                    ShowDialogResult();
+                                }
+                                else Toast.makeText(context, "Hãy trả lời tất cả các câu hỏi", Toast.LENGTH_LONG).show();
                             }
                         });
                         break;
@@ -371,17 +375,27 @@ public class OnTheoPhanActivity extends Activity
         myBuilder.setMessage("Bạn có "+n_right_answer.toString()+"/"+ n_question +" câu trả lời đúng")
                 .setPositiveButton("Close", null)
                 .show();
+        btnNopBai.setText(R.string.xong);
+        btnNopBai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnTheoPhanActivity.this.finish();
+                Intent myIntent = new Intent(OnTheoPhanActivity.this, MainActivity.class);
+                myIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivities(new Intent[]{myIntent});
+            }
+        });
     }
     @SuppressLint("ResourceAsColor")
     void checkAnswers1()
     {
+        n_question=questionModels.size();
         n_right_answer=questionListenAdapterP1.check();
-        n_answer = 0;
     }
     void checkAnswers2()
     {
+        n_question=questionModels.size();
         n_right_answer=questionListenAdapterP23.check();
-        n_answer = 0;
     }
     void play(Context context, int resource)
     {

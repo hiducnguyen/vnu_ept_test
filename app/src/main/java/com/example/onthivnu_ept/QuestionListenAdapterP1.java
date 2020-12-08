@@ -210,4 +210,14 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
             case "D": {answerD.get(position).setBackgroundColor(trueColor);break;}
         }
     }
+    Boolean is_filled()
+    {
+        int count = 0;
+        for (int i = 0; i<questionModels.size();i++)
+        {
+            if (!listAnswer.get(i).equals("N")) count++;
+        }
+        if (count==questionModels.size()) return  true;
+        return false;
+    }
 }

@@ -46,8 +46,6 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
         this.inforModels = inforModels;
         this.resource = resource;
 
-
-        this.resource = resource;
         if(listAnswer.isEmpty()) {
             for (int i = 0; i < questionModels.size(); i++) {
                 listAnswer.add("N");
