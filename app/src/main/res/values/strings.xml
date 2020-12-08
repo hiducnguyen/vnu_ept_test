@@ -107,4 +107,8 @@
     <string name="in_part_3_you_will_hear_a_talk_after_the_second_listening_there_are_eight_questions_select_the_best_answer_to_each_question">In Part 3 you will hear a talk. After the second listening, there are eight questions. Select the best answer to each question.</string>
     <string name="previos">Previos</string>
     <string name="next">Next</string>
+    <string name="part_5">Part 5:</string>
+    <string name="part_6">Part 6:</string>
+    <string name="part_7">Part 7:</string>
+    <string name="part_8">Part 8:</string>
 </resources>

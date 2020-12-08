@@ -7,7 +7,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtDirectionPart3"
         android:text="@string/in_part_3_you_will_hear_a_talk_after_the_second_listening_there_are_eight_questions_select_the_best_answer_to_each_question">
 
     </TextView>

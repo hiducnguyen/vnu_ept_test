@@ -1,5 +1,6 @@
 package com.example.onthivnu_ept;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -24,9 +25,12 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
     private int resource;
     private ArrayList<QuestionModel> questionModels;
     private ArrayList<InforModel>inforModels;
-    RadioButton answerA,answerB,answerC,answerD;
+    Boolean is_done= false;
+    ArrayList<RadioButton> answerA = new ArrayList<>(),answerB= new ArrayList<>(),answerC= new ArrayList<>(),answerD= new ArrayList<>();
+    RadioButton ra, rb, rc, rd;
+    int trueColor = R.color.colorRed;
     ImageView img;
-    public static ArrayList<String> listAnswer;
+    ArrayList<String> listAnswer;
     MediaPlayer player;
 
     public MediaPlayer getPlayer() {
@@ -43,9 +47,14 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         listAnswer=new ArrayList<>();
         for(int i=0;i<questionModels.size();i++)
         {
+            answerA.add(ra);
+            answerB.add(rb);
+            answerC.add(rc);
+            answerD.add(rd);
             listAnswer.add("N");
         }
     }
+    @SuppressLint("ResourceAsColor")
     @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent)
@@ -55,54 +64,70 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
 
         TextView question = (TextView) row.findViewById(R.id.question1);
         img = (ImageView) row.findViewById(R.id.image1);
-        answerA = (RadioButton) row.findViewById(R.id.answerA);
-        answerB = (RadioButton) row.findViewById(R.id.answerB);
-        answerC = (RadioButton) row.findViewById(R.id.answerC);
-        answerD = (RadioButton) row.findViewById(R.id.answerD);
+        ra = (RadioButton) row.findViewById(R.id.answerA);
+        rb = (RadioButton) row.findViewById(R.id.answerB);
+        rc = (RadioButton) row.findViewById(R.id.answerC);
+        rd = (RadioButton) row.findViewById(R.id.answerD);
+
+        answerA.set(position,ra);
+        answerB.set(position,rb);
+        answerC.set(position,rc);
+        answerD.set(position,rd);
 
         question.setText(questionModels.get(position).getQuestion());
-        answerA.setText(questionModels.get(position).getAnswerA());
-        answerB.setText(questionModels.get(position).getAnswerB());
-        answerC.setText(questionModels.get(position).getAnswerC());
-        answerD.setText(questionModels.get(position).getAnswerD());
+        answerA.get(position).setText(questionModels.get(position).getAnswerA());
+        answerB.get(position).setText(questionModels.get(position).getAnswerB());
+        answerC.get(position).setText(questionModels.get(position).getAnswerC());
+        answerD.get(position).setText(questionModels.get(position).getAnswerD());
 
-        answerA.setChecked(listAnswer.get(position).equals("A"));
-        answerB.setChecked(listAnswer.get(position).equals("B"));
-        answerC.setChecked(listAnswer.get(position).equals("C"));
-        answerD.setChecked(listAnswer.get(position).equals("D"));
+        if (listAnswer.get(position).equals("A"))
+        {
+            answerA.get(position).setChecked(true);
+            if (is_done) check(position);
+        }
+        if (listAnswer.get(position).equals("B"))
+        {
+            answerB.get(position).setChecked(true);
+            if (is_done) check(position);
+        }
+        if (listAnswer.get(position).equals("C"))
+        {
+            answerC.get(position).setChecked(true);
+            if (is_done) check(position);
+        }
+        if (listAnswer.get(position).equals("D"))
+        {
+            answerD.get(position).setChecked(true);
+            if (is_done) check(position);
+        }
 
-        answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerA.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"A");
+                listAnswer.set(position,"A");
             }
         });
 
-        answerB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerB.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"B");
+                listAnswer.set(position,"B");
             }
         });
-        answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerC.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"C");
+                listAnswer.set(position,"C");
             }
         });
-        answerD.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerD.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"D");
-            }
+                listAnswer.set(position,"D"); }
         });
 
         img.setOnClickListener(new View.OnClickListener()
@@ -115,21 +140,40 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
         });
 
         img.setFocusable(false);
-        answerA.setFocusable(false);
-        answerB.setFocusable(false);
-        answerC.setFocusable(false);
-        answerD.setFocusable(false);
-        img.setFocusableInTouchMode(false);
-        answerA.setFocusableInTouchMode(false);
-        answerB.setFocusableInTouchMode(false);
-        answerC.setFocusableInTouchMode(false);
-        answerD.setFocusableInTouchMode(false);
+        answerA.get(position).setFocusable(false);
+        answerB.get(position).setFocusable(false);
+        answerC.get(position).setFocusable(false);
+        answerD.get(position).setFocusable(false);
 
         return (row);
     }
+
+    @SuppressLint("ResourceAsColor")
+    public int check()
+    {
+        int result = 0;
+        is_done= true;
+        for (int i = 0; i < questionModels.size(); i++)
+        {
+            answerA.get(i).setEnabled(false);
+            answerB.get(i).setEnabled(false);
+            answerC.get(i).setEnabled(false);
+            answerD.get(i).setEnabled(false);
+            if (questionModels.get(i).getRightAnswer().equals(listAnswer.get(i))) result++;
+            switch (questionModels.get(i).getRightAnswer())
+            {
+                case "A": {answerA.get(i).setBackgroundColor(trueColor);break;}
+                case "B": {answerB.get(i).setBackgroundColor(trueColor);break;}
+                case "C": {answerC.get(i).setBackgroundColor(trueColor);break;}
+                case "D": {answerD.get(i).setBackgroundColor(trueColor);break;}
+            }
+        }
+
+        return result;
+    }
+
     void play(Context context, int resource)
     {
-
         if (player != null)
         {
             player.release();
@@ -150,5 +194,20 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
     String finalResult(int position)
     {
         return listAnswer.get(position);
+    }
+    @SuppressLint("ResourceAsColor")
+    void check(int position)
+    {
+        answerA.get(position).setEnabled(false);
+        answerB.get(position).setEnabled(false);
+        answerC.get(position).setEnabled(false);
+        answerD.get(position).setEnabled(false);
+        switch (questionModels.get(position).getRightAnswer())
+        {
+            case "A": {answerA.get(position).setBackgroundColor(trueColor);break;}
+            case "B": {answerB.get(position).setBackgroundColor(trueColor);break;}
+            case "C": {answerC.get(position).setBackgroundColor(trueColor);break;}
+            case "D": {answerD.get(position).setBackgroundColor(trueColor);break;}
+        }
     }
 }

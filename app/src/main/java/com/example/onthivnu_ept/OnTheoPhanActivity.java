@@ -1,5 +1,6 @@
 package com.example.onthivnu_ept;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -26,6 +27,7 @@ public class OnTheoPhanActivity extends Activity
     MediaPlayer player;
     Integer n_right_answer = 0;
     Integer n_question = 0;
+    int trueColor =R.color.colorRed;
     Integer n_answer;
     Button btnNopBai;
     ImageView img;
@@ -63,8 +65,6 @@ public class OnTheoPhanActivity extends Activity
 
                         for (int i = 0; i < n_question; i++)
                         {
-                            Log.i("hihi", questionModels.get(i).toString());
-
                             InforModel inforModel = new InforModel();
                             inforModel = dataBaseHelper.findInforById(questionModels.get(i).getIdInfor());
                             inforModels.add(inforModel);
@@ -102,11 +102,6 @@ public class OnTheoPhanActivity extends Activity
                     {
                         n_question = 6;
                         questionModels = dataBaseHelper.findQuestionByPart(2, "Listening");
-
-                        for (int i = 0; i < questionModels.size(); i++)
-                        {
-                            Log.i("hihi", questionModels.get(i).toString());
-                        }
 
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
@@ -147,17 +142,14 @@ public class OnTheoPhanActivity extends Activity
                         n_question = 8;
                         questionModels = dataBaseHelper.findQuestionByPart(3, "Listening");
 
-                        for (int i = 0; i < questionModels.size(); i++)
-                        {
-                            Log.i("hihi", questionModels.get(i).toString());
-                        }
-
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
                         inforModels.add(inforModel);
 
                         setContentView(R.layout.on_theo_phan_layout_listenning_p23);
                         myListQuestion= (ListView) findViewById(R.id.myListQuestionPart2);
+                        TextView textView = (TextView) findViewById(R.id.txtDirectionPart23);
+                        textView.setText(R.string.in_part_3_you_will_hear_a_talk_after_the_second_listening_there_are_eight_questions_select_the_best_answer_to_each_question);
                         btnNopBai = (Button) findViewById(R.id.btnNopBai2);
 //                        btnNopBai.setEnabled(false);
                         img = (ImageView) findViewById(R.id.image23);
@@ -190,11 +182,6 @@ public class OnTheoPhanActivity extends Activity
                     {
                         n_question = 8;
                         questionModels = dataBaseHelper.findQuestionByPart(4, "Listening");
-
-                        for (int i = 0; i < questionModels.size(); i++)
-                        {
-                            Log.i("hihi", questionModels.get(i).toString());
-                        }
 
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
@@ -240,10 +227,6 @@ public class OnTheoPhanActivity extends Activity
                         ArrayList<QuestionModel> qm = dataBaseHelper.findQuestionByPart(12, "Reading");
                         questionModels.addAll(qm);
 
-                        for (int i = 0; i < questionModels.size(); i++)
-                        {
-                            Log.i("hihi", questionModels.get(i).toString());
-                        }
 
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
@@ -276,10 +259,6 @@ public class OnTheoPhanActivity extends Activity
                         n_question = 6;
                         questionModels = dataBaseHelper.findQuestionByPart(2, "Reading");
 
-                        for (int i = 0; i < questionModels.size(); i++)
-                        {
-                            Log.i("hihi", questionModels.get(i).toString());
-                        }
 
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
@@ -292,7 +271,8 @@ public class OnTheoPhanActivity extends Activity
 
                         TextView txtP5 = (TextView) findViewById(R.id.txtP5);
                         txtP5.setText(inforModels.get(0).getReadingInfor());
-
+                        TextView textView = (TextView) findViewById(R.id.txtPart);
+                        textView.setText(R.string.part_6);
                         context = OnTheoPhanActivity.this;
                         questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
                         myListQuestion.setAdapter(questionListenAdapterP23);
@@ -312,10 +292,6 @@ public class OnTheoPhanActivity extends Activity
                         n_question = 7;
                         questionModels = dataBaseHelper.findQuestionByPart(3, "Reading");
 
-                        for (int i = 0; i < questionModels.size(); i++)
-                        {
-                            Log.i("hihi", questionModels.get(i).toString());
-                        }
 
                         InforModel inforModel = new InforModel();
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
@@ -328,6 +304,8 @@ public class OnTheoPhanActivity extends Activity
 
                         TextView txtP5 = (TextView) findViewById(R.id.txtP5);
                         txtP5.setText(inforModels.get(0).getReadingInfor());
+                        TextView textView = (TextView) findViewById(R.id.txtPart);
+                        textView.setText(R.string.part_7);
 
                         context = OnTheoPhanActivity.this;
                         questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
@@ -348,11 +326,6 @@ public class OnTheoPhanActivity extends Activity
                         n_question = 6;
                         questionModels = dataBaseHelper.findQuestionByPart(4, "Reading");
 
-                        for (int i = 0; i < questionModels.size(); i++)
-                        {
-                            Log.i("hihi", questionModels.get(i).toString());
-                        }
-
                         InforModel inforModel = new InforModel(1,1,1,"");
                         inforModel = dataBaseHelper.findInforById(questionModels.get(0).getIdInfor());
                         inforModels.add(inforModel);
@@ -363,8 +336,10 @@ public class OnTheoPhanActivity extends Activity
 
                         TextView txtP8 = (TextView) findViewById(R.id.txtP8);
                         txtP8.setText(inforModels.get(0).getReadingInfor());
+                        TextView textView = (TextView) findViewById(R.id.txtPart);
+                        textView.setText(R.string.part_8);
                         ImageView img8 = (ImageView) findViewById(R.id.image8);
-                        img8.setBackgroundResource(inforModels.get(0).getListeningInfor());
+                        img8.setBackgroundResource(inforModels.get(0).getImgInfor());
 
                         context = OnTheoPhanActivity.this;
                         questionListenAdapterP23 = new QuestionListenAdapterP23(context,R.layout.question_form_02,questionModels);
@@ -397,38 +372,16 @@ public class OnTheoPhanActivity extends Activity
                 .setPositiveButton("Close", null)
                 .show();
     }
+    @SuppressLint("ResourceAsColor")
     void checkAnswers1()
     {
-        n_right_answer=0;
+        n_right_answer=questionListenAdapterP1.check();
         n_answer = 0;
-
-        for (int i = 0; i < n_question; i++)
-        {
-            String str1 = questionListenAdapterP1.finalResult(i);
-
-            if (questionModels.get(i).getRightAnswer().equals(str1))
-            {
-                n_right_answer++;
-                n_answer++;
-            }
-        }
     }
     void checkAnswers2()
     {
-
-        n_right_answer=0;
+        n_right_answer=questionListenAdapterP23.check();
         n_answer = 0;
-
-        for (int i = 0; i < n_question; i++)
-        {
-            String str2 = questionListenAdapterP23.finalResult(i);
-
-            if (questionModels.get(i).getRightAnswer().equals(str2))
-            {
-                n_right_answer++;
-                n_answer++;
-            }
-        }
     }
     void play(Context context, int resource)
     {

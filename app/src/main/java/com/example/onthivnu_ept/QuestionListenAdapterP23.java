@@ -1,7 +1,9 @@
 package com.example.onthivnu_ept;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,95 +18,170 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel>
-{
+public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel> {
     private Context context;
     private int resource;
     private ArrayList<QuestionModel> questionModels;
     TextView question;
-    RadioButton answerA,answerB,answerC,answerD;
-    public static ArrayList<String> listAnswer;
-    public QuestionListenAdapterP23(Context context, int resource, ArrayList<QuestionModel> questionModels)
-    {
+    Boolean is_done = false;
+    ArrayList<RadioButton> answerA = new ArrayList<>(), answerB = new ArrayList<>(), answerC = new ArrayList<>(), answerD = new ArrayList<>();
+    RadioButton ra, rb, rc, rd;
+    int trueColor = R.color.colorRed;
+    ArrayList<String> listAnswer;
+
+    public QuestionListenAdapterP23(Context context, int resource, ArrayList<QuestionModel> questionModels) {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
         this.resource = resource;
-        listAnswer=new ArrayList<>();
-        for(int i=  0; i < questionModels.size();i++)
-        {
+        listAnswer = new ArrayList<>();
+        for (int i = 0; i < questionModels.size(); i++) {
+            answerA.add(ra);
+            answerB.add(rb);
+            answerC.add(rc);
+            answerD.add(rd);
             listAnswer.add("N");
         }
     }
+
     @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent)
-    {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View row = inflater.inflate(R.layout.question_form_02, null);
         question = (TextView) row.findViewById(R.id.question2);
-        answerA = (RadioButton) row.findViewById(R.id.answerA);
-        answerB = (RadioButton) row.findViewById(R.id.answerB);
-        answerC = (RadioButton) row.findViewById(R.id.answerC);
-        answerD = (RadioButton) row.findViewById(R.id.answerD);
+        ra = (RadioButton) row.findViewById(R.id.answerA);
+        rb = (RadioButton) row.findViewById(R.id.answerB);
+        rc = (RadioButton) row.findViewById(R.id.answerC);
+        rd = (RadioButton) row.findViewById(R.id.answerD);
 
         question.setText(questionModels.get(position).getQuestion());
-        answerA.setText(questionModels.get(position).getAnswerA());
-        answerB.setText(questionModels.get(position).getAnswerB());
-        answerC.setText(questionModels.get(position).getAnswerC());
-        answerD.setText(questionModels.get(position).getAnswerD());
+        ra.setText(questionModels.get(position).getAnswerA());
+        rb.setText(questionModels.get(position).getAnswerB());
+        rc.setText(questionModels.get(position).getAnswerC());
+        rd.setText(questionModels.get(position).getAnswerD());
 
-        answerA.setChecked(listAnswer.get(position).equals("A"));
-        answerB.setChecked(listAnswer.get(position).equals("B"));
-        answerC.setChecked(listAnswer.get(position).equals("C"));
-        answerD.setChecked(listAnswer.get(position).equals("D"));
-        answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerA.set(position, ra);
+        answerB.set(position, rb);
+        answerC.set(position, rc);
+        answerD.set(position, rd);
+
+        if (listAnswer.get(position).equals("A")) {
+            answerA.get(position).setChecked(true);
+            if (is_done) check(position);
+        }
+        if (listAnswer.get(position).equals("B")) {
+            answerB.get(position).setChecked(true);
+            if (is_done) check(position);
+        }
+        if (listAnswer.get(position).equals("C")) {
+            answerC.get(position).setChecked(true);
+            if (is_done) check(position);
+        }
+        if (listAnswer.get(position).equals("D")) {
+            answerD.get(position).setChecked(true);
+            if (is_done) check(position);
+        }
+
+        answerA.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"A");
+                listAnswer.set(position, "A");
             }
         });
 
-        answerB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerB.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"B");
+                listAnswer.set(position, "B");
             }
         });
-        answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerC.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"C");
+                listAnswer.set(position, "C");
             }
         });
-        answerD.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerD.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)
-                    listAnswer.set(position,"D");
+                listAnswer.set(position, "D");
             }
         });
 
-        answerA.setFocusable(false);
-        answerB.setFocusable(false);
-        answerC.setFocusable(false);
-        answerD.setFocusable(false);
+        answerA.get(position).setFocusable(false);
+        answerB.get(position).setFocusable(false);
+        answerC.get(position).setFocusable(false);
+        answerD.get(position).setFocusable(false);
 
-        answerA.setFocusableInTouchMode(false);
-        answerB.setFocusableInTouchMode(false);
-        answerC.setFocusableInTouchMode(false);
-        answerD.setFocusableInTouchMode(false);
         return (row);
     }
-    public String finalResult(int position)
-    {
+
+    @SuppressLint("ResourceAsColor")
+    public int check() {
+        int result = 0;
+        is_done = true;
+        for (int i = 0; i < questionModels.size(); i++) {
+            answerA.get(i).setEnabled(false);
+            answerB.get(i).setEnabled(false);
+            answerC.get(i).setEnabled(false);
+            answerD.get(i).setEnabled(false);
+            if (questionModels.get(i).getRightAnswer().equals(listAnswer.get(i))) result++;
+            switch (questionModels.get(i).getRightAnswer()) {
+                case "A": {
+                    answerA.get(i).setBackgroundColor(trueColor);
+                    break;
+                }
+                case "B": {
+                    answerB.get(i).setBackgroundColor(trueColor);
+                    break;
+                }
+                case "C": {
+                    answerC.get(i).setBackgroundColor(trueColor);
+                    break;
+                }
+                case "D": {
+                    answerD.get(i).setBackgroundColor(trueColor);
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
+
+
+    String finalResult(int position) {
         return listAnswer.get(position);
+    }
+
+    @SuppressLint("ResourceAsColor")
+    void check(int position) {
+        answerA.get(position).setEnabled(false);
+        answerB.get(position).setEnabled(false);
+        answerC.get(position).setEnabled(false);
+        answerD.get(position).setEnabled(false);
+        switch (questionModels.get(position).getRightAnswer()) {
+            case "A": {
+                answerA.get(position).setBackgroundColor(trueColor);
+                break;
+            }
+            case "B": {
+                answerB.get(position).setBackgroundColor(trueColor);
+                break;
+            }
+            case "C": {
+                answerC.get(position).setBackgroundColor(trueColor);
+                break;
+            }
+            case "D": {
+                answerD.get(position).setBackgroundColor(trueColor);
+                break;
+            }
+        }
     }
 }

@@ -31,10 +31,6 @@ public class ThiNhanhActivity extends Activity
     inforModelsPart3 = new ArrayList<>(),inforModelsPart4 = new ArrayList<>(),
     inforModelsPart5 = new ArrayList<>(),inforModelsPart6 = new ArrayList<>(),
     inforModelsPart7 = new ArrayList<>(),inforModelsPart8 = new ArrayList<>();
-    public ArrayList<String> answerList1=new ArrayList<>(),answerList2=new ArrayList<>(),
-            answerList3=new ArrayList<>(),answerList4=new ArrayList<>(),
-            answerList5=new ArrayList<>(),answerList6=new ArrayList<>(),
-            answerList7=new ArrayList<>(),answerList8=new ArrayList<>();
 
     Context context;
     ListView myListQuestionPart1,myListQuestionPart2,
@@ -73,20 +69,11 @@ public class ThiNhanhActivity extends Activity
             InforModel inforModel = new InforModel();
             inforModel = dataBaseHelper.findInforById(questionModelsPart1.get(i).getIdInfor());
             inforModelsPart1.add(inforModel);
-            answerList1.add(questionModelsPart1.get(i).getRightAnswer());
         }
-        if (adapter==null) adapter = new ThiNhanhAdapter(this,R.layout.question_form_listening_p1,questionModelsPart1,inforModelsPart1,answerList1);
+        if (adapter==null) adapter = new ThiNhanhAdapter(this,R.layout.question_form_listening_p1,questionModelsPart1,inforModelsPart1);
         context = ThiNhanhActivity.this;
         myListQuestionPart1.setAdapter(adapter);
 
-
-        myListQuestionPart1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id)
-            {
-
-            }
-        });
     }
     void doPart2()
     {
@@ -102,12 +89,8 @@ public class ThiNhanhActivity extends Activity
         InforModel inforModel = new InforModel();
         inforModel = dataBaseHelper.findInforById(questionModelsPart2.get(0).getIdInfor());
         inforModelsPart2.add(inforModel);
-        for (int i = 0; i < questionModelsPart2.size(); i++)
-        {
-            answerList2.add(questionModelsPart2.get(i).getRightAnswer());
-        }
         context = ThiNhanhActivity.this;
-        if (adapterP2==null) adapterP2 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart2,inforModelsPart2,answerList2);
+        if (adapterP2==null) adapterP2 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart2);
         myListQuestionPart2.setAdapter(adapterP2);
         imgPart2.setOnClickListener(new View.OnClickListener()
         {
@@ -145,12 +128,8 @@ public class ThiNhanhActivity extends Activity
         inforModel = dataBaseHelper.findInforById(questionModelsPart3.get(0).getIdInfor());
         inforModelsPart3.add(inforModel);
 
-        for (int i = 0; i < questionModelsPart3.size(); i++)
-        {
-            answerList3.add(questionModelsPart3.get(i).getRightAnswer());
-        }
         context = ThiNhanhActivity.this;
-        if (adapterP3==null) adapterP3 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart3,inforModelsPart3,answerList3);
+        if (adapterP3==null) adapterP3 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart3);
         myListQuestionPart3.setAdapter(adapterP3);
         imgPart3.setOnClickListener(new View.OnClickListener()
         {
@@ -190,12 +169,8 @@ public class ThiNhanhActivity extends Activity
         txtP4tn = (TextView) findViewById(R.id.txtP4tn);
         txtP4tn.setText(inforModelsPart4.get(0).getReadingInfor());
 
-        for (int i = 0; i < questionModelsPart4.size(); i++)
-        {
-            answerList4.add(questionModelsPart4.get(i).getRightAnswer());
-        }
         context = ThiNhanhActivity.this;
-        if (adapterP4==null) adapterP4 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart4,inforModelsPart4,answerList4);
+        if (adapterP4==null) adapterP4 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart4);
         myListQuestionPart4.setAdapter(adapterP4);
         imgPart4.setOnClickListener(new View.OnClickListener()
         {
@@ -236,12 +211,8 @@ public class ThiNhanhActivity extends Activity
         txtP5tn = (TextView) findViewById(R.id.txtP5tn);
         txtP5tn.setText(inforModelsPart5.get(0).getReadingInfor());
 
-        for (int i = 0; i < questionModelsPart5.size(); i++)
-        {
-            answerList5.add(questionModelsPart5.get(i).getRightAnswer());
-        }
         context = ThiNhanhActivity.this;
-        if (adapterP5==null) adapterP5 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart5,inforModelsPart5,answerList5);
+        if (adapterP5==null) adapterP5 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart5);
         myListQuestionPart5.setAdapter(adapterP5);
         btnNext5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -272,12 +243,8 @@ public class ThiNhanhActivity extends Activity
         txtP6tn = (TextView) findViewById(R.id.txtP6tn);
         txtP6tn.setText(inforModelsPart6.get(0).getReadingInfor());
 
-        for (int i = 0; i < questionModelsPart6.size(); i++)
-        {
-            answerList6.add(questionModelsPart6.get(i).getRightAnswer());
-        }
         context = ThiNhanhActivity.this;
-        if (adapterP6==null) adapterP6 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart6,inforModelsPart6,answerList6);
+        if (adapterP6==null) adapterP6 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart6);
         myListQuestionPart6.setAdapter(adapterP6);
 
         btnNext6.setOnClickListener(new View.OnClickListener() {
@@ -307,12 +274,8 @@ public class ThiNhanhActivity extends Activity
         inforModel = dataBaseHelper.findInforById(questionModelsPart7.get(0).getIdInfor());
         inforModelsPart7.add(inforModel);
 
-        for (int i = 0; i < questionModelsPart7.size(); i++)
-        {
-            answerList7.add(questionModelsPart7.get(i).getRightAnswer());
-        }
         context = ThiNhanhActivity.this;
-        if (adapterP7==null) adapterP7 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart7,inforModelsPart7,answerList7);
+        if (adapterP7==null) adapterP7 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart7);
         myListQuestionPart7.setAdapter(adapterP7);
         txtP7tn = (TextView) findViewById(R.id.txtP7tn);
         txtP7tn.setText(inforModelsPart7.get(0).getReadingInfor());
@@ -346,12 +309,8 @@ public class ThiNhanhActivity extends Activity
         txtP8tn = (TextView) findViewById(R.id.txtP8tn);
         txtP8tn.setText(inforModelsPart8.get(0).getReadingInfor());
 
-        for (int i = 0; i < questionModelsPart8.size(); i++)
-        {
-            answerList8.add(questionModelsPart8.get(i).getRightAnswer());
-        }
         context = ThiNhanhActivity.this;
-        if (adapterP8==null) adapterP8 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart8,inforModelsPart8,answerList8);
+        if (adapterP8==null) adapterP8 = new ThiNhanhAdapter2(this,R.layout.question_form_02,questionModelsPart8);
         myListQuestionPart8.setAdapter(adapterP8);
         btnNext8.setEnabled(false);
         btnPrevios8.setOnClickListener(new View.OnClickListener() {
