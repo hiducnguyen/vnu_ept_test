@@ -108,7 +108,7 @@ public class QuestionModel {
         this.part = part;
     }
 
-    public void set(String myQuestion, String myAnswerA, String myAnswerB, String myAnswerC, String myAnswerD, String myRightAnswer, String myType, int myIdInfor, int myPart){
+    public void set(String myQuestion, String myAnswerA, String myAnswerB, String myAnswerC, String myAnswerD, String myRightAnswer, String myType, int myIdInfor, int myPart) {
         setQuestion(myQuestion);
         setAnswerA(myAnswerA);
         setAnswerB(myAnswerB);

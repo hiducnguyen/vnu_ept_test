@@ -48,7 +48,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     + COLUMN_ID_INFOR + " INTEGER, "
                     + COLUMN_PART + " INTEGER, "
                     + "FOREIGN KEY (" + COLUMN_ID_INFOR + ") REFERENCES " + TABLE_INFORMATION + " (" + COLUMN_ID + ")"
-                    +")";
+                    + ")";
             String createTableInfor = "CREATE TABLE " + TABLE_INFORMATION + " ("
                     + COLUMN_ID + " INTEGER, "
                     + COLUMN_IMG_INFOR + " INTEGER, "
@@ -56,8 +56,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     + COLUMN_READING_INFOR + " TEXT)";
             db.execSQL(createTableQuestion);
             db.execSQL(createTableInfor);
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
         }
     }
 
@@ -66,7 +65,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean addQuestion(String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer, String type, int idInfor, int part){
+    public boolean addQuestion(String question, String answerA, String answerB, String answerC, String answerD, String rightAnswer, String type, int idInfor, int part) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -81,14 +80,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_TYPE, type);
 
         long insert = db.insert(TABLE_QUESTION, null, cv);
-        if (insert == -1){
+        if (insert == -1) {
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
-    public boolean addInfor(int id, int imgInfor, int listeningInfor, String readingInfor){
+
+    public boolean addInfor(int id, int imgInfor, int listeningInfor, String readingInfor) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -98,17 +97,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_READING_INFOR, readingInfor);
 
         long insert = db.insert(TABLE_INFORMATION, null, cv);
-        if (insert == -1){
+        if (insert == -1) {
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
 
-    public ArrayList<QuestionModel> findQuestionByPart(int myPart, String myType){
+    public ArrayList<QuestionModel> findQuestionByPart(int myPart, String myType) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_PART + " = " + Integer.toString(myPart)
+        String query = "SELECT * FROM " + TABLE_QUESTION + " WHERE " + COLUMN_PART + " = " + Integer.toString(myPart)
                 + " AND " + COLUMN_TYPE + " = '" + myType + "'";
         Cursor cursor = db.rawQuery(query, null);
 
@@ -117,7 +115,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         int num = cursor.getCount();
 
         cursor.moveToFirst();
-        for (int i = 0; i < num; i++){
+        for (int i = 0; i < num; i++) {
             QuestionModel q = new QuestionModel();
 
             q.setQuestion(cursor.getString(cursor.getColumnIndex(COLUMN_QUESTION)));
@@ -137,9 +135,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public ArrayList<QuestionModel> findQuestionById(int myId){
+    public ArrayList<QuestionModel> findQuestionById(int myId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_ID_INFOR + " = " + Integer.toString(myId);
+        String query = "SELECT * FROM " + TABLE_QUESTION + " WHERE " + COLUMN_ID_INFOR + " = " + Integer.toString(myId);
         Cursor cursor = db.rawQuery(query, null);
 
         ArrayList<QuestionModel> list = new ArrayList<>();
@@ -147,7 +145,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         int num = cursor.getCount();
 
         cursor.moveToFirst();
-        for (int i = 0; i < num; i++){
+        for (int i = 0; i < num; i++) {
             QuestionModel q = new QuestionModel();
 
             q.setQuestion(cursor.getString(cursor.getColumnIndex(COLUMN_QUESTION)));
@@ -167,9 +165,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public InforModel findInforById(int id){
+    public InforModel findInforById(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM "+ TABLE_INFORMATION + " WHERE " + COLUMN_ID + " = " + Integer.toString(id);
+        String query = "SELECT * FROM " + TABLE_INFORMATION + " WHERE " + COLUMN_ID + " = " + Integer.toString(id);
         Cursor cursor = db.rawQuery(query, null);
 
         cursor.moveToFirst();
@@ -183,12 +181,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return i;
     }
 
-    public ArrayList<InforModel> findInforByPart(int myPart, String myType){
+    public ArrayList<InforModel> findInforByPart(int myPart, String myType) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT DISTINCT " + TABLE_INFORMATION + ".* FROM "
                 + TABLE_QUESTION + " INNER JOIN " + TABLE_INFORMATION + " ON "
                 + TABLE_QUESTION + ".ID_infor = " + TABLE_INFORMATION + ".ID WHERE "
-                + TABLE_QUESTION +".Part = " + myPart + " AND " + TABLE_QUESTION + ".Type = '" + myType + "'";
+                + TABLE_QUESTION + ".Part = " + myPart + " AND " + TABLE_QUESTION + ".Type = '" + myType + "'";
 
         Cursor cursor = db.rawQuery(query, null);
 
@@ -197,7 +195,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         int num = cursor.getCount();
 
         cursor.moveToFirst();
-        for (int i = 0; i < num; i++){
+        for (int i = 0; i < num; i++) {
             InforModel myInfor = new InforModel();
 
             myInfor.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
@@ -212,9 +210,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public int countQuestionByPart(int myPart, String myType){
+    public int countQuestionByPart(int myPart, String myType) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT COUNT(*) FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_PART + " = " + Integer.toString(myPart)
+        String query = "SELECT COUNT(*) FROM " + TABLE_QUESTION + " WHERE " + COLUMN_PART + " = " + Integer.toString(myPart)
                 + " AND " + COLUMN_TYPE + " = '" + myType + "'";
         Cursor cursor = db.rawQuery(query, null);
 
@@ -225,9 +223,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return result;
     }
-    public int countIdByPart(int myPart, String myType){
+
+    public int countIdByPart(int myPart, String myType) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT COUNT (DISTINCT " + TABLE_INFORMATION + ".ID) FROM " + TABLE_QUESTION + " INNER JOIN " + TABLE_INFORMATION + " ON " + TABLE_QUESTION + ".ID_infor = " + TABLE_INFORMATION + ".ID WHERE " + TABLE_QUESTION +".Part = " + myPart + " AND " + TABLE_QUESTION + ".Type = '" + myType + "'";
+        String query = "SELECT COUNT (DISTINCT " + TABLE_INFORMATION + ".ID) FROM " + TABLE_QUESTION + " INNER JOIN " + TABLE_INFORMATION + " ON " + TABLE_QUESTION + ".ID_infor = " + TABLE_INFORMATION + ".ID WHERE " + TABLE_QUESTION + ".Part = " + myPart + " AND " + TABLE_QUESTION + ".Type = '" + myType + "'";
 
         Cursor cursor = db.rawQuery(query, null);
 

@@ -20,42 +20,40 @@ import androidx.appcompat.widget.ViewUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
-{
+public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel> {
     private Context context;
     private int resource;
     private ArrayList<QuestionModel> questionModels;
     int i;
 
 
-    RadioButton answerA,answerB,answerC,answerD;
+    RadioButton answerA, answerB, answerC, answerD;
     ImageView img;
     MediaPlayer player;
 
-    private ArrayList<String> listAnswer=new ArrayList<>();
+    private ArrayList<String> listAnswer = new ArrayList<>();
 
-    public OnNgauNhienAdapter2(Context context, int resource, ArrayList<QuestionModel> questionModels)
-    {
+    public OnNgauNhienAdapter2(Context context, int resource, ArrayList<QuestionModel> questionModels) {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
 
 
         this.resource = resource;
-        i=0;
+        i = 0;
         listAnswer.clear();
-        if(listAnswer.isEmpty()) {
+        if (listAnswer.isEmpty()) {
             for (int i = 0; i < questionModels.size(); i++) {
                 listAnswer.add("N");
             }
         }
     }
+
     @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent)
-    {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.question_form_02, null,false);
+        View row = inflater.inflate(R.layout.question_form_02, null, false);
 
         TextView question = (TextView) row.findViewById(R.id.question2);
         answerA = (RadioButton) row.findViewById(R.id.answerA);
@@ -79,7 +77,7 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
 
-                if (isChecked) listAnswer.set(position,"A");
+                if (isChecked) listAnswer.set(position, "A");
 
             }
         });
@@ -89,7 +87,7 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
 
-                if (isChecked) listAnswer.set(position,"B");
+                if (isChecked) listAnswer.set(position, "B");
             }
         });
         answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -97,7 +95,7 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
 
-                if (isChecked) listAnswer.set(position,"C");
+                if (isChecked) listAnswer.set(position, "C");
 
             }
         });
@@ -106,11 +104,10 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
 
-                if (isChecked) listAnswer.set(position,"D");
+                if (isChecked) listAnswer.set(position, "D");
 
             }
         });
-
 
 
         answerA.setFocusable(false);

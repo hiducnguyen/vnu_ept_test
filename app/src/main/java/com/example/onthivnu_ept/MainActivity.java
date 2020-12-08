@@ -16,10 +16,9 @@ import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements View.OnClickListener
-{
-    private Button btnExit,btnThiThu,btnThiNhanh,
-            btnAboutUs,btnOnNgauNhien,btnOnTheoPhan;
+public class MainActivity extends Activity implements View.OnClickListener {
+    private Button btnExit, btnThiThu, btnThiNhanh,
+            btnAboutUs, btnOnNgauNhien, btnOnTheoPhan;
     private Context context;
     private Bundle myBundle;
     private Intent myIntent;
@@ -27,12 +26,11 @@ public class MainActivity extends Activity implements View.OnClickListener
     private SQLiteDatabase dataBase;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-        if (!validDataBase()){
+        if (!validDataBase()) {
             InitiateDataBase initDB = new InitiateDataBase();
             initDB.start(dataBaseHelper);
         }
@@ -50,7 +48,7 @@ public class MainActivity extends Activity implements View.OnClickListener
 
         ArrayList<QuestionModel> l = dataBaseHelper.findQuestionByPart(2, "Listening");
 
-        for (int i = 0; i < l.size(); i++){
+        for (int i = 0; i < l.size(); i++) {
             Log.i("hihi", l.get(i).toString());
         }
 
@@ -63,61 +61,59 @@ public class MainActivity extends Activity implements View.OnClickListener
         Log.i("hihi", Integer.toString(dataBaseHelper.countQuestionByPart(2, "Listening")));
         Log.i("hihi", Integer.toString(dataBaseHelper.countIdByPart(2, "Listening")));
     }
-    public boolean validDataBase(){
+
+    public boolean validDataBase() {
         dataBaseHelper = new DataBaseHelper(MainActivity.this);
-        try{
+        try {
             dataBase = dataBaseHelper.getReadableDatabase();
             Cursor cursor = dataBase.rawQuery("SELECT * FROM QUESTION", null);
-            if (cursor.moveToFirst()){
+            if (cursor.moveToFirst()) {
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             return false;
         }
     }
-    public void setView()
-    {
+
+    public void setView() {
         btnExit = (Button) findViewById(R.id.btnExit);
         btnThiThu = (Button) findViewById(R.id.btnThiThu);
         btnThiNhanh = (Button) findViewById(R.id.btnThiNhanh);
-        btnAboutUs  = (Button) findViewById(R.id.btnAboutUs);
+        btnAboutUs = (Button) findViewById(R.id.btnAboutUs);
         btnOnNgauNhien = (Button) findViewById(R.id.btnOnThiNgauNhien);
         btnOnTheoPhan = (Button) findViewById(R.id.btnOnThiTheoPhan);
 
         btnExit.setOnClickListener(this);
-        btnThiNhanh.setOnClickListener( this);
+        btnThiNhanh.setOnClickListener(this);
         btnThiThu.setOnClickListener(this);
         btnOnNgauNhien.setOnClickListener(this);
         btnOnTheoPhan.setOnClickListener(this);
         btnAboutUs.setOnClickListener(this);
 
     }
-    public void onClick(View view)
-    {
+
+    public void onClick(View view) {
         int id = view.getId();
-        switch (id)
-        {
+        switch (id) {
             case R.id.btnExit:
                 finish();
                 break;
             case R.id.btnThiNhanh:
-                myIntent = new Intent(this,ThiNhanhActivity.class);
+                myIntent = new Intent(this, ThiNhanhActivity.class);
                 startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnAboutUs:
-                myIntent = new Intent(this,AboutUs_activity.class);
+                myIntent = new Intent(this, AboutUs_activity.class);
                 startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnOnThiTheoPhan:
-                myIntent = new Intent(this,OnTheoPhanActivity.class);
+                myIntent = new Intent(this, OnTheoPhanActivity.class);
                 startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnOnThiNgauNhien:
-                myIntent = new Intent(this,LuaChonCauHoi.class);
+                myIntent = new Intent(this, LuaChonCauHoi.class);
                 startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnThiThu:

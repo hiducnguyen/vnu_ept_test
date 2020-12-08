@@ -3,10 +3,11 @@ package com.example.onthivnu_ept;
 public class InitiateDataBase {
     public InitiateDataBase() {
     }
-    public void start(DataBaseHelper dbHelper){
+
+    public void start(DataBaseHelper dbHelper) {
         //ID_infor = 1, part = 2, type = Listening
         //Information
-        dbHelper.addInfor(1, 0,  R.raw.id1_part2, "");
+        dbHelper.addInfor(1, 0, R.raw.id1_part2, "");
         //Questions
         dbHelper.addQuestion("The topic of the radio program probably is _____.",
                 "Never think about past mistakes",
@@ -794,7 +795,7 @@ public class InitiateDataBase {
                 16,
                 3);
         //Information
-        dbHelper.addInfor(17, R.drawable.id17_part4,0, "\tCOLUMBIAN EXCHANGE\n" +
+        dbHelper.addInfor(17, R.drawable.id17_part4, 0, "\tCOLUMBIAN EXCHANGE\n" +
                 "1. The Columbian Exchange was the “exchange of plants, animals, foods, human populations " +
                 "(including slaves) communicable diseases, and ideas between the Eastern and Western " +
                 "hemispheres that occurred after 1492.” The term “Columbian Exchange,” coined in 1972 by " +

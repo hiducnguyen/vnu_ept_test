@@ -19,24 +19,22 @@ import androidx.appcompat.widget.ViewUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
-{
+public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel> {
     private Context context;
     private int resource;
     private ArrayList<QuestionModel> questionModels;
-    ArrayList<RadioButton> answerA = new ArrayList<>(),answerB= new ArrayList<>(),answerC= new ArrayList<>(),answerD= new ArrayList<>();
+    ArrayList<RadioButton> answerA = new ArrayList<>(), answerB = new ArrayList<>(), answerC = new ArrayList<>(), answerD = new ArrayList<>();
     RadioButton ra, rb, rc, rd;
     private int trueColor = R.color.colorBlue,
             falseColor = R.color.colorRed;
-    ArrayList<String> listAnswer= new ArrayList<>();
-    public ThiNhanhAdapter2(Context context, int resource, ArrayList<QuestionModel> questionModels)
-    {
+    ArrayList<String> listAnswer = new ArrayList<>();
+
+    public ThiNhanhAdapter2(Context context, int resource, ArrayList<QuestionModel> questionModels) {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
         this.resource = resource;
-        for(int i=0;i<questionModels.size();i++)
-        {
+        for (int i = 0; i < questionModels.size(); i++) {
             answerA.add(ra);
             answerB.add(rb);
             answerC.add(rc);
@@ -44,12 +42,12 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             listAnswer.add("N");
         }
     }
+
     @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent)
-    {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.question_form_02, null,false);
+        View row = inflater.inflate(R.layout.question_form_02, null, false);
 
         TextView question = (TextView) row.findViewById(R.id.question2);
         ra = (RadioButton) row.findViewById(R.id.answerA);
@@ -63,28 +61,24 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
         rc.setText(questionModels.get(position).getAnswerC());
         rd.setText(questionModels.get(position).getAnswerD());
 
-        answerA.set(position,ra);
-        answerB.set(position,rb);
-        answerC.set(position,rc);
-        answerD.set(position,rd);
+        answerA.set(position, ra);
+        answerB.set(position, rb);
+        answerC.set(position, rc);
+        answerD.set(position, rd);
 
-        if (listAnswer.get(position).equals("A"))
-        {
+        if (listAnswer.get(position).equals("A")) {
             answerA.get(position).setChecked(true);
             check(position);
         }
-        if (listAnswer.get(position).equals("B"))
-        {
+        if (listAnswer.get(position).equals("B")) {
             answerB.get(position).setChecked(true);
             check(position);
         }
-        if (listAnswer.get(position).equals("C"))
-        {
+        if (listAnswer.get(position).equals("C")) {
             answerC.get(position).setChecked(true);
             check(position);
         }
-        if (listAnswer.get(position).equals("D"))
-        {
+        if (listAnswer.get(position).equals("D")) {
             answerD.get(position).setChecked(true);
             check(position);
         }
@@ -93,7 +87,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked)  listAnswer.set(position,"A");
+                if (isChecked) listAnswer.set(position, "A");
                 check(position);
             }
         });
@@ -102,7 +96,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked) listAnswer.set(position,"B");
+                if (isChecked) listAnswer.set(position, "B");
                 check(position);
             }
         });
@@ -110,7 +104,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked) listAnswer.set(position,"C");
+                if (isChecked) listAnswer.set(position, "C");
                 check(position);
             }
         });
@@ -118,7 +112,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                if (isChecked) listAnswer.set(position,"D");
+                if (isChecked) listAnswer.set(position, "D");
                 check(position);
 
             }
@@ -131,19 +125,30 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel>
         answerD.get(position).setFocusable(false);
         return (row);
     }
+
     @SuppressLint("ResourceAsColor")
-    void check(int position)
-    {
+    void check(int position) {
         answerA.get(position).setEnabled(false);
         answerB.get(position).setEnabled(false);
         answerC.get(position).setEnabled(false);
         answerD.get(position).setEnabled(false);
-        switch (questionModels.get(position).getRightAnswer())
-        {
-            case "A": {answerA.get(position).setBackgroundColor(trueColor);break;}
-            case "B": {answerB.get(position).setBackgroundColor(trueColor);break;}
-            case "C": {answerC.get(position).setBackgroundColor(trueColor);break;}
-            case "D": {answerD.get(position).setBackgroundColor(trueColor);break;}
+        switch (questionModels.get(position).getRightAnswer()) {
+            case "A": {
+                answerA.get(position).setBackgroundColor(trueColor);
+                break;
+            }
+            case "B": {
+                answerB.get(position).setBackgroundColor(trueColor);
+                break;
+            }
+            case "C": {
+                answerC.get(position).setBackgroundColor(trueColor);
+                break;
+            }
+            case "D": {
+                answerD.get(position).setBackgroundColor(trueColor);
+                break;
+            }
         }
     }
 

@@ -21,56 +21,53 @@ import androidx.appcompat.widget.ViewUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
-{
+public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel> {
     private Context context;
     private int resource;
     private ArrayList<QuestionModel> questionModels;
     private ArrayList<InforModel> inforModels;
-    RadioButton answerA,answerB,answerC,answerD;
+    RadioButton answerA, answerB, answerC, answerD;
     ImageView img;
 
     MediaPlayer player;
 
-    private ArrayList<String> listAnswer=new ArrayList<>() ;
+    private ArrayList<String> listAnswer = new ArrayList<>();
 
     public MediaPlayer getPlayer() {
         return player;
     }
 
-    public OnNgauNhienAdapter(Context context, int resource, ArrayList<QuestionModel> questionModels, ArrayList<InforModel> inforModels)
-    {
+    public OnNgauNhienAdapter(Context context, int resource, ArrayList<QuestionModel> questionModels, ArrayList<InforModel> inforModels) {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
         this.inforModels = inforModels;
         this.resource = resource;
 
-        if(listAnswer.isEmpty()) {
+        if (listAnswer.isEmpty()) {
             for (int i = 0; i < questionModels.size(); i++) {
                 listAnswer.add("N");
             }
         }
     }
+
     @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent)
-    {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
 
-        View row = inflater.inflate(R.layout.question_form_listening_p1, parent,false);
+        View row = inflater.inflate(R.layout.question_form_listening_p1, parent, false);
 
         TextView question = (TextView) row.findViewById(R.id.question1);
         answerA = (RadioButton) row.findViewById(R.id.answerA);
         answerB = (RadioButton) row.findViewById(R.id.answerB);
         answerC = (RadioButton) row.findViewById(R.id.answerC);
         answerD = (RadioButton) row.findViewById(R.id.answerD);
-        img=(ImageView)row.findViewById(R.id.image1);
+        img = (ImageView) row.findViewById(R.id.image1);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                play(context,inforModels.get(position).getListeningInfor());
+            public void onClick(View v) {
+                play(context, inforModels.get(position).getListeningInfor());
             }
         });
         question.setText(questionModels.get(position).getQuestion());
@@ -89,7 +86,7 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
 
-                if (isChecked)  listAnswer.set(position,"A");
+                if (isChecked) listAnswer.set(position, "A");
             }
         });
 
@@ -99,7 +96,8 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
                 // set Yes values in ArrayList if RadioButton is checked
 
                 if (isChecked) {
-                    listAnswer.set(position,"B");}
+                    listAnswer.set(position, "B");
+                }
 
             }
         });
@@ -108,7 +106,7 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
 
-                if (isChecked) listAnswer.set(position,"C");
+                if (isChecked) listAnswer.set(position, "C");
             }
         });
         answerD.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -116,7 +114,7 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
 
-                if (isChecked) listAnswer.set(position,"D");
+                if (isChecked) listAnswer.set(position, "D");
             }
         });
 
@@ -127,23 +125,19 @@ public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel>
         return (row);
     }
 
-    void play(Context context, int resource)
-    {
+    void play(Context context, int resource) {
 
-        if (player != null)
-        {
+        if (player != null) {
             player.release();
             player = null;
         }
         player = MediaPlayer.create(context, resource);
         player.start();
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
-        {
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
-            public void onCompletion(MediaPlayer mp)
-            {
+            public void onCompletion(MediaPlayer mp) {
                 player.release();
-                player=null;
+                player = null;
             }
         });
     }

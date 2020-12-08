@@ -7,27 +7,24 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class AboutUs_activity extends Activity implements View.OnClickListener
-{
+public class AboutUs_activity extends Activity implements View.OnClickListener {
     Button btnOK;
     Intent About_Us_Intent;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us_activity);
-        About_Us_Intent = new Intent(this,MainActivity.class);
+        About_Us_Intent = new Intent(this, MainActivity.class);
 
         btnOK = (Button) findViewById(R.id.btnOK);
         btnOK.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v)
-    {
-        int id= v.getId();
-        switch (id)
-        {
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
             case R.id.btnOK:
                 this.finish();
                 About_Us_Intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
