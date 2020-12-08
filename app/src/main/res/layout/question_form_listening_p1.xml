@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="380dp"
+            android:layout_width="10dp"
             android:layout_height="wrap_content"
             android:id="@+id/question1"
             android:textStyle="bold">
@@ -22,7 +22,7 @@
             android:id="@+id/image1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/listen_icon1">
+            android:src="@drawable/listen_icon1">
 
         </ImageView>
     </LinearLayout>
@@ -32,9 +32,11 @@
         android:layout_height="wrap_content">
 
         <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            android:id="@+id/rd1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+                >
                 <RadioButton
                     android:id="@+id/answerA"
                     android:layout_width="match_parent"

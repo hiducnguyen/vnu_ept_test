@@ -34,28 +34,31 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         super(context, "vnuept_test.db", null, 1);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableQuestion = "CREATE TABLE " + TABLE_QUESTION + " ("
-                + COLUMN_QUESTION + " TEXT, "
-                + COLUMN_ANSWER_A + " TEXT, "
-                + COLUMN_ANSWER_B + " TEXT, "
-                + COLUMN_ANSWER_C + " TEXT, "
-                + COLUMN_ANSWER_D + " TEXT, "
-                + COLUMN_RIGHT_ANSWER + " TEXT, "
-                + COLUMN_TYPE + " TEXT, "
-                + COLUMN_ID_INFOR + " INTEGER, "
-                + COLUMN_PART + " INTEGER, "
-                + "FOREIGN KEY (" + COLUMN_ID_INFOR + ") REFERENCES " + TABLE_INFORMATION + " (" + COLUMN_ID + ")"
-                +")";
-        String createTableInfor = "CREATE TABLE " + TABLE_INFORMATION + " ("
-                + COLUMN_ID + " INTEGER, "
-                + COLUMN_IMG_INFOR + " INTEGER, "
-                + COLUMN_LISTENING_INFOR + " INTEGER, "
-                + COLUMN_READING_INFOR + " TEXT)";
-        db.execSQL(createTableQuestion);
-        db.execSQL(createTableInfor);
+        try { //if database is not exists
+            String createTableQuestion = "CREATE TABLE " + TABLE_QUESTION + " ("
+                    + COLUMN_QUESTION + " TEXT, "
+                    + COLUMN_ANSWER_A + " TEXT, "
+                    + COLUMN_ANSWER_B + " TEXT, "
+                    + COLUMN_ANSWER_C + " TEXT, "
+                    + COLUMN_ANSWER_D + " TEXT, "
+                    + COLUMN_RIGHT_ANSWER + " TEXT, "
+                    + COLUMN_TYPE + " TEXT, "
+                    + COLUMN_ID_INFOR + " INTEGER, "
+                    + COLUMN_PART + " INTEGER, "
+                    + "FOREIGN KEY (" + COLUMN_ID_INFOR + ") REFERENCES " + TABLE_INFORMATION + " (" + COLUMN_ID + ")"
+                    +")";
+            String createTableInfor = "CREATE TABLE " + TABLE_INFORMATION + " ("
+                    + COLUMN_ID + " INTEGER, "
+                    + COLUMN_IMG_INFOR + " INTEGER, "
+                    + COLUMN_LISTENING_INFOR + " INTEGER, "
+                    + COLUMN_READING_INFOR + " TEXT)";
+            db.execSQL(createTableQuestion);
+            db.execSQL(createTableInfor);
+        }
+        catch(Exception e) {
+        }
     }
 
     @Override
@@ -134,6 +137,36 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public ArrayList<QuestionModel> findQuestionById(int myId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_ID_INFOR + " = " + Integer.toString(myId);
+        Cursor cursor = db.rawQuery(query, null);
+
+        ArrayList<QuestionModel> list = new ArrayList<>();
+
+        int num = cursor.getCount();
+
+        cursor.moveToFirst();
+        for (int i = 0; i < num; i++){
+            QuestionModel q = new QuestionModel();
+
+            q.setQuestion(cursor.getString(cursor.getColumnIndex(COLUMN_QUESTION)));
+            q.setAnswerA(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_A)));
+            q.setAnswerB(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_B)));
+            q.setAnswerC(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_C)));
+            q.setAnswerD(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_D)));
+            q.setRightAnswer(cursor.getString(cursor.getColumnIndex(COLUMN_RIGHT_ANSWER)));
+            q.setType(cursor.getString(cursor.getColumnIndex(COLUMN_TYPE)));
+            q.setIdInfor(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_INFOR)));
+            q.setPart(cursor.getInt(cursor.getColumnIndex(COLUMN_PART)));
+
+            list.add(q);
+            cursor.moveToNext();
+        }
+
+        return list;
+    }
+
     public InforModel findInforById(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM "+ TABLE_INFORMATION + " WHERE " + COLUMN_ID + " = " + Integer.toString(id);
@@ -150,32 +183,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return i;
     }
 
-    public int countQuestionByPart(int myPart, String myType){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT COUNT(*) FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_PART + " = " + Integer.toString(myPart)
-                + " AND " + COLUMN_TYPE + " = '" + myType + "'";
-        Cursor cursor = db.rawQuery(query, null);
-
-        int result;
-
-        cursor.moveToFirst();
-        result = cursor.getInt(0);
-
-        return result;
-    }
-    public int countIdByPart(int myPart, String myType){
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT COUNT (DISTINCT " + TABLE_INFORMATION + ".ID) FROM " + TABLE_QUESTION + " INNER JOIN " + TABLE_INFORMATION + " ON " + TABLE_QUESTION + ".ID_infor = " + TABLE_INFORMATION + ".ID WHERE " + TABLE_QUESTION +".Part = " + myPart + " AND " + TABLE_QUESTION + ".Type = '" + myType + "'";
-
-        Cursor cursor = db.rawQuery(query, null);
-
-        int result;
-
-        cursor.moveToFirst();
-        result = cursor.getInt(0);
-
-        return result;
-    }
     public ArrayList<InforModel> findInforByPart(int myPart, String myType){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT DISTINCT " + TABLE_INFORMATION + ".* FROM "
@@ -204,4 +211,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return list;
     }
+
+    public int countQuestionByPart(int myPart, String myType){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT COUNT(*) FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_PART + " = " + Integer.toString(myPart)
+                + " AND " + COLUMN_TYPE + " = '" + myType + "'";
+        Cursor cursor = db.rawQuery(query, null);
+
+        int result;
+
+        cursor.moveToFirst();
+        result = cursor.getInt(0);
+
+        return result;
+    }
+    public int countIdByPart(int myPart, String myType){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT COUNT (DISTINCT " + TABLE_INFORMATION + ".ID) FROM " + TABLE_QUESTION + " INNER JOIN " + TABLE_INFORMATION + " ON " + TABLE_QUESTION + ".ID_infor = " + TABLE_INFORMATION + ".ID WHERE " + TABLE_QUESTION +".Part = " + myPart + " AND " + TABLE_QUESTION + ".Type = '" + myType + "'";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        int result;
+
+        cursor.moveToFirst();
+        result = cursor.getInt(0);
+
+        return result;
+    }
+
 }
