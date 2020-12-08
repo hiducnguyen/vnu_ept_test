@@ -29,6 +29,10 @@ public class QuestionListenAdapterP23 extends ArrayAdapter<QuestionModel> {
     int trueColor = R.color.colorRed;
     ArrayList<String> listAnswer;
 
+    public ArrayList<String> getListAnswer() {
+        return listAnswer;
+    }
+
     public QuestionListenAdapterP23(Context context, int resource, ArrayList<QuestionModel> questionModels) {
         super(context, resource, questionModels);
         this.context = context;

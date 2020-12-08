@@ -23,6 +23,11 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel>
 {
     private Context context;
     private int resource;
+
+    public ArrayList<String> getListAnswer() {
+        return listAnswer;
+    }
+
     private ArrayList<QuestionModel> questionModels;
     private ArrayList<InforModel>inforModels;
     Boolean is_done= false;
