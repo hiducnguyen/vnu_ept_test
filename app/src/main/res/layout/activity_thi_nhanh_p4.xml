@@ -7,7 +7,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtDirectionPart4"
         android:text="@string/in_part_4_you_will_hear_part_of_a_lecture_after_the_second_listening_there_is_a_summary_of_the_lecture_with_eight_gaps_select_the_best_option_for_each_gap_to_complete_the_summary">
 
     </TextView>
