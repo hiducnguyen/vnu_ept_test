@@ -1,60 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LISTENING PART 3">
+        android:text="@string/listening_part_3">
+
     </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btnPreviousONN3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/previos"
             android:layout_weight="1"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnPreviousONN3">
+            android:text="@string/previos">
 
         </Button>
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="kiểm tra"
-            android:background="@drawable/custom_button1"
             android:id="@+id/btnKT3"
-            android:layout_weight="1">
-
-        </Button>
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="@string/next"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnNextONN3">
+            android:text="kiểm tra">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnNextONN3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button1"
+            android:text="@string/next">
 
         </Button>
     </LinearLayout>
+
     <ImageView
-        android:layout_gravity="center_horizontal"
         android:id="@+id/imageONN3tn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:background="@drawable/listen_icon1">
 
     </ImageView>
+
     <ListView
         android:id="@+id/list3"
         android:layout_width="match_parent"

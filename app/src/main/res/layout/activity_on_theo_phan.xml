@@ -3,18 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OnTheoPhanActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".OnTheoPhanActivity">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/n_thi_theo_ph_n">
 
     </TextView>
-<ListView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/list_item_otp">
 
-</ListView>
+    <ListView
+        android:id="@+id/list_item_otp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
 </LinearLayout>

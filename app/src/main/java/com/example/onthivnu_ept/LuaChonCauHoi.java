@@ -1,7 +1,5 @@
 package com.example.onthivnu_ept;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -10,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class LuaChonCauHoi extends Activity {
     EditText edtPart1, edtPart2, edtPart3, edtPart4, edtPart5, edtPart6, edtPart7, edtPart8;

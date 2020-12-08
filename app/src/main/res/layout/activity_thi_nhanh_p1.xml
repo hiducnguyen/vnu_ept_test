@@ -1,40 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/in_part_1_you_will_hear_ten_conversations_between_two_people_after_the_second_listening_of_each_conversation_you_will_hear_a_question_and_there_are_four_possible_answers_provided_select_the_best_answer_to_each_question">
 
     </TextView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <Button
+            android:id="@+id/btnPrevios1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/previos"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnPrevios1">
+            android:text="@string/previos">
 
         </Button>
+
         <Button
+            android:id="@+id/btnNext1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="120dp"
-            android:text="@string/next"
             android:background="@drawable/custom_button1"
-            android:id="@+id/btnNext1">
+            android:text="@string/next">
 
         </Button>
     </LinearLayout>
+
     <ListView
         android:id="@+id/myListQuestionPart1tn"
         android:layout_width="match_parent"

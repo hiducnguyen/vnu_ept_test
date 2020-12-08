@@ -1,7 +1,5 @@
 package com.example.onthivnu_ept;
 
-import java.util.Objects;
-
 public class QuestionModel {
     private String question, answerA, answerB, answerC, answerD, rightAnswer, type;
     private int idInfor, part;

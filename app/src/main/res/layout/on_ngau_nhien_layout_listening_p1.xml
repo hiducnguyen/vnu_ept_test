@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -8,48 +7,50 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LISTENING PART 1">
+        android:text="@string/listening_part_1">
+
     </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/previos"
-            android:background="@drawable/custom_button1"
             android:id="@+id/btnPreviousONN1"
-            android:layout_weight="1">
-
-        </Button>
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="kiểm tra"
-            android:background="@drawable/custom_button1"
-            android:id="@+id/btnKT1"
-            android:layout_weight="1">
-
-        </Button>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/next"
-            android:background="@drawable/custom_button1"
             android:layout_weight="1"
-            android:id="@+id/btnNextONN1">
+            android:background="@drawable/custom_button1"
+            android:text="@string/previos">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnKT1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button1"
+            android:text="kiểm tra">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btnNextONN1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button1"
+            android:text="@string/next">
 
         </Button>
     </LinearLayout>
+
     <ListView
         android:id="@+id/list1"
         android:layout_width="match_parent"

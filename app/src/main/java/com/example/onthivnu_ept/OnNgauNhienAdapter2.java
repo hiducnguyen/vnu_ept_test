@@ -1,6 +1,5 @@
 package com.example.onthivnu_ept;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -12,13 +11,10 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.ViewUtils;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel> {
     private Context context;
@@ -28,8 +24,6 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel> {
 
 
     RadioButton answerA, answerB, answerC, answerD;
-    ImageView img;
-    MediaPlayer player;
 
     private ArrayList<String> listAnswer = new ArrayList<>();
 
@@ -37,10 +31,7 @@ public class OnNgauNhienAdapter2 extends ArrayAdapter<QuestionModel> {
         super(context, resource, questionModels);
         this.context = context;
         this.questionModels = questionModels;
-
-
         this.resource = resource;
-        i = 0;
         listAnswer.clear();
         if (listAnswer.isEmpty()) {
             for (int i = 0; i < questionModels.size(); i++) {

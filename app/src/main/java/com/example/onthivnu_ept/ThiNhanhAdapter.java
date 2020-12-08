@@ -11,17 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.ViewUtils;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.os.SystemClock.sleep;
 
 public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel> {
     private Context context;

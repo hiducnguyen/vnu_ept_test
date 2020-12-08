@@ -112,4 +112,19 @@
     <string name="part_7">Part 7:</string>
     <string name="part_8">Part 8:</string>
     <string name="xong">Xong</string>
+    <string name="ngu_n">Nguồn:</string>
+    <string name="reading_part_3">READING PART 3</string>
+    <string name="ki_m_tra">kiểm tra</string>
+    <string name="ki_m_tra">kiểm tra</string>
+    <string name="reading_part_4">READING PART 4</string>
+    <string name="ki_m_tra">kiểm tra</string>
+    <string name="listening_part_1">LISTENING PART 1</string>
+    <string name="listening_part_2">LISTENING PART 2</string>
+    <string name="listening_part_3">LISTENING PART 3</string>
+    <string name="listening_part_4">LISTENING PART 4</string>
+    <string name="ok">OK</string>
+    <string name="l_a_ch_n_c_u_h_i">LỰA CHỌN CÂU HỎI</string>
+    <string name="reading_part_1">Reading Part 1</string>
+    <string name="reading_part_2">Reading Part 2</string>
+    <string name="ti_p_t_c">TIẾP TỤC</string>
 </resources>

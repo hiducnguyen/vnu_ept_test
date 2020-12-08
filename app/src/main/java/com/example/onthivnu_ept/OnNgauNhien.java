@@ -1,26 +1,17 @@
 package com.example.onthivnu_ept;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -719,7 +710,6 @@ public class OnNgauNhien extends Activity {
             s1 = s1 + listAnswer.get(i);
         for (int i = 0; i < listRightAnswer.size(); i++)
             s2 = s2 + listRightAnswer.get(i);
-        Toast.makeText(context, "List1" + s1 + "  List2" + s2, Toast.LENGTH_LONG).show();
 
 
         for (int i = 0; i < listAnswer.size(); i++) {

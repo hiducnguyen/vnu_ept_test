@@ -1,6 +1,5 @@
 package com.example.onthivnu_ept;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.media.MediaPlayer;
@@ -12,14 +11,8 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.ViewUtils;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class OnNgauNhienAdapter extends ArrayAdapter<QuestionModel> {
     private Context context;

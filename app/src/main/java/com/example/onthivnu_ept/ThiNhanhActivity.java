@@ -5,7 +5,6 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,7 +17,6 @@ public class ThiNhanhActivity extends Activity {
             questionModelsPart3, questionModelsPart4,
             questionModelsPart5, questionModelsPart6,
             questionModelsPart7, questionModelsPart8, questionModels;
-    QuestionListenAdapterP1 adapterP1;
     ThiNhanhAdapter2 adapterP2, adapterP3,
             adapterP4, adapterP5, adapterP6, adapterP7, adapterP8;
     ThiNhanhAdapter adapter;

@@ -3,297 +3,301 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
     android:background="@drawable/background2"
-    >
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/custom_textview"
         android:layout_marginTop="20dp"
-        android:text="LỰA CHỌN CÂU HỎI"
+        android:background="@drawable/custom_textview"
+        android:text="@string/l_a_ch_n_c_u_h_i"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="#000000"></TextView>
+        android:textStyle="bold">
+
+    </TextView>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="70dp"
-        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-            <TextView
-                android:id="@+id/tvPart1"
-                android:layout_width="140dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
+                android:orientation="horizontal">
 
-                android:background="@drawable/custom_textview"
-                android:text="Listening Part 1">
+                <TextView
+                    android:id="@+id/tvPart1"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/custom_textview"
 
-            </TextView>
+                    android:text="@string/listening_part_1"
+                    android:textColor="#000000">
 
-            <EditText
-                android:id="@+id/edtPart1"
-                android:layout_width="50dp"
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edtPart1"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_textview"
+                    android:inputType="number"
+                    android:text="0">
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/custom_textview"
-                android:inputType="number"
-                android:text="0"
-                >
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            </EditText>
+                <TextView
+                    android:id="@+id/tvPart2"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/custom_textview"
+
+                    android:text="@string/listening_part_2"
+                    android:textColor="#000000">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edtPart2"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_textview"
+                    android:inputType="number"
+                    android:text="0">
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPart3"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/custom_textview"
+
+                    android:text="@string/listening_part_3"
+                    android:textColor="#000000">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edtPart3"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_textview"
+                    android:inputType="number"
+                    android:text="0">
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPart4"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/custom_textview"
+
+                    android:text="@string/listening_part_4"
+                    android:textColor="#000000">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edtPart4"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_textview"
+                    android:inputType="number"
+                    android:text="0">
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPart5"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/custom_textview"
+
+                    android:text="@string/reading_part_1"
+                    android:textColor="#000000">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edtPart5"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_textview"
+                    android:inputType="number"
+                    android:text="0">
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPart6"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/custom_textview"
+
+                    android:text="@string/reading_part_2"
+                    android:textColor="#000000">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edtPart6"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_textview"
+                    android:inputType="number"
+
+                    android:text="0"
+
+                    >
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPart7"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/custom_textview"
+
+                    android:text="@string/reading_part_3"
+                    android:textColor="#000000">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edtPart7"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_textview"
+                    android:inputType="number"
+
+                    android:text="0"
+
+                    >
+
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPart8"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/custom_textview"
+
+                    android:text="@string/reading_part_4"
+                    android:textColor="#000000">
+
+                </TextView>
+
+                <EditText
+                    android:id="@+id/edtPart8"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/custom_textview"
+                    android:inputType="number"
+
+                    android:text="0"
+
+                    >
+
+                </EditText>
+            </LinearLayout>
+
+
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <TextView
-                android:id="@+id/tvPart2"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
-
-                android:background="@drawable/custom_textview"
-                android:text="Listening Part 2">
-
-            </TextView>
-
-            <EditText
-                android:id="@+id/edtPart2"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/custom_textview"
-                android:inputType="number"
-                android:text="0"
-                >
-
-            </EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <TextView
-                android:id="@+id/tvPart3"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
-
-                android:background="@drawable/custom_textview"
-                android:text="Listening Part 3">
-
-            </TextView>
-
-            <EditText
-                android:id="@+id/edtPart3"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/custom_textview"
-                android:inputType="number"
-                android:text="0"
-                >
-
-            </EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <TextView
-                android:id="@+id/tvPart4"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
-
-                android:background="@drawable/custom_textview"
-                android:text="Listening Part 4">
-
-            </TextView>
-
-            <EditText
-                android:id="@+id/edtPart4"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/custom_textview"
-                android:inputType="number"
-                android:text="0"
-                >
-
-            </EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <TextView
-                android:id="@+id/tvPart5"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
-
-                android:background="@drawable/custom_textview"
-                android:text="Reading Part 1">
-
-            </TextView>
-
-            <EditText
-                android:id="@+id/edtPart5"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/custom_textview"
-                android:inputType="number"
-                android:text="0"
-                >
-
-            </EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <TextView
-                android:id="@+id/tvPart6"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
-
-                android:background="@drawable/custom_textview"
-                android:text="Reading Part 2">
-
-            </TextView>
-
-            <EditText
-                android:id="@+id/edtPart6"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/custom_textview"
-                android:inputType="number"
-
-                android:text="0"
-
-                >
-
-            </EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <TextView
-                android:id="@+id/tvPart7"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
-
-                android:background="@drawable/custom_textview"
-                android:text="Reading Part 3">
-
-            </TextView>
-
-            <EditText
-                android:id="@+id/edtPart7"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/custom_textview"
-                android:inputType="number"
-
-                android:text="0"
-
-                >
-
-            </EditText>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            >
-            <TextView
-                android:id="@+id/tvPart8"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textColor="#000000"
-
-                android:background="@drawable/custom_textview"
-                android:text="Reading Part 4">
-
-            </TextView>
-
-            <EditText
-                android:id="@+id/edtPart8"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="50dp"
-                android:background="@drawable/custom_textview"
-                android:inputType="number"
-
-                android:text="0"
-
-                >
-
-            </EditText>
-        </LinearLayout>
-
-
-
-    </LinearLayout>
     </ScrollView>
 
     <Button
@@ -304,10 +308,12 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_textview"
 
-        android:text="TIẾP TỤC"
+        android:text="@string/ti_p_t_c"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="14sp"
-        android:textStyle="bold"></Button>
+        android:textStyle="bold">
+
+    </Button>
 
 </LinearLayout>
