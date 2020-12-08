@@ -11,7 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.ViewUtils;
@@ -25,7 +27,8 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
     private int resource;
     private ArrayList<QuestionModel> questionModels;
     private ArrayList<InforModel> inforModels;
-    RadioButton answerA,answerB,answerC,answerD;
+    ArrayList<RadioButton> answerA = new ArrayList<>(),answerB= new ArrayList<>(),answerC= new ArrayList<>(),answerD= new ArrayList<>();
+    RadioButton ra, rb, rc, rd;
     ImageView img;
     ArrayList<String> answers;
     MediaPlayer player;
@@ -47,21 +50,28 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
         this.answers = answers;
         for(int i=0;i<questionModels.size();i++)
         {
+            answerA.add(ra);
+            answerB.add(rb);
+            answerC.add(rc);
+            answerD.add(rd);
             listAnswer.add("N");
         }
     }
+    @SuppressLint("ResourceAsColor")
+
     @NonNull
     @Override
     public View getView(final int position, View convertView, ViewGroup parent)
     {
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View row = inflater.inflate(R.layout.question_form_listening_p1, null,false);
+        Toast.makeText(context,String.valueOf(position),Toast.LENGTH_LONG).show();
 
         TextView question = (TextView) row.findViewById(R.id.question1);
-        answerA = (RadioButton) row.findViewById(R.id.answerA);
-        answerB = (RadioButton) row.findViewById(R.id.answerB);
-        answerC = (RadioButton) row.findViewById(R.id.answerC);
-        answerD = (RadioButton) row.findViewById(R.id.answerD);
+        ra = (RadioButton) row.findViewById(R.id.answerA);
+        rb = (RadioButton) row.findViewById(R.id.answerB);
+        rc = (RadioButton) row.findViewById(R.id.answerC);
+        rd = (RadioButton) row.findViewById(R.id.answerD);
         img=(ImageView)row.findViewById(R.id.image1);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,87 +80,96 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
                 play(context,inforModels.get(position).getListeningInfor());
             }
         });
+
         question.setText(questionModels.get(position).getQuestion());
-        answerA.setText(questionModels.get(position).getAnswerA());
-        answerB.setText(questionModels.get(position).getAnswerB());
-        answerC.setText(questionModels.get(position).getAnswerC());
-        answerD.setText(questionModels.get(position).getAnswerD());
+        answerA.set(position,ra);
+        answerB.set(position,rb);
+        answerC.set(position,rc);
+        answerD.set(position,rd);
 
-        answerA.setChecked(listAnswer.get(position).equals("A"));
-        answerB.setChecked(listAnswer.get(position).equals("B"));
-        answerC.setChecked(listAnswer.get(position).equals("C"));
-        answerD.setChecked(listAnswer.get(position).equals("D"));
+        answerA.get(position).setText(questionModels.get(position).getAnswerA());
+        answerB.get(position).setText(questionModels.get(position).getAnswerB());
+        answerC.get(position).setText(questionModels.get(position).getAnswerC());
+        answerD.get(position).setText(questionModels.get(position).getAnswerD());
 
-        answerA.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        if (listAnswer.get(position).equals("A"))
+        {
+            answerA.get(position).setChecked(true);
+            answerA.get(position).setBackgroundColor(trueColor);
+        }
+        if (listAnswer.get(position).equals("B"))
+        {
+            answerB.get(position).setChecked(true);
+            answerB.get(position).setBackgroundColor(trueColor);
+
+        }
+        if (listAnswer.get(position).equals("C"))
+        {
+            answerC.get(position).setChecked(true);
+            answerC.get(position).setBackgroundColor(trueColor);
+
+        }
+        if (listAnswer.get(position).equals("D"))
+        {
+            answerD.get(position).setChecked(true);
+            answerD.get(position).setBackgroundColor(trueColor);
+
+        }
+
+        answerA.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                check("A", position,answerA,answerB,answerC,answerD);
+                check(position,answerA.get(position),answerB.get(position),answerC.get(position),answerD.get(position));
                 if (isChecked)  listAnswer.set(position,"A");
             }
         });
 
-        answerB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerB.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                check("B",position,answerA,answerB,answerC,answerD);
+                check(position,answerA.get(position),answerB.get(position),answerC.get(position),answerD.get(position));
                 if (isChecked) listAnswer.set(position,"B");
             }
         });
-        answerC.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerC.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                check("C",position,answerA,answerB,answerC,answerD);
+                check(position,answerA.get(position),answerB.get(position),answerC.get(position),answerD.get(position));
                 if (isChecked) listAnswer.set(position,"C");
             }
         });
-        answerD.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        answerD.get(position).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
-                check("D", position,answerA,answerB,answerC,answerD);
+                check(position,answerA.get(position),answerB.get(position),answerC.get(position),answerD.get(position));
                 if (isChecked) listAnswer.set(position,"D");
             }
         });
 
 
-        answerA.setFocusable(false);
-        answerB.setFocusable(false);
-        answerC.setFocusable(false);
-        answerD.setFocusable(false);
+        answerA.get(position).setFocusable(false);
+        answerB.get(position).setFocusable(false);
+        answerC.get(position).setFocusable(false);
+        answerD.get(position).setFocusable(false);
         return (row);
     }
-    @SuppressLint("ResourceAsColor")
-    void check(String answer, int position, RadioButton radioButtonA, RadioButton radioButtonB, RadioButton radioButtonC, RadioButton radioButtonD)
+    void check(int position, RadioButton radioButtonA, RadioButton radioButtonB, RadioButton radioButtonC, RadioButton radioButtonD)
     {
-        if (answer.equals(answers.get(position)))
-        {
-            switch (answer)
-            {
-                case "A": {radioButtonA.setBackgroundColor(trueColor); break;}
-                case "B": {radioButtonB.setBackgroundColor(trueColor);break;}
-                case "C": {radioButtonC.setBackgroundColor(trueColor);break;}
-                case "D": {radioButtonD.setBackgroundColor(trueColor);break;}
-            }
-        }
-        else
-        {
-            switch (answers.get(position))
-            {
-                case "A": {radioButtonA.setBackgroundColor(falseColor); break;}
-                case "B": {radioButtonB.setBackgroundColor(falseColor);break;}
-                case "C": {radioButtonC.setBackgroundColor(falseColor);break;}
-                case "D": {radioButtonD.setBackgroundColor(falseColor);break;}
-            }
-        }
-
         radioButtonA.setEnabled(false);
         radioButtonB.setEnabled(false);
         radioButtonC.setEnabled(false);
         radioButtonD.setEnabled(false);
-
+        switch (answers.get(position))
+        {
+            case "A": {radioButtonA.setBackgroundColor(trueColor); break;}
+            case "B": {radioButtonB.setBackgroundColor(trueColor);break;}
+            case "C": {radioButtonC.setBackgroundColor(trueColor);break;}
+            case "D": {radioButtonD.setBackgroundColor(trueColor);break;}
+        }
     }
     void play(Context context, int resource)
     {
@@ -173,8 +192,4 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
         });
     }
 
-    @Override
-    public void setNotifyOnChange(boolean notifyOnChange) {
-        super.setNotifyOnChange(notifyOnChange);
-    }
 }
