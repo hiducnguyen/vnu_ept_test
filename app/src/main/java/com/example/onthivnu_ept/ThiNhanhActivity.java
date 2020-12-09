@@ -52,7 +52,6 @@ public class ThiNhanhActivity extends Activity {
         btnPrevios1 = (Button) findViewById(R.id.btnPrevios1);
         btnPrevios1.setEnabled(false);
 
-
         for (int i = 0; i < 10; i++) {
             InforModel inforModel = new InforModel();
             inforModel = dataBaseHelper.findInforById(questionModelsPart1.get(i).getIdInfor());

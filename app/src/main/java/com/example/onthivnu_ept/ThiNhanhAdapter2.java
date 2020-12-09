@@ -21,8 +21,7 @@ public class ThiNhanhAdapter2 extends ArrayAdapter<QuestionModel> {
     private ArrayList<QuestionModel> questionModels;
     ArrayList<RadioButton> answerA = new ArrayList<>(), answerB = new ArrayList<>(), answerC = new ArrayList<>(), answerD = new ArrayList<>();
     RadioButton ra, rb, rc, rd;
-    private int trueColor = R.color.colorBlue,
-            falseColor = R.color.colorRed;
+    private int trueColor = R.color.colorRed;
     ArrayList<String> listAnswer = new ArrayList<>();
 
     public ThiNhanhAdapter2(Context context, int resource, ArrayList<QuestionModel> questionModels) {

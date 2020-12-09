@@ -71,16 +71,17 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel> {
         rc = (RadioButton) row.findViewById(R.id.answerC);
         rd = (RadioButton) row.findViewById(R.id.answerD);
 
+
+        question.setText(questionModels.get(position).getQuestion());
+        ra.setText(questionModels.get(position).getAnswerA());
+        rb.setText(questionModels.get(position).getAnswerB());
+        rc.setText(questionModels.get(position).getAnswerC());
+        rd.setText(questionModels.get(position).getAnswerD());
+
         answerA.set(position, ra);
         answerB.set(position, rb);
         answerC.set(position, rc);
         answerD.set(position, rd);
-
-        question.setText(questionModels.get(position).getQuestion());
-        answerA.get(position).setText(questionModels.get(position).getAnswerA());
-        answerB.get(position).setText(questionModels.get(position).getAnswerB());
-        answerC.get(position).setText(questionModels.get(position).getAnswerC());
-        answerD.get(position).setText(questionModels.get(position).getAnswerD());
 
         if (listAnswer.get(position).equals("A")) {
             answerA.get(position).setChecked(true);
