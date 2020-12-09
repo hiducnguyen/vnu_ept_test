@@ -115,7 +115,6 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
                 listAnswer.set(position,"A");
-                Toast.makeText(context,"A",Toast.LENGTH_LONG).show();
                 check(position);
             }
         });
@@ -125,7 +124,6 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
                 listAnswer.set(position,"B");
-                Toast.makeText(context,"B",Toast.LENGTH_LONG).show();
                 check(position);
             }
         });
@@ -134,7 +132,6 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
                 listAnswer.set(position,"C");
-                Toast.makeText(context,"C",Toast.LENGTH_LONG).show();
                 check(position);
             }
         });
@@ -143,7 +140,6 @@ public class ThiNhanhAdapter extends ArrayAdapter<QuestionModel>
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // set Yes values in ArrayList if RadioButton is checked
                 listAnswer.set(position,"D");
-                Toast.makeText(context,"D",Toast.LENGTH_LONG).show();
                 check(position);
             }
         });
