@@ -23,7 +23,7 @@ public class MainActivity extends Activity implements View.OnClickListener
     private Context context;
     private Bundle myBundle;
     private Intent myIntent;
-    DataBaseHelper dataBaseHelper;
+    public DataBaseHelper dataBaseHelper;
     private SQLiteDatabase dataBase;
 
     @Override
@@ -37,19 +37,8 @@ public class MainActivity extends Activity implements View.OnClickListener
             initDB.start(dataBaseHelper);
         }
 
-        ArrayList<QuestionModel> l = dataBaseHelper.findQuestionByPart(2, "Listening");
-
-        for (int i = 0; i < l.size(); i++){
-            Log.i("hihi", l.get(i).toString());
-        }
-
-        //find inforModel by id
-        InforModel i = dataBaseHelper.findInforById(1);
-        Log.i("hihi", i.toString());
         setView();
 
-        Log.i("hihi", Integer.toString(dataBaseHelper.countQuestionByPart(2, "Listening")));
-        Log.i("hihi", Integer.toString(dataBaseHelper.countIdByPart(2, "Listening")));
     }
     public boolean validDataBase(){
         dataBaseHelper = new DataBaseHelper(MainActivity.this);
@@ -93,8 +82,8 @@ public class MainActivity extends Activity implements View.OnClickListener
                 finish();
                 break;
             case R.id.btnThiNhanh:
-                //myIntent = new Intent(this,AboutUs_activity.class);
-                //startActivities(new Intent[]{myIntent});
+                myIntent = new Intent(this,ThiNhanhActivity.class);
+                startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnAboutUs:
                 myIntent = new Intent(this,AboutUs_activity.class);
@@ -105,12 +94,12 @@ public class MainActivity extends Activity implements View.OnClickListener
                 startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnOnThiNgauNhien:
-                //myIntent = new Intent(this,AboutUs_activity.class);
-                //startActivities(new Intent[]{myIntent});
+                myIntent = new Intent(this,LuaChonCauHoi.class);
+                startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnThiThu:
-                //myIntent = new Intent(this,AboutUs_activity.class);
-                //startActivities(new Intent[]{myIntent});
+                myIntent = new Intent(this,ThiThu.class);
+                startActivities(new Intent[]{myIntent});
                 break;
         }
     }

@@ -794,7 +794,7 @@ public class InitiateDataBase {
                 16,
                 3);
         //Information
-        dbHelper.addInfor(17, 0, R.drawable.id17_part4, "\tCOLUMBIAN EXCHANGE\n" +
+        dbHelper.addInfor(17, R.drawable.id17_part4,0, "\tCOLUMBIAN EXCHANGE\n" +
                 "1. The Columbian Exchange was the “exchange of plants, animals, foods, human populations " +
                 "(including slaves) communicable diseases, and ideas between the Eastern and Western " +
                 "hemispheres that occurred after 1492.” The term “Columbian Exchange,” coined in 1972 by " +

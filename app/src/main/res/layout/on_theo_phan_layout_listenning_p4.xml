@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDirectionPart23"
+        android:text="@string/in_part_4_you_will_hear_part_of_a_lecture_after_the_second_listening_there_is_a_summary_of_the_lecture_with_eight_gaps_select_the_best_option_for_each_gap_to_complete_the_summary">
+
+    </TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/n_p_b_i"
+            android:background="@drawable/custom_button1"
+            android:id="@+id/btnNopBai4">
+
+        </Button>
+        <ImageView
+            android:id="@+id/image4"
+            android:layout_marginLeft="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/listen_icon1">
+
+        </ImageView>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:id="@+id/txtP4">
+
+            </TextView>
+        </ScrollView>
+
+        <ListView
+            android:id="@+id/myListQuestionPart4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+    </LinearLayout>
+
+
+</LinearLayout>
