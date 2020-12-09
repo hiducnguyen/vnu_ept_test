@@ -415,7 +415,7 @@ public class OnNgauNhien extends Activity {
                 play(context,arrayResultListListeningPart4.get(0).getListeningInfor());
             }
         });
-        btnKT4=(Button)findViewById(R.id.btnKT1);
+        btnKT4=(Button)findViewById(R.id.btnKT4);
         btnKT4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -842,7 +842,7 @@ public class OnNgauNhien extends Activity {
             {
                 if(!adapterListeningP4.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
                 {
-                    wrongAnswer.add("ListeningPart3: câu"+String.valueOf(i+1));
+                    wrongAnswer.add("ListeningPart4: câu"+String.valueOf(i+1));
                 }
                 pos=pos+1;
             }
@@ -856,7 +856,7 @@ public class OnNgauNhien extends Activity {
             {
                 if(!adapterReadingP1.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
                 {
-                    wrongAnswer.add("ListeningPart3: câu"+String.valueOf(i+1));
+                    wrongAnswer.add("ReadingPart1: câu"+String.valueOf(i+1));
                 }
                 pos=pos+1;
             }
@@ -869,7 +869,7 @@ public class OnNgauNhien extends Activity {
             {
                 if(!adapterReadingP2.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
                 {
-                    wrongAnswer.add("ListeningPart3: câu "+String.valueOf(i+1));
+                    wrongAnswer.add("ReadingPart2: câu "+String.valueOf(i+1));
                 }
                 pos=pos+1;
             }
@@ -882,7 +882,7 @@ public class OnNgauNhien extends Activity {
             {
                 if(!adapterReadingP3.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
                 {
-                    wrongAnswer.add("ListeningPart3: câu "+String.valueOf(i+1));
+                    wrongAnswer.add("ReadingPart3: câu "+String.valueOf(i+1));
                 }
                 pos=pos+1;
             }
@@ -895,7 +895,7 @@ public class OnNgauNhien extends Activity {
             {
                 if(!adapterReadingP4.getListAnswer().get(i).equals(listRightAnswer.get(pos)))
                 {
-                    wrongAnswer.add("ListeningPart3: câu "+String.valueOf(i+1));
+                    wrongAnswer.add("ReadingPart4: câu "+String.valueOf(i+1));
                 }
                 pos=pos+1;
             }
