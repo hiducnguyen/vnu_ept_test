@@ -335,8 +335,6 @@ public class OnTheoPhanActivity extends Activity
 
                         TextView txtP8 = (TextView) findViewById(R.id.txtP8);
                         txtP8.setText(inforModels.get(0).getReadingInfor());
-                        TextView textView = (TextView) findViewById(R.id.txtPart);
-                        textView.setText(R.string.part_8);
                         ImageView img8 = (ImageView) findViewById(R.id.image8);
                         img8.setBackgroundResource(inforModels.get(0).getImgInfor());
 
