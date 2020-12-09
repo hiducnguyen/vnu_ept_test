@@ -54,7 +54,7 @@ public class OnTheoPhanActivity extends Activity {
                 switch (position) {
                     case 0: {
                         questionModels = dataBaseHelper.findQuestionByPart(1, "Listening");
-                        for (int i = 0; i < n_question; i++) {
+                        for (int i = 0; i < questionModels.size(); i++) {
                             InforModel inforModel = new InforModel();
                             inforModel = dataBaseHelper.findInforById(questionModels.get(i).getIdInfor());
                             inforModels.add(inforModel);

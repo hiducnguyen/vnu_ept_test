@@ -28,7 +28,7 @@ public class QuestionListenAdapterP1 extends ArrayAdapter<QuestionModel> {
     }
 
     private ArrayList<QuestionModel> questionModels;
-    private ArrayList<InforModel> inforModels;
+    private ArrayList<InforModel> inforModels = new ArrayList<>();
     Boolean is_done = false;
     ArrayList<RadioButton> answerA = new ArrayList<>(), answerB = new ArrayList<>(), answerC = new ArrayList<>(), answerD = new ArrayList<>();
     RadioButton ra, rb, rc, rd;
