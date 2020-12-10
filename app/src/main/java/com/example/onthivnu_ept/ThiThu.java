@@ -1,12 +1,9 @@
 package com.example.onthivnu_ept;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,9 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -490,7 +484,7 @@ public class ThiThu extends Activity {
             randomIdx = rand.nextInt(arrayListListeningPart2.size());
             im = arrayListListeningPart2.get(randomIdx);
             arrayResultListListeningPart2.add(im);
-            arrayListListeningPart2Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListListeningPart2Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
 
             for (int i = 0; i < arrayListListeningPart2Question.size() - countPart2; ) {
@@ -507,7 +501,7 @@ public class ThiThu extends Activity {
             randomIdx = rand.nextInt(arrayListListeningPart3.size());
             im = arrayListListeningPart3.get(randomIdx);
             arrayResultListListeningPart3.add(im);
-            arrayListListeningPart3Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListListeningPart3Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListListeningPart3Question.size() - countPart3; ) {
                 int randomIndex = rand.nextInt(arrayListListeningPart3Question.size());
@@ -524,7 +518,7 @@ public class ThiThu extends Activity {
             randomIdx = rand.nextInt(arrayListListeningPart4.size());
             im = arrayListListeningPart4.get(randomIdx);
             arrayResultListListeningPart4.add(im);
-            arrayListListeningPart4Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListListeningPart4Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListListeningPart4Question.size() - countPart4; ) {
                 int randomIndex = rand.nextInt(arrayListListeningPart4Question.size());
@@ -540,7 +534,7 @@ public class ThiThu extends Activity {
             randomIdx = rand.nextInt(arrayListReadingPart1.size());
             im = arrayListReadingPart1.get(randomIdx);
             arrayResultListReadingPart1.add(im);
-            arrayListReadingPart1Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListReadingPart1Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListReadingPart1Question.size() - countPart5; ) {
                 int randomIndex = rand.nextInt(arrayListReadingPart1Question.size());
@@ -555,7 +549,7 @@ public class ThiThu extends Activity {
             randomIdx = rand.nextInt(arrayListReadingPart2.size());
             im = arrayListReadingPart2.get(randomIdx);
             arrayResultListReadingPart2.add(im);
-            arrayListReadingPart2Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListReadingPart2Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListReadingPart2Question.size() - countPart6; ) {
                 int randomIndex = rand.nextInt(arrayListReadingPart2Question.size());
@@ -570,7 +564,7 @@ public class ThiThu extends Activity {
             randomIdx = rand.nextInt(arrayListReadingPart3.size());
             im = arrayListReadingPart3.get(randomIdx);
             arrayResultListReadingPart3.add(im);
-            arrayListReadingPart3Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListReadingPart3Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListReadingPart3Question.size() - countPart7; ) {
                 int randomIndex = rand.nextInt(arrayListReadingPart3Question.size());
@@ -585,7 +579,7 @@ public class ThiThu extends Activity {
             randomIdx = rand.nextInt(arrayListReadingPart4.size());
             im = arrayListReadingPart4.get(randomIdx);
             arrayResultListReadingPart4.add(im);
-            arrayListReadingPart4Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListReadingPart4Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListReadingPart4Question.size() - countPart8; ) {
                 int randomIndex = rand.nextInt(arrayListReadingPart4Question.size());

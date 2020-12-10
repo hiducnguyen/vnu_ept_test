@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class QuestionModel {
     private String question, answerA, answerB, answerC, answerD, rightAnswer, type;
-    private int idInfor, part;
+    private int idInfor, part, id, countFalse;
 
     @Override
     public String toString() {
@@ -34,6 +34,22 @@ public class QuestionModel {
         this.type = type;
         this.idInfor = idInfor;
         this.part = part;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCountFalse() {
+        return countFalse;
+    }
+
+    public void setCountFalse(int countFalse) {
+        this.countFalse = countFalse;
     }
 
     public String getQuestion() {

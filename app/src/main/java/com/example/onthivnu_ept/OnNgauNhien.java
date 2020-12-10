@@ -1,26 +1,17 @@
 package com.example.onthivnu_ept;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -1028,7 +1019,7 @@ public class OnNgauNhien extends Activity {
             randomIdx = rand.nextInt(arrayListListeningPart2.size());
             im = arrayListListeningPart2.get(randomIdx);
             arrayResultListListeningPart2.add(im);
-            arrayListListeningPart2Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListListeningPart2Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
 
             for (int i = 0; i < arrayListListeningPart2Question.size() - countListeningPart2; ) {
@@ -1045,7 +1036,7 @@ public class OnNgauNhien extends Activity {
             randomIdx = rand.nextInt(arrayListListeningPart3.size());
             im = arrayListListeningPart3.get(randomIdx);
             arrayResultListListeningPart3.add(im);
-            arrayListListeningPart3Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListListeningPart3Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListListeningPart3Question.size() - countListeningPart3; ) {
                 int randomIndex = rand.nextInt(arrayListListeningPart3Question.size());
@@ -1062,7 +1053,7 @@ public class OnNgauNhien extends Activity {
             randomIdx = rand.nextInt(arrayListListeningPart4.size());
             im = arrayListListeningPart4.get(randomIdx);
             arrayResultListListeningPart4.add(im);
-            arrayListListeningPart4Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListListeningPart4Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListListeningPart4Question.size() - countListeningPart4; ) {
                 int randomIndex = rand.nextInt(arrayListListeningPart4Question.size());
@@ -1078,7 +1069,7 @@ public class OnNgauNhien extends Activity {
             randomIdx = rand.nextInt(arrayListReadingPart1.size());
             im = arrayListReadingPart1.get(randomIdx);
             arrayResultListReadingPart1.add(im);
-            arrayListReadingPart1Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListReadingPart1Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListReadingPart1Question.size() - countReadingPart1; ) {
                 int randomIndex = rand.nextInt(arrayListReadingPart1Question.size());
@@ -1093,7 +1084,7 @@ public class OnNgauNhien extends Activity {
             randomIdx = rand.nextInt(arrayListReadingPart2.size());
             im = arrayListReadingPart2.get(randomIdx);
             arrayResultListReadingPart2.add(im);
-            arrayListReadingPart2Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListReadingPart2Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListReadingPart2Question.size() - countReadingPart2; ) {
                 int randomIndex = rand.nextInt(arrayListReadingPart2Question.size());
@@ -1108,7 +1099,7 @@ public class OnNgauNhien extends Activity {
             randomIdx = rand.nextInt(arrayListReadingPart3.size());
             im = arrayListReadingPart3.get(randomIdx);
             arrayResultListReadingPart3.add(im);
-            arrayListReadingPart3Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListReadingPart3Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListReadingPart3Question.size() - countReadingPart3; ) {
                 int randomIndex = rand.nextInt(arrayListReadingPart3Question.size());
@@ -1123,7 +1114,7 @@ public class OnNgauNhien extends Activity {
             randomIdx = rand.nextInt(arrayListReadingPart4.size());
             im = arrayListReadingPart4.get(randomIdx);
             arrayResultListReadingPart4.add(im);
-            arrayListReadingPart4Question.addAll(dataBaseHelper.findQuestionById(im.getId()));
+            arrayListReadingPart4Question.addAll(dataBaseHelper.findQuestionByIdInfor(im.getId()));
 
             for (int i = 0; i < arrayListReadingPart4Question.size() - countReadingPart4; ) {
                 int randomIndex = rand.nextInt(arrayListReadingPart4Question.size());

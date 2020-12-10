@@ -5,12 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
@@ -29,6 +27,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_IMG_INFOR = "ImageInfor";
     public static final String COLUMN_LISTENING_INFOR = "ListeningInfor";
     public static final String COLUMN_READING_INFOR = "ReadingInfor";
+    public static final String COLUMN_COUNT_FALSE = "CountFalse";
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "vnuept_test.db", null, 1);
@@ -38,6 +37,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try { //if database is not exists
             String createTableQuestion = "CREATE TABLE " + TABLE_QUESTION + " ("
+                    + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY, "
+                    + COLUMN_COUNT_FALSE + " INTEGER DEFAULT 0, "
                     + COLUMN_QUESTION + " TEXT, "
                     + COLUMN_ANSWER_A + " TEXT, "
                     + COLUMN_ANSWER_B + " TEXT, "
@@ -50,7 +51,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     + "FOREIGN KEY (" + COLUMN_ID_INFOR + ") REFERENCES " + TABLE_INFORMATION + " (" + COLUMN_ID + ")"
                     +")";
             String createTableInfor = "CREATE TABLE " + TABLE_INFORMATION + " ("
-                    + COLUMN_ID + " INTEGER, "
+                    + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY, "
                     + COLUMN_IMG_INFOR + " INTEGER, "
                     + COLUMN_LISTENING_INFOR + " INTEGER, "
                     + COLUMN_READING_INFOR + " TEXT)";
@@ -88,6 +89,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
     public boolean addInfor(int id, int imgInfor, int listeningInfor, String readingInfor){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -129,6 +131,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             q.setType(cursor.getString(cursor.getColumnIndex(COLUMN_TYPE)));
             q.setIdInfor(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_INFOR)));
             q.setPart(cursor.getInt(cursor.getColumnIndex(COLUMN_PART)));
+            q.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+            q.setCountFalse(cursor.getInt(cursor.getColumnIndex(COLUMN_COUNT_FALSE)));
 
             list.add(q);
             cursor.moveToNext();
@@ -137,9 +141,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-    public ArrayList<QuestionModel> findQuestionById(int myId){
+    public ArrayList<QuestionModel> findQuestionByIdInfor(int myIdInfor){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_ID_INFOR + " = " + Integer.toString(myId);
+        String query = "SELECT * FROM "+ TABLE_QUESTION + " WHERE " + COLUMN_ID_INFOR + " = " + Integer.toString(myIdInfor);
         Cursor cursor = db.rawQuery(query, null);
 
         ArrayList<QuestionModel> list = new ArrayList<>();
@@ -159,6 +163,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             q.setType(cursor.getString(cursor.getColumnIndex(COLUMN_TYPE)));
             q.setIdInfor(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_INFOR)));
             q.setPart(cursor.getInt(cursor.getColumnIndex(COLUMN_PART)));
+            q.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+            q.setCountFalse(cursor.getInt(cursor.getColumnIndex(COLUMN_COUNT_FALSE)));
 
             list.add(q);
             cursor.moveToNext();
@@ -225,6 +231,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return result;
     }
+
     public int countIdByPart(int myPart, String myType){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT COUNT (DISTINCT " + TABLE_INFORMATION + ".ID) FROM " + TABLE_QUESTION + " INNER JOIN " + TABLE_INFORMATION + " ON " + TABLE_QUESTION + ".ID_infor = " + TABLE_INFORMATION + ".ID WHERE " + TABLE_QUESTION +".Part = " + myPart + " AND " + TABLE_QUESTION + ".Type = '" + myType + "'";
@@ -237,6 +244,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         result = cursor.getInt(0);
 
         return result;
+    }
+
+    public int updateCountFalse(int id, int newCountFalse){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_COUNT_FALSE, newCountFalse);
+
+        int result = db.update(TABLE_QUESTION, cv, COLUMN_ID + " = " + Integer.toString(id), null);
+        return result;
+    }
+
+    public boolean increaseCountFalse(QuestionModel q){
+        int newFalseCount = q.getCountFalse() + 1;
+        int id = q.getId();
+
+        int result = updateCountFalse(id, newFalseCount);
+
+        if (result > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }

@@ -19,7 +19,7 @@ import java.util.List;
 public class MainActivity extends Activity implements View.OnClickListener
 {
     private Button btnExit,btnThiThu,btnThiNhanh,
-            btnAboutUs,btnOnNgauNhien,btnOnTheoPhan;
+            btnAboutUs,btnOnNgauNhien,btnOnTheoPhan, btnCacCauHaySai;
     private Context context;
     private Bundle myBundle;
     private Intent myIntent;
@@ -35,6 +35,11 @@ public class MainActivity extends Activity implements View.OnClickListener
         if (!validDataBase()){
             InitiateDataBase initDB = new InitiateDataBase();
             initDB.start(dataBaseHelper);
+        }
+
+        ArrayList<QuestionModel> list = dataBaseHelper.findQuestionByPart(1, "Listening");
+        for (int i = 0; i<list.size(); i++){
+            dataBaseHelper.increaseCountFalse(list.get(i));
         }
 
         setView();
@@ -64,6 +69,7 @@ public class MainActivity extends Activity implements View.OnClickListener
         btnAboutUs  = (Button) findViewById(R.id.btnAboutUs);
         btnOnNgauNhien = (Button) findViewById(R.id.btnOnThiNgauNhien);
         btnOnTheoPhan = (Button) findViewById(R.id.btnOnThiTheoPhan);
+        btnCacCauHaySai = (Button) findViewById(R.id.btnCacCauHaySai);
 
         btnExit.setOnClickListener(this);
         btnThiNhanh.setOnClickListener( this);
@@ -71,7 +77,7 @@ public class MainActivity extends Activity implements View.OnClickListener
         btnOnNgauNhien.setOnClickListener(this);
         btnOnTheoPhan.setOnClickListener(this);
         btnAboutUs.setOnClickListener(this);
-
+        btnCacCauHaySai.setOnClickListener(this);
     }
     public void onClick(View view)
     {
@@ -101,6 +107,9 @@ public class MainActivity extends Activity implements View.OnClickListener
                 myIntent = new Intent(this,ThiThu.class);
                 startActivities(new Intent[]{myIntent});
                 break;
+            case R.id.btnCacCauHaySai:
+                myIntent = new Intent(this, CacCauHaySai.class);
+                startActivities(new Intent[]{myIntent});
         }
     }
 }

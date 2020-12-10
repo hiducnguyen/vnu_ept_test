@@ -523,7 +523,7 @@ public class InitiateDataBase {
                 "Reading",
                 14,
                 12);
-        dbHelper.addQuestion("The word landscape in paragraph 1 is closest in meaning to _____.",
+        dbHelper.addQuestion("The word 'landscape' in paragraph 1 is closest in meaning to _____.",
                 "an area of land for living",
                 "a painting",
                 "an icy environment",
@@ -532,7 +532,7 @@ public class InitiateDataBase {
                 "Reading",
                 14,
                 12);
-        dbHelper.addQuestion("The word preserved in paragraph 2 is closest in meaning to _____.",
+        dbHelper.addQuestion("The word 'preserved' in paragraph 2 is closest in meaning to _____.",
                 "closed",
                 "explored",
                 "protected",
@@ -541,7 +541,7 @@ public class InitiateDataBase {
                 "Reading",
                 14,
                 12);
-        dbHelper.addQuestion("The word inhabit in paragraph 2 is closest in meaning to _____.",
+        dbHelper.addQuestion("The word 'inhabit' in paragraph 2 is closest in meaning to _____.",
                 "avoid",
                 "cover",
                 "prefer",
@@ -550,7 +550,7 @@ public class InitiateDataBase {
                 "Reading",
                 14,
                 12);
-        dbHelper.addQuestion("The word harsh in paragraph 2 is closest  in meaning to _____.",
+        dbHelper.addQuestion("The word 'harsh' in paragraph 2 is closest  in meaning to _____.",
                 "unpleasantly difficult",
                 "mild",
                 "dry",
@@ -559,7 +559,7 @@ public class InitiateDataBase {
                 "Reading",
                 14,
                 12);
-        dbHelper.addQuestion("The word remote in paragraph 2 is closest in meaning to _____.",
+        dbHelper.addQuestion("The word 'remote' in paragraph 2 is closest in meaning to _____.",
                 "ideal",
                 "isolated",
                 "hostile",
@@ -568,7 +568,7 @@ public class InitiateDataBase {
                 "Reading",
                 14,
                 12);
-        dbHelper.addQuestion(". The word disturb in paragraph 3 is closest in meaning to _____.",
+        dbHelper.addQuestion(". The word 'disturb' in paragraph 3 is closest in meaning to _____.",
                 "make somebody/something happy",
                 "bring somebody/something comfort",
                 "annoy somebody/something",
@@ -577,7 +577,7 @@ public class InitiateDataBase {
                 "Reading",
                 14,
                 12);
-        dbHelper.addQuestion("The word temporary in paragraph 4 is closest in meaning to _____.",
+        dbHelper.addQuestion("The word 'temporary' in paragraph 4 is closest in meaning to _____.",
                 "rich and adventurous",
                 "careful",
                 "lasting for a limited time",
@@ -586,7 +586,7 @@ public class InitiateDataBase {
                 "Reading",
                 14,
                 12);
-        dbHelper.addQuestion("The word consequences in paragraph 5  is closest in meaning to _____.",
+        dbHelper.addQuestion("The word 'consequences' in paragraph 5  is closest in meaning to _____.",
                 "acquaintances",
                 "effects",
                 "causes",
@@ -595,7 +595,7 @@ public class InitiateDataBase {
                 "Reading",
                 14,
                 12);
-        dbHelper.addQuestion("The word fragile in paragraph 5 is closest  in meaning to _____.",
+        dbHelper.addQuestion("The word 'fragile' in paragraph 5 is closest  in meaning to _____.",
                 "native",
                 "rare",
                 "useful",
