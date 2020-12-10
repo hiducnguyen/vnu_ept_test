@@ -39,7 +39,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         try { //if database is not exists
             String createTableQuestion = "CREATE TABLE " + TABLE_QUESTION + " ("
                     + COLUMN_ID + " INTEGER NOT NULL PRIMARY KEY, "
-                    + COLUMN_COUNT_FALSE + " INTEGER DEFAULT 0, "
+                    + COLUMN_COUNT_FALSE + " INTEGER DEFAULT 1, "
                     + COLUMN_QUESTION + " TEXT, "
                     + COLUMN_ANSWER_A + " TEXT, "
                     + COLUMN_ANSWER_B + " TEXT, "

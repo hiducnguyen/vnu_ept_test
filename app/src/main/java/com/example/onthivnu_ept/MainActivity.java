@@ -7,14 +7,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import java.io.Console;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener
 {
@@ -103,7 +97,7 @@ public class MainActivity extends Activity implements View.OnClickListener
                 startActivities(new Intent[]{myIntent});
                 break;
             case R.id.btnCacCauHaySai:
-                myIntent = new Intent(this, CacCauHaySai.class);
+                myIntent = new Intent(this, CacCauHaySaiActivity.class);
                 startActivities(new Intent[]{myIntent});
         }
     }

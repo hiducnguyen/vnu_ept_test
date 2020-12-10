@@ -113,4 +113,8 @@
     <string name="part_8">Part 8:</string>
     <string name="xong">Xong</string>
     <string name="cau_hay_sai">Các câu hay sai</string>
+    <string name="kiem_tra">Kiểm tra</string>
+    <string name="tiep_tuc">Tiếp tục</string>
+    <string name="dung">Dừng</string>
+    <string name="cau_khac">Câu khác</string>
 </resources>
