@@ -18,6 +18,8 @@ public class QuestionModel {
                 ", type='" + type + '\'' +
                 ", idInfor=" + idInfor +
                 ", part=" + part +
+                ", id=" + id +
+                ", countFalse=" + countFalse +
                 '}';
     }
 

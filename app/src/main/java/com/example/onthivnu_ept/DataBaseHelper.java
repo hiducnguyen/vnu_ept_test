@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -270,4 +271,35 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public ArrayList<QuestionModel> findFrequentlyFalseQuestion(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_QUESTION + " WHERE " + COLUMN_COUNT_FALSE + " > 0 ORDER BY " + COLUMN_COUNT_FALSE + " DESC";
+        Cursor cursor = db.rawQuery(query, null);
+
+        ArrayList<QuestionModel> list = new ArrayList<>();
+
+        int num = cursor.getCount();
+
+        cursor.moveToFirst();
+        for (int i = 0; i < num; i++){
+            QuestionModel q = new QuestionModel();
+
+            q.setQuestion(cursor.getString(cursor.getColumnIndex(COLUMN_QUESTION)));
+            q.setAnswerA(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_A)));
+            q.setAnswerB(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_B)));
+            q.setAnswerC(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_C)));
+            q.setAnswerD(cursor.getString(cursor.getColumnIndex(COLUMN_ANSWER_D)));
+            q.setRightAnswer(cursor.getString(cursor.getColumnIndex(COLUMN_RIGHT_ANSWER)));
+            q.setType(cursor.getString(cursor.getColumnIndex(COLUMN_TYPE)));
+            q.setIdInfor(cursor.getInt(cursor.getColumnIndex(COLUMN_ID_INFOR)));
+            q.setPart(cursor.getInt(cursor.getColumnIndex(COLUMN_PART)));
+            q.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+            q.setCountFalse(cursor.getInt(cursor.getColumnIndex(COLUMN_COUNT_FALSE)));
+
+            list.add(q);
+            cursor.moveToNext();
+        }
+
+        return list;
+    }
 }

@@ -37,11 +37,6 @@ public class MainActivity extends Activity implements View.OnClickListener
             initDB.start(dataBaseHelper);
         }
 
-        ArrayList<QuestionModel> list = dataBaseHelper.findQuestionByPart(1, "Listening");
-        for (int i = 0; i<list.size(); i++){
-            dataBaseHelper.increaseCountFalse(list.get(i));
-        }
-
         setView();
 
     }
